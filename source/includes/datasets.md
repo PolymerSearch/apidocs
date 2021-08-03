@@ -17,6 +17,38 @@ curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
 }'
 ```
 
+```shell
+curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+--header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "url": "https://abcc.s3.amazonaws.com/myfile.csv",
+    "name": "Payment yearly2.csv",
+    "import_from": {
+        "id": "6107ab93fa0ec85cb863f0e1",
+        "data": [
+            "views"
+        ]
+    }
+}'
+```
+
+```shell
+curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+--header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "url": "https://abcc.s3.amazonaws.com/myfile.csv",
+    "name": "Payment yearly3.csv",
+    "import_from": {
+        "id": "6107ab93fa0ec85cb863f0e1",
+        "data": [
+            "views","user_config"
+        ]
+    }
+}'
+```
+
 > The above command returns JSON structured like this:
 
 ```json
