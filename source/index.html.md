@@ -15,13 +15,14 @@ meta:
 
 
 toc_footers:
-  - <a href='https://app.polymersearch.com/settings/apikey'>Sign Up for a Developer Key</a>
+  - <a href='https://app.polymersearch.com'>Sign Up for a Developer Key</a>
   - <a href='https://polymersearch.com'>PolymerSearch Website</a>
 
 includes:
   - introduction
   - authentication
   - datasets
+  - tasks
   - errors
   - ratelimiting
   - changelog
