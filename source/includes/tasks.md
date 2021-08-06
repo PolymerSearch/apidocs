@@ -36,7 +36,7 @@ curl --location --request GET 'https://api.polymersearch.com/v1/tasks/610805441a
 
 Field | Datatype | Description
 --------- | ------- | -----------
-data.status | String | If set to 'Done' then task is executed and you can find response in data key
+status | String | If set to 'Done' then task is executed and you can find response in data key
 data.success | Boolean | If true then dataset was processed successfully and launch URL (data.launch_url) is ready
 data.launch_url | String | launch URL (data.launch_url), only if data.success is true
 data.embed_code | String | Embed Code (data.embed_code), only if data.success is true
