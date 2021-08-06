@@ -1,5 +1,6 @@
 ---
 title: PolymerSearch API
+favicon: favicon.ico
 
 # language_tabs: # must be one of https://git.io/vQNgJ
   # - shell
@@ -15,13 +16,14 @@ meta:
 
 
 toc_footers:
-  - <a href='https://app.polymersearch.com/settings/apikey'>Sign Up for a Developer Key</a>
+  - <a href='https://app.polymersearch.com'>Sign Up for a Developer Key</a>
   - <a href='https://polymersearch.com'>PolymerSearch Website</a>
 
 includes:
   - introduction
   - authentication
   - datasets
+  - tasks
   - errors
   - ratelimiting
   - changelog
