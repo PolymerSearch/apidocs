@@ -1,5 +1,6 @@
 ---
 title: PolymerSearch API
+favicon: favicon.ico
 
 # language_tabs: # must be one of https://git.io/vQNgJ
   # - shell
