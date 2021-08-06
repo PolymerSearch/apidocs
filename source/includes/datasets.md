@@ -67,7 +67,7 @@ Field | Mandatory | Description
 --------- | ------- | -----------
 url | true | URL to a valid public downloadable CSV.
 name | true | Name of the dataset/file.
-sharing | false | Desired sharing status for the dataset (public | password-protected | private). Defaults to private.
+sharing | false | Desired sharing status for the dataset (public, password-protected, private). Defaults to private.
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 import_from | false | Object for copy views & user config from an existing dataset (see below).
 import_from.id | true | source dataset ID from which you want to copy views or user config.
