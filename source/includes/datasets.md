@@ -14,7 +14,8 @@ curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
 --data-raw '{
     "url": "https://abcc.s3.amazonaws.com/myfile.csv",
     "name": "Payment yearly.csv",
-    "starting_row": 10
+    "starting_row": 10,
+    "update": true
 }'
 ```
 
@@ -71,6 +72,7 @@ name | true | Name of the dataset/file.
 sharing | false | Desired sharing status for the dataset (public, password-protected, private). Defaults to private.
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 starting_row | false | Desired row count where Polymer should start processing your file.
+update | false | Boolean. Force update dataset in case a dataset already exists with the given name.
 import_from | false | Object for copy views & user config from an existing dataset (see below).
 import_from.id | true | source dataset ID from which you want to copy views or user config.
 import_from.data | true | Array containing views, user_config (one of them or both).
