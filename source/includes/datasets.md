@@ -76,3 +76,44 @@ update | false | Boolean. Force update dataset in case a dataset already exists 
 import_from | false | Object for copy views & user config from an existing dataset (see below).
 import_from.id | true | source dataset ID from which you want to copy views or user config.
 import_from.data | true | Array containing views, user_config (one of them or both).
+
+
+## Update a Dataset
+
+This endpoint update content, name of the existing dataset.
+```shell
+curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754dfad3627deeb8f84b' \
+--header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "FB Ad List Q2 C-uploaded.csv",
+    "url": "https://test-csv-datasets.s3.us-east-2.amazonaws.com/Test+-+Bank+Loans.csv"
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "task_id": "60f7bdd7c07d897637ac60f5"
+}
+```
+
+### HTTP Request
+
+`PUT https://api.polymersearch.com/v1/dataset/:id`
+
+
+### Params content
+
+Field | Mandatory | Description
+--------- | ------- | -----------
+id | true | Dataset ID.
+
+### Body content
+
+Field | Mandatory | Description
+--------- | ------- | -----------
+url | true | URL to a valid public downloadable CSV.
+name | false | Name of the dataset/file.
+
