@@ -81,6 +81,7 @@ import_from.data | true | Array containing views, user_config (one of them or bo
 ## Update a Dataset
 
 This endpoint update content, name of the existing dataset.
+
 ```shell
 curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754dfad3627deeb8f84b' \
 --header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
@@ -90,6 +91,7 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754d
     "url": "https://test-csv-datasets.s3.us-east-2.amazonaws.com/Test+-+Bank+Loans.csv"
 }'
 ```
+
 
 > The above command returns JSON structured like this:
 
