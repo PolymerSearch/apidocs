@@ -51,6 +51,13 @@ curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
 }'
 ```
 
+```shell
+curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+--header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
+--form 'name="Payment yearly 2022 920.csv"' \
+--form 'file=@"/local_file_path/file_name.csv"'
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -67,11 +74,12 @@ curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-url | true | URL to a valid public downloadable CSV.
+url | false | URL to a valid public downloadable CSV.
+file | false | Type: file. The file to upload.
 name | true | Name of the dataset/file.
 sharing | false | Desired sharing status for the dataset (public, password-protected, private). Defaults to private.
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
-starting_row | false | Desired row count where Polymer should start processing your file.
+starting_row | false | Desired row number where Polymer should start processing your file.
 update | false | Boolean. Force update dataset in case a dataset already exists with the given name.
 import_from | false | Object for copy views & user config from an existing dataset (see below).
 import_from.id | true | source dataset ID from which you want to copy views or user config.
@@ -80,7 +88,7 @@ import_from.data | true | Array containing views, user_config (one of them or bo
 
 ## Update a Dataset
 
-This endpoint update content, name of the existing dataset.
+This endpoint updates the content and the name of the existing dataset.
 
 ```shell
 curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754dfad3627deeb8f84b' \
@@ -116,6 +124,7 @@ id | true | Dataset ID.
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-url | true | URL to a valid public downloadable CSV.
+url | false | URL to a valid public downloadable CSV.
+file | false | Type: file. The file to upload.
 name | false | Name of the dataset/file.
 
