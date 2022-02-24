@@ -85,6 +85,7 @@ import_from | false | Object for copy views & user config from an existing datas
 import_from.id | true | source dataset ID from which you want to copy views or user config.
 import_from.data | true | Array containing views, user_config (one of them or both).
 
+Note: One of 'url' or 'file' parameter is required.
 
 ## Update a Dataset
 
@@ -127,4 +128,7 @@ Field | Mandatory | Description
 url | false | URL to a valid public downloadable CSV.
 file | false | Type: file. The file to upload.
 name | false | Name of the dataset/file.
+sharing | false | Desired sharing status for the dataset (public, private, password-protected).
+password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 
+Note: One of 'url' or 'file' parameter is required.
