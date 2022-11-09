@@ -24,6 +24,7 @@ includes:
   - authentication
   - datasets
   - tasks
+  - views
   - errors
   - ratelimiting
   - changelog
