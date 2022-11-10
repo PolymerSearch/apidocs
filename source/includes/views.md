@@ -126,9 +126,7 @@ Allowed values:
 - pie
 - dependencywheel
 - rich-text-insight
-- ai 
-
-<br >
+- ai
 
 
 ### Field: x_axis 
@@ -220,8 +218,6 @@ Possible operations:
 - INCLUDING
 - EXCLUDING
 
-<br>
-
 
 ### Field: calculation
 Mandatory
@@ -239,7 +235,6 @@ Allowed values:
 - max
 - min 
 
-<br>
 
 ### Field: width 
 Mandatory: False
