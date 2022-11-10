@@ -249,8 +249,8 @@ Default value: full
 
 
 ### Field: html 
-`if type is rich-text-insight then required
-> for other types it is not allowed`
+Mandatory
+`if type is rich-text-insight then required for other types it is not allowed`
 
 <br>
 
