@@ -112,7 +112,7 @@ password | false | Required only in case of sharing: password-protected, Validat
 
 ### Chart Object
 
-#### Field: type
+### Field: type
 Mandatory: true
 
 Allowed values:
@@ -131,39 +131,39 @@ Allowed values:
 <br >
 
 
-#### Field: x_axis 
+### Field: x_axis 
 Mandatory
-`if type in **ai** or **rich-text-insight** then **not allowed** 
-if type is **dependencywheel**
-then **not required** for **other types** it is **required**`
+`if type in ai or rich-text-insight then not allowed 
+if type is dependencywheel
+then not required for other types it is required`
 
 Allowed values: valid column name
 <br >
 
 
-#### Field: y_axis
+### Field: y_axis
 Mandatory
-`if type in **ai** or **rich-text-insight** then **not allowed**
-if type is **pie** then **not required** 
-for **other types** it is **required**`
+`if type in ai or rich-text-insight then not allowed
+if type is pie then not required 
+for other types it is required`
 
 Allowed values: valid column name
 <br >
 
 
-#### Field: slice
+### Field: slice
 Mandatory
-`if type in **ai** or **rich-text-insight** then **not allowed**
-for **other types** it is **not required**`
+`if type in ai or rich-text-insight then not allowed
+for other types it is not required`
 
 Allowed values: valid column name
 <br >
 
 
-#### Field: filters
+### Field: filters
 Mandatory
-`if type in **ai** or **rich-text-insight** then **not allowed**
-for **other types** it is **not required**`
+`if type in ai or rich-text-insight then not allowed
+for other types it is not required`
 
  
 Allowed values: object
@@ -223,11 +223,11 @@ Possible operations:
 <br>
 
 
-#### Field: calculation
+### Field: calculation
 Mandatory
 
-`if type in **ai** or **rich-text-insight** then **not allowed**
-for **other types** it is **required**`
+`if type in ai or rich-text-insight then not allowed
+for other types it is required`
 
 Allowed values:
 
@@ -241,8 +241,7 @@ Allowed values:
 
 <br>
 
-
-#### Field: width 
+### Field: width 
 Mandatory: False
 
 Allowed values:
@@ -255,9 +254,9 @@ Default value: full
 <br>
 
 
-#### Field: html 
-`if type is **rich-text-insight** then **required**
-> for **other types** it is **not allowed**`
+### Field: html 
+`if type is rich-text-insight then required
+> for other types it is not allowed`
 
 <br>
 
