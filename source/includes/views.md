@@ -116,7 +116,6 @@ password | false | Required only in case of sharing: password-protected, Validat
 Mandatory: true
 
 Allowed values:
-
 - bar 
 - column
 - scatter 
@@ -167,7 +166,6 @@ for other types it is not required`
 Allowed values: object
 
 Following filters can be applied
-
 - Filter date columns with dynamic date range like last 30 days, last year etc
 - Filter numerical columns with ranges like amount between 25 to 45.
 - Text search in categorical columns like payment mechanism including cash and demand draft.
@@ -204,7 +202,6 @@ AND
 Payment Mechanism INCLUDING cash`
 
 Possible dynamic date ranges:
-
 - last day
 - last 7 days
 - last 30 days
@@ -214,7 +211,6 @@ Possible dynamic date ranges:
 
 
 Possible operations:
-
 - INCLUDING
 - EXCLUDING
 
@@ -225,7 +221,6 @@ Mandatory
 for other types it is required`
 
 Allowed values:
-
 - count 
 - sum
 - average
@@ -239,7 +234,6 @@ Allowed values:
 Mandatory: False
 
 Allowed values:
-
 - one-third 
 - two-thirds
 - full
