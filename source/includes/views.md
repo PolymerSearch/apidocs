@@ -221,7 +221,6 @@ Possible operations:
 
 ### Field: calculation
 Mandatory
-
 `if type in ai or rich-text-insight then not allowed
 for other types it is required`
 
