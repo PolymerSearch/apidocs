@@ -4,7 +4,8 @@ With views API you can create beautiful charts without creating the full Polymer
 
 ## Create View
 
-Example 1: Create basic view with all non AI charts
+> Example 1: Create basic view with all non AI charts
+
 ```shell
 curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1c221fb918ae401c228/view' \
 --header 'x-api-key: {{apikey}}' \
@@ -29,7 +30,8 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 }'
 ```
 
-Example 2: Create basic view with all AI charts
+> Example 2: Create basic view with all AI charts
+
 ```shell
 curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1c221fb918ae401c228/view' \
 --header 'x-api-key: {{apikey}}' \
@@ -50,7 +52,8 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 }'
 ```
 
-Example 3: Create basic view with all AI and non AI charts
+> Example 3: Create basic view with all AI and non AI charts
+
 ```shell
 curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1c221fb918ae401c228/view' \
 --header 'x-api-key: {{apikey}}' \
@@ -240,10 +243,11 @@ Default value: full
 
 ## Edit View
 
-Example 1: Edit view with all non AI charts
+> Example 1: Edit view with all non AI charts
+
 ```shell
 curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/dc2507ac-5e5d-456f-897f-e8ae23544b59' \
---header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
+--header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "charts": [
@@ -265,10 +269,11 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/d
 }'
 ```
 
-Example 2: Edit view with all non AI charts and name
+> Example 2: Edit view with all non AI charts and name
+
 ```shell
 curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/dc2507ac-5e5d-456f-897f-e8ae23544b59' \
---header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
+--header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "Edited View Name",
