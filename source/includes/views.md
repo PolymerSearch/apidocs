@@ -111,9 +111,12 @@ sharing | false | Desired sharing status for the dataset (public, private, passw
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 
 ### Chart Object
-**Field**: type 
-**Mandatory**: true 
-**Allowed values**
+
+### Field: type
+Mandatory: true
+
+Allowed values:
+
 - bar 
 - column
 - scatter 
@@ -123,98 +126,106 @@ password | false | Required only in case of sharing: password-protected, Validat
 - pie
 - dependencywheel
 - rich-text-insight
-- ai 
+- ai
+
+
+### Field: x_axis 
+Mandatory
+`if type in ai or rich-text-insight then not allowed 
+if type is dependencywheel
+then not required for other types it is required`
+
+Allowed values: valid column name
 <br >
 
-**Field**: x_axis 
-**Mandatory**
 
-> if type in **ai** or **rich-text-insight** then **not allowed** 
-> if type is **dependencywheel**
-> then **not required** for **other types** it is **required**
+### Field: y_axis
+Mandatory
+`if type in ai or rich-text-insight then not allowed
+if type is pie then not required 
+for other types it is required`
 
-**Allowed values**: valid column name
+Allowed values: valid column name
 <br >
 
-**Field**: y_axis
-**Mandatory**
 
-> if type in **ai** or **rich-text-insight** then **not allowed**
-> if type is **pie** then **not required** 
-> for **other types** it is **required**
+### Field: slice
+Mandatory
+`if type in ai or rich-text-insight then not allowed
+for other types it is not required`
 
-**Allowed values**: valid column name
+Allowed values: valid column name
 <br >
 
-**Field**: slice
-**Mandatory**
 
-> if type in **ai** or **rich-text-insight** then **not allowed**
-> for **other types** it is **not required**
-> 
-**Allowed values**: valid column name
-<br >
+### Field: filters
+Mandatory
+`if type in ai or rich-text-insight then not allowed
+for other types it is not required`
 
-**Field**: filters
+ 
+Allowed values: object
 
-> if type in **ai** or **rich-text-insight** then **not allowed**
-> for **other types** it is **not required**
-> 
-**Allowed values**: object
 Following filters can be applied
- - Filter date columns with dynamic date range like last 30 days, last year etc
- - Filter numerical columns with ranges like amount between 25 to 45.
- - Text search in categorical columns like payment mechanism including cash and demand draft.
- -   Text search in categorical columns like payment mechanism excluding cash
-Example payload
 
+- Filter date columns with dynamic date range like last 30 days, last year etc
+- Filter numerical columns with ranges like amount between 25 to 45.
+- Text search in categorical columns like payment mechanism including cash and demand draft.
+- Text search in categorical columns like payment mechanism excluding cash
+
+Example payload
+`
+{
+    "Submission Date": [
     {
-        "Submission Date": [
-        {
-            "value": "last 30 days"
-        }],
-        "amount": [
-        {
-            "value": [
-                10,
-                20
-            ]
-        }],
-        "Payment Mechanism": [
-        {
-            "value": "cash",
-            "operation": "INCLUDING"
-        }]
-    }
+        "value": "last 30 days"
+    }],
+    "amount": [
+    {
+        "value": [
+            10,
+            20
+        ]
+    }],
+    "Payment Mechanism": [
+    {
+        "value": "cash",
+        "operation": "INCLUDING"
+    }]
+}
+`
+
 Following filter will be read as 
 
-> Submission Date within last 30 days 
-> AND 
-> amount between range 10 to 20 
-> AND
-> Payment Mechanism INCLUDING cash
+`Submission Date within last 30 days 
+AND 
+amount between range 10 to 20 
+AND
+Payment Mechanism INCLUDING cash`
 
-Possible dynamic date ranges
- - last day
- - last 7 days
- - last 30 days
- - last 90 days
- - last 6 months
- - last 12 months
+Possible dynamic date ranges:
 
-Possible operations
- - INCLUDING
- - EXCLUDING
-<br>
+- last day
+- last 7 days
+- last 30 days
+- last 90 days
+- last 6 months
+- last 12 months
 
 
-**Field**: calculation
-**Mandatory**
+Possible operations:
 
-> if type in **ai** or **rich-text-insight** then **not allowed**
-> for **other types** it is **required**
+- INCLUDING
+- EXCLUDING
 
-**Allowed values**
+
+### Field: calculation
+Mandatory
+`if type in ai or rich-text-insight then not allowed
+for other types it is required`
+
+Allowed values:
+
 - count 
 - sum
 - average
@@ -223,11 +234,12 @@ Possible operations
 - max
 - min 
 
-<br>
 
-**Field**: width 
-**Mandatory**: False
-**Allowed values**
+### Field: width 
+Mandatory: False
+
+Allowed values:
+
 - one-third 
 - two-thirds
 - full
@@ -235,10 +247,12 @@ Possible operations
 Default value: full
 <br>
 
-**Field**: html 
-> if type is **rich-text-insight** then **required**
-> for **other types** it is **not allowed**
 
+### Field: html 
+Mandatory
+`if type is rich-text-insight then required for other types it is not allowed`
+
+<br>
 
 
 ## Edit View
