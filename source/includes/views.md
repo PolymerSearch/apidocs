@@ -384,6 +384,32 @@ show_percentage | Boolean| No | Show Percentage, Default: True
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
+### KPI BLOCK
+```json
+{
+    "type": "kpi",
+    "metric": "impressions",
+    "operation": "sum",
+    "date": "date",
+    "date_range": "last 90 days",
+    "goal": 4000000
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |kpi
+metric |List |Yes |valid column name
+operation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+date | String| No| valid date column name
+date_range | String| No| Any value from 'last day', 'last 7 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, custom
+date_range_custom | List| No| If date_range is selected as custom. [START_DATE_EPOCH_SECONDS, END_DATE_EPOCH_SECONDS]
+comp_date_range | String| No| Any value from 'previous period', 'custom'
+comp_date_range_custom | List| No| If comp_date_range is selected as custom. [START_DATE_EPOCH_SECONDS, END_DATE_EPOCH_SECONDS]
+goal | Number |No |
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
+
 ### RICH TEXT
 ```json
 {
