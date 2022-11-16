@@ -27,7 +27,6 @@ includes:
   - views
   - errors
   - ratelimiting
-  - changelog
 
 search: true
 code_clipboard: true

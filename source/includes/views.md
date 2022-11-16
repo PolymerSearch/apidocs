@@ -110,60 +110,321 @@ charts | true | Type: List [Chart Object] <br />
 sharing | false | Desired sharing status for the dataset (public, private, password-protected). Default: private
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 
-### Chart Object
+## Chart Object
 
-### Field: type
-Mandatory: true
-
-Allowed values:
-
-- bar 
-- column
-- scatter 
-- timeseries
-- heatmap
-- lineplot
-- pie
-- dependencywheel
-- rich-text-insight
-- ai
+### AI Chart
+```json
+{
+    "type": "ai"
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |ai
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 
 
-### Field: x_axis 
-Mandatory
-`if type in ai or rich-text-insight then not allowed 
-if type is dependencywheel
-then not required for other types it is required`
 
-Allowed values: valid column name
-<br >
+### Bar Chart
+```json
+{
+    "type": "bar",
+    "x_axis": [
+        "spend",
+        "Clicks (all)"
+    ],
+    "y_axis": "campaign_status",
+    "calculation": "sum",
+    "y_axis_log": true,
+    "show_annotations": true,
+    "show_stacked": false
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |bar
+x_axis |List |No |list of valid column name. Min length: 1, Max length: 3
+y_axis | String| Yes| valid column name
+calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+slice | String| No| valid column name
+show_annotations | Boolean| No | Annotate each segment by its value
+show_stacked | Boolean| No | Show as stack. Default: true
+is_percentage | Boolean| No | Show as percentage
+y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
 
 
-### Field: y_axis
-Mandatory
-`if type in ai or rich-text-insight then not allowed
-if type is pie then not required 
-for other types it is required`
+### Column Chart
+```json
+{
+    "type": "column",
+    "x_axis": "campaign_status",
+    "y_axis": [
+        "spend",
+        "Clicks (all)"
+    ],
+    "calculation": "sum",
+    "show_annotations": true,
+    "show_stacked": false
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |column
+x_axis | String| Yes| valid column name
+y_axis |List |No |list of valid column name. Min length: 1, Max length: 3
+calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+slice | String| No| valid column name
+show_annotations | Boolean| No | Annotate each segment by its value
+show_stacked | Boolean| No | Show as stack. Default: true
+is_percentage | Boolean| No | Show as percentage
+x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
 
-Allowed values: valid column name
-<br >
+
+### SCATTER PLOT Chart
+```json
+{
+    "type": "scatter",
+    "x_axis": "spend",
+    "y_axis": "cost_per_initiate_checkout",
+    "calculation": "sum",
+    "x_axis_log": true
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |scatter
+x_axis | String| Yes| valid column name
+y_axis |String |Yes |valid column name
+calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+slice | String| No| valid column name
+x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
+y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
 
 
-### Field: slice
-Mandatory
-`if type in ai or rich-text-insight then not allowed
-for other types it is not required`
+### TIMESERIES Chart
+```json
+{
+    "type": "timeseries",
+    "x_axis": "date",
+    "calculation": "sum",
+    "y_axis_log": true,
+    "exclude_empty_string": false,
+    "group_by": "quarter",
+    "is_area": true
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |timeseries
+x_axis | String| Yes| valid column name
+y_axis |String |No |valid column name
+calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+slice | String| No| valid column name
+is_area | Boolean| No | Use area chart
+y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+group_by | String| No | Any value from day, week, month, quarter, year
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
 
-Allowed values: valid column name
-<br >
+
+### HEATMAP Chart
+```json
+{
+    "type": "heatmap",
+    "y_axis": "account_currency",
+    "calculation": "sum",
+    "exclude_empty_string": false,
+    "show_annotations": true
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |heatmap
+y_axis |String |Yes |valid column name
+x_axis | String| No| valid column name
+calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+slice | String| No| valid column name
+show_annotations | Boolean| No | Annotate each segment by its value
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
+
+
+### LINEPLOT Chart
+```json
+{
+    "type": "lineplot",
+    "x_axis": "spend",
+    "y_axis": "link_click",
+    "calculation": "sum"
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |lineplot
+y_axis |String |Yes |valid column name
+x_axis | String| Yes| valid column name
+calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+slice | String| No| valid column name
+y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
+
+
+### PIE Chart
+```json
+{
+    "type": "pie",
+    "columns": [
+        "date"
+    ],
+    "exclude_empty_string": false,
+    "show_annotations": true
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |pie
+columns |List |Yes |list of valid column name. Min length: 1, Max length: 2
+show_annotations | Boolean| No | Annotate each segment by its value
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
+
+
+### OUTLIERS
+```json
+{
+    "type": "outliers",
+    "metric": "spend",
+    "calculation": "count",
+    "exclude_empty_string": false,
+    "influencing_columns": [
+        "ad_name"
+    ]
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |outliers
+metric |String |Yes |valid column name
+calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+influencing_columns |List |Yes |Influencing Columns - list of valid column names. Min length: 1, Max length: 6
+results_type |String |No |Show results - Any value from count, below_average_only, above_average_only, top_and_bottom_outliers, above_and_below_average
+show_results_column | Boolean| No | Show Results Column
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
+
+
+### ROI CALCULATOR
+```json
+{
+    "type": "roi",
+    "max_metric": "impressions",
+    "max_operation": "average",
+    "min_metric": "spend",
+    "min_operation": "max",
+    "influencing_columns": [
+        "ad_name",
+        "campaign_name"
+    ],
+    "show_results_column": false
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |roi
+max_metric |String |Yes |Metric to Maximize (Return) - valid column name
+max_operation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+min_metric |String |Yes |Metric to Minimize (Investment) - valid column name
+min_metric | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+influencing_columns |List |Yes |Influencing Columns - list of valid column names. Min length: 1, Max length: 6
+show_results_column | Boolean| No | Show Results Column
+show_percentage | Boolean| No | Show ROI as Percentage
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
+
+### PIVOT TABLE
+```json
+{
+    "type": "pivot",
+    "metrics": [
+    {
+        "metric": "spend",
+        "operation": "sum"
+    }],
+    "rows": [
+        "account_currency"
+    ],
+    "columns": ["ad_name"]
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |pivot
+metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **metric**: valid column <br > **operation**: Any value from count, sum, average, stddev, variance, max, min
+rows |List |Yes |Rows - list of valid column names. Min length: 1, Max length: 1
+columns |List |Yes |Columns - list of valid column names. Min length: 1, Max length: 1
+show_row_totals | Boolean| No | Show Row Totals
+show_column_totals | Boolean| No | Show Column Totals
+show_percentage | Boolean| No | Show Percentage, Default: True
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
+
+### KPI BLOCK
+```json
+{
+    "type": "kpi",
+    "metric": "impressions",
+    "operation": "sum",
+    "date": "date",
+    "date_range": "last 90 days",
+    "goal": 4000000
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |kpi
+metric |List |Yes |valid column name
+operation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+date | String| No| valid date column name
+date_range | String| No| Any value from 'last day', 'last 7 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, custom
+date_range_custom | List| No| If date_range is selected as custom. [START_DATE_EPOCH_SECONDS, END_DATE_EPOCH_SECONDS]
+comp_date_range | String| No| Any value from 'previous period', 'custom'
+comp_date_range_custom | List| No| If comp_date_range is selected as custom. [START_DATE_EPOCH_SECONDS, END_DATE_EPOCH_SECONDS]
+goal | Number |No |
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
+
+### RICH TEXT
+```json
+{
+    "type": "rich-text-insight",
+    "html": "<p><strong>This is just a header</strong></p><p><i>Add blocks of <u>your choice</u></i></p>"
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |rich-text-insight
+html |String |Yes |HTML text
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 
 
 ### Field: filters
-Mandatory
-`if type in ai or rich-text-insight then not allowed
-for other types it is not required`
-
- 
 Allowed values: object
 
 Following filters can be applied
@@ -217,42 +478,6 @@ Possible operations:
 
 - INCLUDING
 - EXCLUDING
-
-
-### Field: calculation
-Mandatory
-`if type in ai or rich-text-insight then not allowed
-for other types it is required`
-
-Allowed values:
-
-- count 
-- sum
-- average
-- stddev
-- variance
-- max
-- min 
-
-
-### Field: width 
-Mandatory: False
-
-Allowed values:
-
-- one-third 
-- two-thirds
-- full
-
-Default value: full
-<br>
-
-
-### Field: html 
-Mandatory
-`if type is rich-text-insight then required for other types it is not allowed`
-
-<br>
 
 
 ## Edit View
