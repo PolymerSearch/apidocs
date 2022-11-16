@@ -110,52 +110,73 @@ charts | true | Type: List [Chart Object] <br />
 sharing | false | Desired sharing status for the dataset (public, private, password-protected). Default: private
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 
-### Chart Object
+## Chart Object
 
-### Field: type
-Mandatory: true
-
-Allowed values:
-
-- bar 
-- column
-- scatter 
-- timeseries
-- heatmap
-- lineplot
-- pie
-- dependencywheel
-- rich-text-insight
-- ai
+### AI Chart
+```json
+{
+    "type": "ai"
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |ai
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 
 
-### Field: x_axis 
-Mandatory
-`if type in ai or rich-text-insight then not allowed 
-if type is dependencywheel
-then not required for other types it is required`
 
-Allowed values: valid column name
-<br >
+### Bar Chart
+```json
+```
 
 
-### Field: y_axis
-Mandatory
-`if type in ai or rich-text-insight then not allowed
-if type is pie then not required 
-for other types it is required`
-
-Allowed values: valid column name
-<br >
+### Column Chart
+```json
+```
 
 
-### Field: slice
-Mandatory
-`if type in ai or rich-text-insight then not allowed
-for other types it is not required`
+### SCATTER PLOT Chart
+```json
+```
 
-Allowed values: valid column name
-<br >
+
+### TIMESERIES Chart
+```json
+```
+
+
+
+### HEATMAP Chart
+```json
+```
+
+
+### LINEPLOT Chart
+```json
+```
+
+
+### PIE Chart
+```json
+```
+
+
+### OUTLIERS
+```json
+```
+
+
+### ROI CALCULATOR
+```json
+```
+
+### PIVOT TABLE
+```json
+```
+
+### RICH TEXT
+```json
+```
 
 
 ### Field: filters
@@ -217,42 +238,6 @@ Possible operations:
 
 - INCLUDING
 - EXCLUDING
-
-
-### Field: calculation
-Mandatory
-`if type in ai or rich-text-insight then not allowed
-for other types it is required`
-
-Allowed values:
-
-- count 
-- sum
-- average
-- stddev
-- variance
-- max
-- min 
-
-
-### Field: width 
-Mandatory: False
-
-Allowed values:
-
-- one-third 
-- two-thirds
-- full
-
-Default value: full
-<br>
-
-
-### Field: html 
-Mandatory
-`if type is rich-text-insight then required for other types it is not allowed`
-
-<br>
 
 
 ## Edit View
