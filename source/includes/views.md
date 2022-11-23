@@ -1,10 +1,10 @@
 # Views API
 
-With views API you can create beautiful charts without creating the full Polymer app. Embed in your site a manually selected chart for your data, or let our powerful AI determine what are the best charts for your data.
+With views API you can create charts and data segments and share them with the world instead of exposing the complete Polymer site. Embed in your site a manually selected chart for your data, or let our powerful AI determine what are the best charts for your data.
 
 ## Create View
 
-> Example 1: Create basic view with all non AI charts
+> Example 1: Create a basic view with all non-AI charts
 
 ```shell
 curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1c221fb918ae401c228/view' \
@@ -30,7 +30,7 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 }'
 ```
 
-> Example 2: Create basic view with all AI charts
+> Example 2: Create a basic view with all AI charts
 
 ```shell
 curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1c221fb918ae401c228/view' \
@@ -52,7 +52,7 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 }'
 ```
 
-> Example 3: Create basic view with all AI and non AI charts
+> Example 3: Create a basic view with all AI and non-AI charts
 
 ```shell
 curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1c221fb918ae401c228/view' \
@@ -148,11 +148,11 @@ y_axis | String| Yes| valid column name
 calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
 slice | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
-show_stacked | Boolean| No | Show as stack. Default: true
+show_stacked | Boolean| No | Show as a stack. Default: true
 is_percentage | Boolean| No | Show as percentage
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
 
@@ -182,7 +182,7 @@ show_stacked | Boolean| No | Show as stack. Default: true
 is_percentage | Boolean| No | Show as percentage
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
 
@@ -206,7 +206,7 @@ slice | String| No| valid column name
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
 
@@ -233,7 +233,7 @@ is_area | Boolean| No | Use area chart
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 group_by | String| No | Any value from day, week, month, quarter, year
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
 
@@ -256,7 +256,7 @@ calculation | String| Yes| Any value from count, sum, average, stddev, variance,
 slice | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
 
@@ -278,7 +278,7 @@ calculation | String| Yes| Any value from count, sum, average, stddev, variance,
 slice | String| No| valid column name
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
 
@@ -324,7 +324,7 @@ influencing_columns |List |Yes |Influencing Columns - list of valid column names
 results_type |String |No |Show results - Any value from count, below_average_only, above_average_only, top_and_bottom_outliers, above_and_below_average
 show_results_column | Boolean| No | Show Results Column
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
 
@@ -407,7 +407,7 @@ comp_date_range | String| No| Any value from 'previous period', 'custom'
 comp_date_range_custom | List| No| If comp_date_range is selected as custom. [START_DATE_EPOCH_SECONDS, END_DATE_EPOCH_SECONDS]
 goal | Number |No |
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
 ### RICH TEXT
@@ -427,9 +427,9 @@ width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 ### Field: filters
 Allowed values: object
 
-Following filters can be applied
+The following filters can be applied
 
-- Filter date columns with dynamic date range like last 30 days, last year etc
+- Filter date columns with dynamic date range like last 30 days, last year, etc.
 - Filter numerical columns with ranges like amount between 25 to 45.
 - Text search in categorical columns like payment mechanism including cash and demand draft.
 - Text search in categorical columns like payment mechanism excluding cash
@@ -456,7 +456,7 @@ Example payload
 }
 `
 
-Following filter will be read as 
+The following filter will be read as 
 
 `Submission Date within last 30 days 
 AND 
@@ -482,7 +482,7 @@ Possible operations:
 
 ## Edit View
 
-> Example 1: Edit view with all non AI charts
+> Example 1: Edit view with all non-AI charts
 
 ```shell
 curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/dc2507ac-5e5d-456f-897f-e8ae23544b59' \
@@ -508,7 +508,7 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/d
 }'
 ```
 
-> Example 2: Edit view with all non AI charts and name
+> Example 2: Edit view with all non-AI charts and name
 
 ```shell
 curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/dc2507ac-5e5d-456f-897f-e8ae23544b59' \

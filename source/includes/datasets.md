@@ -1,11 +1,11 @@
 # Dataset API
 
-The Dataset API allows creating new PolymerSearch sites from your CSV.
+The Dataset API allows the creation of new PolymerSearch sites from your CSV files.
 
 
 ## Upload a Dataset
 
-This endpoint starts processing of provided CSV.
+This endpoint starts processing provided CSV.
 
 ```shell
 curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
@@ -85,7 +85,7 @@ import_from | false | Object for copy views & user config from an existing datas
 import_from.id | true | source dataset ID from which you want to copy views or user config.
 import_from.data | true | Array containing views, user_config (one of them or both).
 
-Note: One of 'url' or 'file' parameter is required.
+Note: Either 'url' or 'file' parameter is required.
 
 ## Update a Dataset
 
