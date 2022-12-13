@@ -1,5 +1,5 @@
 ---
-title: PolymerSearch API
+title: Polymer API
 favicon: favicon.ico
 
 # language_tabs: # must be one of https://git.io/vQNgJ
@@ -10,14 +10,14 @@ favicon: favicon.ico
 
 meta:
   - name: description
-    content: PolymerSearch public API documentation
+    content: Polymer public API documentation
   - name: keywords
-    content: PolymerSearch,API,Documentation
+    content: Polymer,API,Documentation
 
 
 toc_footers:
   - <a href='https://app.polymersearch.com'>Sign Up for a Developer Key</a>
-  - <a href='https://polymersearch.com'>PolymerSearch Website</a>
+  - <a href='https://polymersearch.com'>Polymer Website</a>
 
 includes:
   - introduction

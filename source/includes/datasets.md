@@ -1,6 +1,6 @@
 # Dataset API
 
-The Dataset API allows the creation of new PolymerSearch sites from your CSV files.
+The Dataset API allows the creation of new Polymer sites from your CSV files.
 
 
 ## Upload a Dataset
