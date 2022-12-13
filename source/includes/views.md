@@ -159,6 +159,7 @@ y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### Column Chart
@@ -195,6 +196,7 @@ x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### SCATTER PLOT Chart
@@ -219,6 +221,7 @@ y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### TIMESERIES Chart
@@ -247,6 +250,7 @@ exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 group_by | String| No | Any value from day, week, month, quarter, year
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### HEATMAP Chart
@@ -270,6 +274,7 @@ show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### LINEPLOT Chart
@@ -293,6 +298,7 @@ y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### PIE Chart
@@ -316,6 +322,7 @@ show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### OUTLIERS
@@ -341,6 +348,7 @@ show_results_column | Boolean| No | Show Results Column
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### ROI CALCULATOR
@@ -371,6 +379,7 @@ show_percentage | Boolean| No | Show ROI as Percentage
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### PIVOT TABLE
@@ -399,6 +408,7 @@ show_column_totals | Boolean| No | Show Column Totals
 show_percentage | Boolean| No | Show Percentage, Default: True
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### KPI BLOCK
@@ -457,6 +467,7 @@ exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 show_column_totals | Boolean| No | Show Column Totals
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### RICH TEXT
