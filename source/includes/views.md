@@ -13,20 +13,21 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 --data-raw '{
     "name": "My View Name",
     "charts": [
+    {
+        "type": "pie",
+        "x_axis_multiple": [
         {
-            "type": "pie",
-            "x_axis": "payment_mechanism",
-            "slice": "Submission Date",
-            "calculation": "sum"
-        },
-        {
-            "type": "bar",
-            "x_axis": "Fee Month",
-            "y_axis": "amount",
-            "slice": "Submission Date",
-            "calculation": "average"
-        }
-    ]
+            "name": "payment_mechanism"
+        }]
+        "slice": "Submission Date"
+    },
+    {
+        "type": "bar",
+        "x_axis": "Fee Month",
+        "y_axis": "amount",
+        "slice": "Submission Date",
+        "operation": "AVERAGE"
+    }]
 }'
 ```
 
@@ -39,16 +40,15 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 --data-raw '{
     "name": "AI view",
     "charts": [
-        {
-            "type": "ai"
-        },
-        {
-            "type": "ai"
-        },
-        {
-            "type": "ai"
-        }
-    ]
+    {
+        "type": "ai"
+    },
+    {
+        "type": "ai"
+    },
+    {
+        "type": "ai"
+    }]
 }'
 ```
 
@@ -61,22 +61,21 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 --data-raw '{
     "name": "AI View",
     "charts": [
-        {   
-            "type": "heatmap",
-            "x_axis": "Fee Month",
-            "y_axis": "amount",
-            "calculation": "max"
-        },
-        {
-            "type": "ai"
-        },
-        {
-            "type": "ai"
-        },
-        {
-            "type": "ai"
-        }
-    ]
+    {
+        "type": "heatmap",
+        "x_axis": "Fee Month",
+        "y_axis": "amount",
+        "operation": "MAX"
+    },
+    {
+        "type": "ai"
+    },
+    {
+        "type": "ai"
+    },
+    {
+        "type": "ai"
+    }]
 }'
 ```
 
@@ -129,12 +128,17 @@ width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 ```json
 {
     "type": "bar",
-    "x_axis": [
-        "spend",
-        "Clicks (all)"
-    ],
+    "x_axis_multiple": [
+    {
+        "name": "spend",
+        "operation": "SUM"
+    },
+    {
+        "name": "Clicks (all)",
+        "operation": "COUNT"
+    }],
     "y_axis": "campaign_status",
-    "calculation": "sum",
+    "operation": "SUM",
     "y_axis_log": true,
     "show_annotations": true,
     "show_stacked": false
@@ -143,17 +147,19 @@ width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |bar
-x_axis |List |No |list of valid column name. Min length: 1, Max length: 3
+x_axis |List | one of the x_axis or x_axis_multiple is required | valid column name
+x_axis_multiple | List | one of the x_axis or x_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 y_axis | String| Yes| valid column name
-calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+operation | String| No | Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 slice | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
-show_stacked | Boolean| No | Show as a stack. Default: true
+show_stacked | Boolean| No | Show as stack. Default: true
 is_percentage | Boolean| No | Show as percentage
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### Column Chart
@@ -161,11 +167,16 @@ filters | Object| No | Filter Object
 {
     "type": "column",
     "x_axis": "campaign_status",
-    "y_axis": [
-        "spend",
-        "Clicks (all)"
-    ],
-    "calculation": "sum",
+    "y_axis_multiple": [
+    {
+        "name": "spend",
+        "operation": "SUM"
+    },
+    {
+        "name": "Clicks (all)",
+        "operation": "COUNT"
+    }],
+    "operation": "SUM",
     "show_annotations": true,
     "show_stacked": false
 }
@@ -174,16 +185,18 @@ Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |column
 x_axis | String| Yes| valid column name
-y_axis |List |No |list of valid column name. Min length: 1, Max length: 3
-calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+y_axis | String | one of the y_axis or y_axis_multiple is required | valid column name
+y_axis_multiple | List | one of the y_axis or y_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+operation | String| No | Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 slice | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 show_stacked | Boolean| No | Show as stack. Default: true
 is_percentage | Boolean| No | Show as percentage
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### SCATTER PLOT Chart
@@ -192,7 +205,7 @@ filters | Object| No | Filter Object
     "type": "scatter",
     "x_axis": "spend",
     "y_axis": "cost_per_initiate_checkout",
-    "calculation": "sum",
+    "operation": "SUM",
     "x_axis_log": true
 }
 ```
@@ -201,13 +214,14 @@ Field | Datatype | Mandatory | Desc
 type |String |Yes |scatter
 x_axis | String| Yes| valid column name
 y_axis |String |Yes |valid column name
-calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 slice | String| No| valid column name
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### TIMESERIES Chart
@@ -215,7 +229,7 @@ filters | Object| No | Filter Object
 {
     "type": "timeseries",
     "x_axis": "date",
-    "calculation": "sum",
+    "operation": "SUM",
     "y_axis_log": true,
     "exclude_empty_string": false,
     "group_by": "quarter",
@@ -226,15 +240,17 @@ Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |timeseries
 x_axis | String| Yes| valid column name
-y_axis |String |No |valid column name
-calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+y_axis |String | No |valid column name
+y_axis_multiple | List | No | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 slice | String| No| valid column name
 is_area | Boolean| No | Use area chart
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 group_by | String| No | Any value from day, week, month, quarter, year
-width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### HEATMAP Chart
@@ -242,7 +258,7 @@ filters | Object| No | Filter Object
 {
     "type": "heatmap",
     "y_axis": "account_currency",
-    "calculation": "sum",
+    "operation": "SUM",
     "exclude_empty_string": false,
     "show_annotations": true
 }
@@ -252,12 +268,13 @@ Field | Datatype | Mandatory | Desc
 type |String |Yes |heatmap
 y_axis |String |Yes |valid column name
 x_axis | String| No| valid column name
-calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 slice | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### LINEPLOT Chart
@@ -266,29 +283,32 @@ filters | Object| No | Filter Object
     "type": "lineplot",
     "x_axis": "spend",
     "y_axis": "link_click",
-    "calculation": "sum"
+    "operation": "SUM"
 }
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |lineplot
-y_axis |String |Yes |valid column name
+y_axis |String | one of the y_axis or y_axis_multiple is required |valid column name
+y_axis_multiple | List | one of the y_axis or y_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 x_axis | String| Yes| valid column name
-calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 slice | String| No| valid column name
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### PIE Chart
 ```json
 {
     "type": "pie",
-    "columns": [
-        "date"
-    ],
+    "x_axis_multiple": [
+    {
+        "name": "status"
+    }],
     "exclude_empty_string": false,
     "show_annotations": true
 }
@@ -296,11 +316,13 @@ filters | Object| No | Filter Object
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |pie
-columns |List |Yes |list of valid column name. Min length: 1, Max length: 2
+x_axis_multiple |List |Yes |Object, Min length: 1, Max length: 2. <br > **name**: valid column
+y_axis_multiple |List |No |Object, Min length: 1, Max length: 1. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### OUTLIERS
@@ -308,7 +330,7 @@ filters | Object| No | Filter Object
 {
     "type": "outliers",
     "metric": "spend",
-    "calculation": "count",
+    "operation": "COUNT",
     "exclude_empty_string": false,
     "influencing_columns": [
         "ad_name"
@@ -319,13 +341,14 @@ Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |outliers
 metric |String |Yes |valid column name
-calculation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 influencing_columns |List |Yes |Influencing Columns - list of valid column names. Min length: 1, Max length: 6
 results_type |String |No |Show results - Any value from count, below_average_only, above_average_only, top_and_bottom_outliers, above_and_below_average
 show_results_column | Boolean| No | Show Results Column
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
 
 
 ### ROI CALCULATOR
@@ -333,9 +356,9 @@ filters | Object| No | Filter Object
 {
     "type": "roi",
     "max_metric": "impressions",
-    "max_operation": "average",
+    "max_operation": "AVERAGE",
     "min_metric": "spend",
-    "min_operation": "max",
+    "min_operation": "MAX",
     "influencing_columns": [
         "ad_name",
         "campaign_name"
@@ -347,15 +370,17 @@ Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |roi
 max_metric |String |Yes |Metric to Maximize (Return) - valid column name
-max_operation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+max_operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 min_metric |String |Yes |Metric to Minimize (Investment) - valid column name
-min_metric | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+min_metric | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 influencing_columns |List |Yes |Influencing Columns - list of valid column names. Min length: 1, Max length: 6
 show_results_column | Boolean| No | Show Results Column
 show_percentage | Boolean| No | Show ROI as Percentage
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
+
 
 ### PIVOT TABLE
 ```json
@@ -364,7 +389,7 @@ filters | Object| No | Filter Object
     "metrics": [
     {
         "metric": "spend",
-        "operation": "sum"
+        "operation": "SUM"
     }],
     "rows": [
         "account_currency"
@@ -375,7 +400,7 @@ filters | Object| No | Filter Object
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |pivot
-metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **metric**: valid column <br > **operation**: Any value from count, sum, average, stddev, variance, max, min
+metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **metric**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 rows |List |Yes |Rows - list of valid column names. Min length: 1, Max length: 1
 columns |List |Yes |Columns - list of valid column names. Min length: 1, Max length: 1
 show_row_totals | Boolean| No | Show Row Totals
@@ -383,13 +408,15 @@ show_column_totals | Boolean| No | Show Column Totals
 show_percentage | Boolean| No | Show Percentage, Default: True
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+title | String| No | Custom heading
+
 
 ### KPI BLOCK
 ```json
 {
     "type": "kpi",
     "metric": "impressions",
-    "operation": "sum",
+    "operation": "SUM",
     "date": "date",
     "date_range": "last 90 days",
     "goal": 4000000
@@ -399,16 +426,49 @@ Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |kpi
 metric |List |Yes |valid column name
-operation | String| Yes| Any value from count, sum, average, stddev, variance, max, min
+operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 date | String| No| valid date column name
-date_range | String| No| Any value from 'last day', 'last 7 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, custom
+date_range | String| No| Any value from 'last day', 'last 7 days', 'last 14 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, 'this month', 'this week', 'last week', custom
 date_range_custom | List| No| If date_range is selected as custom. [START_DATE_EPOCH_SECONDS, END_DATE_EPOCH_SECONDS]
 comp_date_range | String| No| Any value from 'previous period', 'custom'
 comp_date_range_custom | List| No| If comp_date_range is selected as custom. [START_DATE_EPOCH_SECONDS, END_DATE_EPOCH_SECONDS]
-goal | Number |No |
+goal |Number |No |
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | Boolean| No | Any value from one-third, two-thirds, full. Default: full
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
+
+
+### DATA TABLE
+```json
+{
+    "type": "data-table",
+    "columns": [
+        "ticket_group"
+    ],
+    "values": [
+    {
+        "column": "time_spent_in_minutes",
+        "operation": "SUM"
+    }],
+    "sort":
+    {
+        "column": "time_spent_in_minutes",
+        "order": "DESC"
+    }
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |data-table
+columns |List |Yes |valid column name
+values |List |Yes |Object, Min length: 1, Max length: 10. <br > **column**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+sort |Object |Yes |Object <br > **column**: valid column <br > **order**: Any value from ASC, DESC
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
+show_column_totals | Boolean| No | Show Column Totals
+width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+filters | Object| No | Filter Object
+title | String| No | Custom heading
+
 
 ### RICH TEXT
 ```json
@@ -468,10 +528,14 @@ Possible dynamic date ranges:
 
 - last day
 - last 7 days
+- last 14 days
 - last 30 days
 - last 90 days
 - last 6 months
 - last 12 months
+- last week
+- this week
+- this month
 
 
 Possible operations:
@@ -490,21 +554,20 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/d
 --header 'Content-Type: application/json' \
 --data-raw '{
     "charts": [
-        {
-            "type": "timeseries",
-            "x_axis": "payment_mechanism",
-            "y_axis": "Submission Date",
-            "slice": "amount",
-            "calculation": "sum"
-        },
-        {
-            "type": "bar",
-            "x_axis": "Fee Month",
-            "y_axis": "amount",
-            "slice": "Submission Date",
-            "calculation": "min"
-        }
-    ]
+    {
+        "type": "timeseries",
+        "x_axis": "payment_mechanism",
+        "y_axis": "Submission Date",
+        "slice": "amount",
+        "operation": "SUM"
+    },
+    {
+        "type": "bar",
+        "x_axis": "Fee Month",
+        "y_axis": "amount",
+        "slice": "Submission Date",
+        "operation": "MIN"
+    }]
 }'
 ```
 
@@ -517,21 +580,20 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/d
 --data-raw '{
     "name": "Edited View Name",
     "charts": [
-        {
-            "type": "bar",
-            "x_axis": "payment_mechanism",
-            "y_axis": "Submission Date",
-            "slice": "amount",
-            "calculation": "sum"
-        },
-        {
-            "type": "bar",
-            "x_axis": "Fee Month",
-            "y_axis": "amount",
-            "slice": "Submission Date",
-            "calculation": "min"
-        }
-    ]
+    {
+        "type": "bar",
+        "x_axis": "payment_mechanism",
+        "y_axis": "Submission Date",
+        "slice": "amount",
+        "operation": "SUM"
+    },
+    {
+        "type": "bar",
+        "x_axis": "Fee Month",
+        "y_axis": "amount",
+        "slice": "Submission Date",
+        "operation": "MIN"
+    }]
 }'
 ```
 
