@@ -89,7 +89,7 @@ Note: Either 'url' or 'file' parameter is required.
 
 ## Update a Dataset
 
-This endpoint updates the content and the name of the existing dataset.
+This endpoint updates the content and metadata of an existing dataset.
 
 ```shell
 curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754dfad3627deeb8f84b' \
@@ -132,5 +132,3 @@ sharing | false | Desired sharing status for the dataset (public, private, passw
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 incremental_update | In case you are passing incremental updates only
 primary_key | Yes if incremental_update = true | name of the column
-
-Note: One of 'url' or 'file' parameter is required.
