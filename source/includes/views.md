@@ -1,4 +1,4 @@
-# Views API
+# Views
 
 With views API you can create charts and data segments and share them with the world instead of exposing the complete Polymer site. Embed in your site a manually selected chart for your data, or let our powerful AI determine what are the best charts for your data.
 

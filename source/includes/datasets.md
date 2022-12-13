@@ -1,4 +1,4 @@
-# Dataset API
+# Dataset
 
 The Dataset API allows the creation of new Polymer sites from your CSV files.
 
