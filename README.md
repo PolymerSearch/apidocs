@@ -1,1 +1,1 @@
-# PolymerSearch API docs
+# Polymer API docs

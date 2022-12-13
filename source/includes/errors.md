@@ -1,6 +1,6 @@
 # Errors
 
-The PolymerSearch API uses the following error codes:
+The Polymer API uses the following error codes:
 
 
 Error Code | Meaning
