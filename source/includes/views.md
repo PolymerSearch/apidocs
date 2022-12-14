@@ -406,9 +406,9 @@ columns |List |Yes |Columns - list of valid column names. Min length: 1, Max len
 show_row_totals | Boolean| No | Show Row Totals
 show_column_totals | Boolean| No | Show Column Totals
 show_percentage | Boolean| No | Show Percentage, Default: True
-sort_by_row_tags | String| No | Sort rows by tag value
-column_manual_order | List| No | Sort columns by column tags
-sort_by_counts |Object |No |Object <br > **column_index**: index of the column given in columns <br > **metric_index**: index of the column given in metrics <br > **order**: Any  value from ASC, DESC
+sort_by_row_tags | String| No | Sort rows by tag value. Any  value from ASC, DESC
+column_manual_order | List| No | Sort columns by column tags. List of tag values
+sort_by_counts |Object |No | **column_index**: index of the column given in columns <br > **metric_index**: index of the column given in metrics <br > **order**: Any  value from ASC, DESC
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
