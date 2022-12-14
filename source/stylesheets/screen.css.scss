@@ -65,6 +65,13 @@ html, body {
   border-right: 1px solid #E3E7EF;
   padding: 12px;
 
+  h5 {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 0.25rem;
+    padding-left: 0.5rem;
+  }
+
   // language selector for mobile devices
   .lang-selector {
     display: none;

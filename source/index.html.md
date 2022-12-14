@@ -22,11 +22,11 @@ toc_footers:
 includes:
   - introduction
   - authentication
+  - ratelimiting
+  - errors
   - datasets
   - tasks
-  - views
-  - errors
-  - ratelimiting
+  - views   
 
 search: true
 code_clipboard: true

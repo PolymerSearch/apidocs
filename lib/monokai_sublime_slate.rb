@@ -10,8 +10,8 @@ module Rouge
         name 'monokai.sublime.slate'
 
         palette :black          => '#000000'
-        palette :bright_green   => '#a6e22e'
-        palette :bright_pink    => '#f92672'
+        palette :bright_green   => '#98c379'
+        palette :bright_pink    => '#c678dd'
         palette :carmine        => '#960050'
         palette :dark           => '#49483e'
         palette :dark_grey      => '#888888'
@@ -19,7 +19,7 @@ module Rouge
         palette :dimgrey        => '#75715e'
         palette :emperor        => '#555555'
         palette :grey           => '#999999'
-        palette :light_grey     => '#aaaaaa'
+        palette :light_grey     => '#abb2bf'
         palette :light_violet   => '#ae81ff'
         palette :soft_cyan      => '#66d9ef'
         palette :soft_yellow    => '#e6db74'
@@ -27,6 +27,7 @@ module Rouge
         palette :whitish        => '#f8f8f2'
         palette :orange         => '#f6aa11'
         palette :white          => '#ffffff'
+        palette :light_blue     => '#61afef'
 
         style Generic::Heading,                 :fg => :grey
         style Literal::String::Regex,           :fg => :orange
@@ -67,12 +68,12 @@ module Rouge
               Literal::String::Interpol,
               Literal::String::Other,
               Literal::String::Single,
-              Literal::String,                  :fg => :soft_yellow
+              Literal::String,                  :fg => :bright_green
         style Name::Attribute,
               Name::Class,
               Name::Decorator,
               Name::Exception,
-              Name::Function,                   :fg => :bright_green
+              Name::Function,                   :fg => :light_blue
         style Name::Variable::Class,
               Name::Namespace,
               Name::Entity,
@@ -89,7 +90,7 @@ module Rouge
               Keyword,
               Keyword::Namespace,
               Keyword::Pseudo,
-              Operator,                         :fg => :bright_pink
+              Operator,                         :fg => :light_grey
       end
     end
   end
