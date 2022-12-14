@@ -27,7 +27,6 @@ def toc_data(page_content)
       end
     end
   end
-  puts(headers)
   headers.select {|header| not(['dataset', 'task', 'view'].include? header[:id].to_s)}
 end
 
