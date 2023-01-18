@@ -58,3 +58,20 @@ def resources_data(page_content)
   end
   headers.select {|header| ['dataset', 'task', 'view'].include? header[:id].to_s}
 end
+
+HTTP_METHOD_PAIRS = Hash[
+  "Upload a Dataset" => "POST",
+  "Update a Dataset" => "PUT",
+  "Fetch Status" => "GET",
+  "Create View" => "POST",
+  "Chart Object" => "",
+  "Edit View" => "PUT",
+  "Fetch Views" => "GET",
+  "Delete View" => "DELETE"
+]
+
+def get_http_method(heading)
+  if HTTP_METHOD_PAIRS.key?(heading.to_s)
+    HTTP_METHOD_PAIRS[heading.to_s].to_s
+  end
+end
