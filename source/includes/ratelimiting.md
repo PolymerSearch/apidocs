@@ -1,6 +1,6 @@
 # Rate Limiting
 
-All Polymer APIs have rate limiting implemented. A single API key can make up to 100 requests per hour. After reaching the rate limit, HTTP Status 429 - Too Many Requests, will be returned.
+All Polymer APIs have rate limiting implemented. A single API key can make up to 100 requests per hour. After reaching the rate limit, HTTP Status 429 - Too Many Requests will be returned.
 
 Response headers contain rate-limiting details:
 
