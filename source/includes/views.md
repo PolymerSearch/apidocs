@@ -151,6 +151,7 @@ x_axis |List | one of the x_axis or x_axis_multiple is required | valid column n
 x_axis_multiple | List | one of the x_axis or x_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 y_axis | String| Yes| valid column name
 operation | String| No | Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+sort | Object | No | **type**: total (Total), raw (Raw Order), count (Count), value (x-axis tags) <br > **operation**: Any  value from asc, desc
 slice | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 show_stacked | Boolean| No | Show as stack. Default: true
@@ -183,11 +184,12 @@ title | String| No | Custom heading
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
-type |String |Yes |column
+type |String | Yes |column
 x_axis | String| Yes| valid column name
 y_axis | String | one of the y_axis or y_axis_multiple is required | valid column name
 y_axis_multiple | List | one of the y_axis or y_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 operation | String| No | Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+sort | Object | No | **type**: total (Total), raw (Raw Order), count (Count), value (x-axis tags) <br > **operation**: Any  value from asc, desc
 slice | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 show_stacked | Boolean| No | Show as stack. Default: true
