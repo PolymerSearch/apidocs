@@ -637,7 +637,7 @@ Note: Make sure you pass all the charts inside `charts` key
 
 
 
-## GET Views
+## Fetch Views
 
 > Response
 
@@ -677,7 +677,7 @@ Note: Make sure you pass all the charts inside `charts` key
 
 
 
-## DELETE View
+## Delete View
 
 > Response
 
