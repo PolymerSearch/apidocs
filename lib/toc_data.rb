@@ -27,7 +27,7 @@ def toc_data(page_content)
       end
     end
   end
-  headers.select {|header| not(['workspace', 'dataset', 'task', 'view'].include? header[:id].to_s)}
+  headers.select {|header| not(['dataset', 'task', 'view'].include? header[:id].to_s)}
 end
 
 def resources_data(page_content)
@@ -56,7 +56,7 @@ def resources_data(page_content)
       end
     end
   end
-  headers.select {|header| ['workspace', 'dataset', 'task', 'view'].include? header[:id].to_s}
+  headers.select {|header| ['dataset', 'task', 'view'].include? header[:id].to_s}
 end
 
 HTTP_METHOD_PAIRS = Hash[
