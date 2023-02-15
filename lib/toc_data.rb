@@ -27,7 +27,7 @@ def toc_data(page_content)
       end
     end
   end
-  headers.select {|header| not(['dataset', 'task', 'view'].include? header[:id].to_s)}
+  headers.select {|header| not(['workspace', 'dataset', 'task', 'view'].include? header[:id].to_s)}
 end
 
 def resources_data(page_content)
@@ -56,7 +56,7 @@ def resources_data(page_content)
       end
     end
   end
-  headers.select {|header| ['dataset', 'task', 'view'].include? header[:id].to_s}
+  headers.select {|header| ['workspace', 'dataset', 'task', 'view'].include? header[:id].to_s}
 end
 
 HTTP_METHOD_PAIRS = Hash[
@@ -68,9 +68,9 @@ HTTP_METHOD_PAIRS = Hash[
   "Edit View" => "PUT",
   "Fetch Views" => "GET",
   "Delete View" => "DELETE",
-  "Fetch existing & invited workpsace users" => "GET",
+  "Fetch existing &amp; invited workspace users" => "GET",
   "Invite a new member to workspace" => "POST",
-  "Delete existing or invited workpsace user" => "DELETE"
+  "Delete existing or invited workspace user" => "DELETE"
 ]
 
 def get_http_method(heading)

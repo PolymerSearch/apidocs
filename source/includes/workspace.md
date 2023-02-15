@@ -1,6 +1,6 @@
 # Workspace
 
-## Fetch existing & invited workpsace users
+## Fetch existing & invited workspace users
 
 ```shell
 curl --location --request GET 'https://api.polymersearch.com/v1/workspace/users' \
@@ -89,7 +89,7 @@ members[].role | true | Valid values: Editor, Read-only
 
 
 
-## Delete existing or invited workpsace user
+## Delete existing or invited workspace user
 
 ```shell
 curl --location --request DELETE 'https://api.polymersearch.com/v1/workspace/user/638da37174ea61d5d9b9a6c7' \
