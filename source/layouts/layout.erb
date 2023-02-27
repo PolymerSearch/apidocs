@@ -105,7 +105,7 @@ under the License.
               <ul class="toc-list-h2">
                 <% h1[:children].each do |h2| %>
                   <li>
-                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><% if get_http_method(h2[:content]).length > 0 %><span class="http-method"><%= get_http_method(h2[:content]) %></span><% end %><%= h2[:content] %></a>
+                    <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>"><% if get_http_method(h2[:content]) && get_http_method(h2[:content]).length > 0 %><span class="http-method"><%= get_http_method(h2[:content]) %></span><% end %><%= h2[:content] %></a>
                   </li>
                 <% end %>
               </ul>
