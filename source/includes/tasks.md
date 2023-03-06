@@ -21,8 +21,6 @@ curl --location --request GET 'https://api.polymersearch.com/v1/tasks/610805441a
     "data":
     {
         "message": "file processing done",
-        "launch_url": "https://app.polymersearch.com/polymer/data/60f7bdd7c07d8900b5ac60f8",
-        "embed_code": "<iframe height=\"1200\" scrolling=\"no\" src=\"https://app.polymersearch.com/polymer/data/60f7bdd7c07d8900b5ac60f8\" style=\"overflow:hidden;height:100%;width:100%;position:absolute;top:0;left:0;right:0;bottom:0\" width=\"100%\"></iframe>",
         "success": true
     }
 }
@@ -37,7 +35,6 @@ curl --location --request GET 'https://api.polymersearch.com/v1/tasks/610805441a
 Field | Datatype | Description
 --------- | ------- | -----------
 status | String | If set to 'Done' then task is executed and you can find response in data key
-data.success | Boolean | If true then dataset was processed successfully and launch URL (data.launch_url) is ready
-data.launch_url | String | launch URL (data.launch_url), only if data.success is true
-data.embed_code | String | Embed Code (data.embed_code), only if data.success is true
+data.success | Boolean | If true then dataset was processed successfully
+data.file_id | String | File ID
 data.errors | List | List of errors, only if data.success is false
