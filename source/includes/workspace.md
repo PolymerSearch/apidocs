@@ -86,6 +86,7 @@ Field | Mandatory | Description
 members | true | List of members to invite
 members[].email | true | valid email ID
 members[].role | true | Valid values: Editor, Read-only
+do_not_send_invite_email | false | Boolean
 
 
 
