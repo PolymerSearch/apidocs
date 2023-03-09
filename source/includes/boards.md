@@ -1,18 +1,19 @@
-# View
+# Board
 
-With views API you can create charts and data segments and share them with the world instead of exposing the complete Polymer site. Embed in your site a manually selected chart for your data, or let our powerful AI determine what are the best charts for your data.
+With boards API you can create blocks and data segments and share them with the world instead of exposing the complete Polymer site. Embed in your site a manually selected block for your data, or let our powerful AI determine what are the best blocks for your data.
 
-## Create View
+## Create Board
 
-> Example 1: Create a basic view with all non-AI charts
+> Example 1: Create a basic board with all non-AI blocks
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1c221fb918ae401c228/view' \
+curl --location --request POST 'https://api.polymersearch.com/v1/board' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "My View Name",
-    "charts": [
+    "name": "My Board Name",
+    "file_id": "6409b295e0eb635a29d8c8f7", 
+    "blocks": [
     {
         "type": "pie",
         "x_axis_multiple": [
@@ -31,15 +32,16 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 }'
 ```
 
-> Example 2: Create a basic view with all AI charts
+> Example 2: Create a basic board with all AI blocks
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1c221fb918ae401c228/view' \
+curl --location --request POST 'https://api.polymersearch.com/v1/board' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "AI view",
-    "charts": [
+    "file_id": "6409b295e0eb635a29d8c8f7",
+    "name": "AI board",
+    "blocks": [
     {
         "type": "ai"
     },
@@ -52,15 +54,16 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 }'
 ```
 
-> Example 3: Create a basic view with all AI and non-AI charts
+> Example 3: Create a basic board with all AI and non-AI blocks
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1c221fb918ae401c228/view' \
+curl --location --request POST 'https://api.polymersearch.com/v1/board' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "AI View",
-    "charts": [
+    "name": "AI Board",
+    "file_id": "6409b295e0eb635a29d8c8f7",
+    "blocks": [
     {
         "type": "heatmap",
         "x_axis": "Fee Month",
@@ -84,32 +87,29 @@ curl --location --request POST 'https://api.polymersearch.com/v1/datasets/6278c1
 
 ```json
 {
-    "launch_url": "https://app.polymersearch.com/views/e793422c-71bf-4043-8363-5e5a4f551fc1",
-    "uid": "e793422c-71bf-4043-8363-5e5a4f551fc1"
+    "launch_url": "https://app.polymersearch.com/b/6409bc2ae761d55b4630989b",
+    "id": "6409bc2ae761d55b4630989b"
 }
 ```
 
 ### HTTP Request
 
-`POST https://api.polymersearch.com/v1/datasets/:id/view`
-
-### URL Params
-
-Field | Mandatory | Description
---------- | ------- | -----------
-id | true | Type: String<br />Dataset ID
-
+`POST https://api.polymersearch.com/v1/board`
 
 ### Body content
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-name | true | Type: String<br />Name of the view
-charts | true | Type: List [Chart Object] <br />
-sharing | false | Desired sharing status for the dataset (public, private, password-protected). Default: private
-password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
+name | true | Type: String<br />Name of the board
+file_id | true | Type: String<br />Dataset ID of the board
+blocks | true | Type: List [Blocks Object] <br />
+sharing | false | Desired sharing status for the dataset (public, private). Default: private
+advanced_sharing | false | control sharing settings for board
+advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply global filters
+advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
 
-## Chart Object
+
+## Blocks Object
 
 ### AI Chart
 ```json
@@ -549,16 +549,16 @@ Possible operations:
 - EXCLUDING
 
 
-## Edit View
+## Edit Board
 
-> Example 1: Edit view with all non-AI charts
+> Example 1: Edit board with all non-AI blocks
 
 ```shell
-curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/dc2507ac-5e5d-456f-897f-e8ae23544b59' \
+curl --location --request PUT 'https://api.polymersearch.com/v1/board/63f36125bfc81986e3cbd2c3' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "charts": [
+    "blocks": [
     {
         "type": "timeseries",
         "x_axis": "payment_mechanism",
@@ -576,15 +576,15 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/d
 }'
 ```
 
-> Example 2: Edit view with all non-AI charts and name
+> Example 2: Edit board with all non-AI blocks and name
 
 ```shell
-curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/dc2507ac-5e5d-456f-897f-e8ae23544b59' \
+curl --location --request PUT 'https://api.polymersearch.com/v1/board/63f36125bfc81986e3cbd2c3' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "Edited View Name",
-    "charts": [
+    "name": "Edited Board Name",
+    "blocks": [
     {
         "type": "bar",
         "x_axis": "payment_mechanism",
@@ -606,78 +606,100 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/datasets/views/d
 
 ```json
 {
-    "launch_url": "https://app.polymersearch.com/views/dc2507ac-5e5d-456f-897f-e8ae23544b59",
-    "uid": "dc2507ac-5e5d-456f-897f-e8ae23544b59"
+    "launch_url": "https://app.polymersearch.com/b/6409bc2ae761d55b4630989b",
+    "id": "6409bc2ae761d55b4630989b"
 }
 ```
 
 ### HTTP Request
 
-`PUT https://api.polymersearch.com/v1/datasets/views/:view_uid`
+`PUT https://api.polymersearch.com/v1/board/:board_id`
 
 ### URL Params
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-view_uid | true | Type: String<br />View UID
+board_id | true | Type: String<br />Board ID
 
 
 ### Body content
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-name | false | Type: String<br />Name of the view
-charts | false | Type: List [Chart Object] <br />
-sharing | false | Desired sharing status for the dataset (public, private, password-protected). Default: private
-password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
+name | false | Type: String<br />Name of the board
+blocks | false | Type: List [Blocks Object] <br />
+sharing | false | Desired sharing status for the dataset (public, private). Default: private
+advanced_sharing | false | control sharing settings for board
+advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply global filters
+advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
 
-### Charts Object
-Same as described on Create View request
-Note: Make sure you pass all the charts inside `charts` key
+### Blocks Object
+Same as described on Create Board request
+Note: Make sure you pass all the blocks inside `blocks` key
 
 
 
-## Fetch Views
+## Fetch Boards
 
 > Response
 
 ```json
 {
     "data": [
-    {
-        "uid": "40d4b950-78bb-4d6c-8b06-9fd20dbdf704",
-        "name": "component test Group view 1 4",
-        "sharing": "password-protected",
-        "launch_url": "https://app.polymersearch.com/views/6278c1c221fb918ae401c228/40d4b950-78bb-4d6c-8b06-9fd20dbdf704",
-        "file_id": "6278c1c221fb918ae401c228",
-        "user_id": "61ee36cf2ac79ae07f539bcf",
-        "created_at": "2022-09-13T10:35:28.349Z",
-        "updated_at": "2022-09-13T10:54:02.214Z"
-    },
-    {
-        "uid": "d85a90ec-ed66-432f-bdfa-488bf298ad7e",
-        "name": "component test Group view 1 3",
-        "sharing": "password-protected",
-        "launch_url": "https://app.polymersearch.com/views/6278c1c221fb918ae401c228/d85a90ec-ed66-432f-bdfa-488bf298ad7e",
-        "file_id": "6278c1c221fb918ae401c228",
-        "user_id": "61ee36cf2ac79ae07f539bcf",
-        "created_at": "2022-09-13T10:33:30.863Z",
-        "updated_at": "2022-09-13T10:33:30.863Z"
-    }],
+        {
+            "_id": "63f36125bfc81986e3cbd2c3",
+            "created_at": "2023-02-20T12:01:41.730Z",
+            "updated_at": "2023-02-20T12:01:41.730Z",
+            "uid": "abf3a195-4135-4471-9d24-ab2acde3e45a",
+            "user_id": "636e0856759be7e1f00cfa0f",
+            "file_id": "63d8248de061fa0d2023f20a",
+            "name": "board - 1",
+            "sharing": "public",
+            "is_template": "false"
+        },
+        {
+            "_id": "6409bb0be045c05b1fccb721",
+            "created_at": "2023-03-09T10:55:07.578Z",
+            "updated_at": "2023-03-09T10:55:07.578Z",
+            "uid": "52f0ecfa-9545-4a0b-8e7f-8d47c1aefcb9",
+            "user_id": "636e0856759be7e1f00cfa0f",
+            "file_id": "6409b295e0eb635a29d8c8f7",
+            "name": "Board with advanced_sharing",
+            "sharing": "public",
+            "advanced_sharing": {
+                "allow_global_filters_for_viewers": false,
+                "allow_block_based_filters_for_viewers": true
+            }
+        },
+        {
+            "_id": "6409bc2ae761d55b4630989b",
+            "created_at": "2023-03-09T10:59:54.313Z",
+            "updated_at": "2023-03-09T10:59:54.313Z",
+            "uid": "7ce8918b-441e-4ee1-8977-970b47ea9b68",
+            "user_id": "636e0856759be7e1f00cfa0f",
+            "file_id": "6409b295e0eb635a29d8c8f7",
+            "name": "Board with advanced_sharing11",
+            "sharing": "public",
+            "advanced_sharing": {
+                "allow_global_filters_for_viewers": false,
+                "allow_block_based_filters_for_viewers": true
+            }
+        }
+    ],
     "limit": 10,
     "page": 1,
     "sort_key": "created_at",
-    "sort_order": "desc"
+    "sort_order": "asc"
 }
 ```
 
 ### HTTP Request
 
-`GET https://api.polymersearch.com/v1/datasets/views`
+`GET https://api.polymersearch.com/v1/boards`
 
 
 
-## Delete View
+## Delete Board
 
 > Response
 
@@ -689,10 +711,10 @@ Note: Make sure you pass all the charts inside `charts` key
 
 ### HTTP Request
 
-`DELETE https://api.polymersearch.com/v1/datasets/views/:view_uid`
+`DELETE https://api.polymersearch.com/v1/board/:board_id`
 
 ### URL Params
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-view_uid | true | Type: String<br />View UID
+board_id | true | Type: String<br />Board ID

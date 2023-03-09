@@ -26,7 +26,7 @@ includes:
   - errors
   - workspace
   - datasets
-  - views   
+  - boards   
 
 search: true
 code_clipboard: true

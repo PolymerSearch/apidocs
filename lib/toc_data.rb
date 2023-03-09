@@ -27,7 +27,7 @@ def toc_data(page_content)
       end
     end
   end
-  headers.select {|header| not(['workspace', 'dataset', 'view'].include? header[:id].to_s)}
+  headers.select {|header| not(['workspace', 'dataset', 'board'].include? header[:id].to_s)}
 end
 
 def resources_data(page_content)
@@ -56,17 +56,17 @@ def resources_data(page_content)
       end
     end
   end
-  headers.select {|header| ['workspace', 'dataset', 'view'].include? header[:id].to_s}
+  headers.select {|header| ['workspace', 'dataset', 'board'].include? header[:id].to_s}
 end
 
 HTTP_METHOD_PAIRS = Hash[
   "Upload a Dataset" => "POST",
   "Update a Dataset" => "PUT",
-  "Create View" => "POST",
+  "Create Board" => "POST",
   "Chart Object" => "",
-  "Edit View" => "PUT",
-  "Fetch Views" => "GET",
-  "Delete View" => "DELETE",
+  "Edit Board" => "PUT",
+  "Fetch Boards" => "GET",
+  "Delete Board" => "DELETE",
   "Fetch existing &amp; invited workspace users" => "GET",
   "Invite a new member to workspace" => "POST",
   "Delete existing or invited workspace user" => "DELETE"
