@@ -62,7 +62,9 @@ curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
 
 ```json
 {
-    "task_id": "60f7bdd7c07d897637ac60f5"
+    "message": "file processing done",
+    "success": true,
+    "file_id": "6409b295e0eb635a29d8c8f7"
 }
 ```
 
@@ -101,7 +103,9 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754d
 
 ```json
 {
-    "task_id": "60f7bdd7c07d897637ac60f5"
+    "message": "file processing done",
+    "success": true,
+    "file_id": "6409b295e0eb635a29d8c8f7"
 }
 ```
 
