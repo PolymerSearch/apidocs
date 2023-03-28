@@ -8,4 +8,4 @@ Response headers contain rate-limiting details:
 - X-RateLimit-Remaining: Number of requests left for the time window
 - X-RateLimit-Reset: The remaining window before the rate limit resets in UTC epoch seconds
 
-Currently there is no rate limiting per user, but it may be introduced in future updates.
+There is no rate limiting per user, but it may be introduced in future updates.
