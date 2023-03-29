@@ -1,10 +1,10 @@
 # Authentication
 
-Polymer API uses API keys to allow access to our endpoints. You can register a new API key as a user, inside user settings, on the API Keys section.
+Polymer API uses API keys to allow access to our endpoints. You can register a new API key inside user settings in the API Keys section.
 
-Currently you can create as many API Keys as you want and give them a name. Once you don't want to use it you can disable it from the dashboard.
+You can create as many API Keys as you want and name them. Once you don't want to use it, you can disable or remove it from the dashboard.
 
-Polymer API expects the API key to be included in all API requests to the server. There are two ways to include it in requests:
+You must include the API key in all requests to the server. There are two ways to include it:
 
 As a query parameter: `?api_key=&your_api_key`
 
