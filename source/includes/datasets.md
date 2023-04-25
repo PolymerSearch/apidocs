@@ -81,9 +81,8 @@ sharing | false | Desired sharing status for the dataset (public, password-prote
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 starting_row | false | Desired row number where Polymer should start processing your file.
 update | false | Boolean. Force update dataset in case a dataset already exists with the given name.
-import_from | false | Object for copy views & user config from an existing dataset (see below).
-import_from.id | true | source dataset ID from which you want to copy views or user config.
-import_from.data | true | Array containing views, user_config (one of them or both).
+styling.colors | false | List. List of color codes to be used in view preview mode.
+styling.font | false | String. One of the fonts from 'Helvetica', 'Arial', 'Times', 'Times New Roman', 'Courier', 'Courier New', 'Verdana', 'Tahoma', 'Arial Black', 'Comic Sans MS', 'Impact', 'Avant Garde', 'Georgia', 'Palatino', 'Bookman', 'Garamond', 'Century Schoolbook', 'Andale Mono'.
 
 Note: Either 'url' or 'file' parameter is required.
 
@@ -132,3 +131,5 @@ sharing | false | Desired sharing status for the dataset (public, private, passw
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 incremental_update | In case you are passing incremental updates only
 primary_key | Yes if incremental_update = true | name of the column
+styling.colors | false | List. List of color codes to be used in view preview mode.
+styling.font | false | String. One of the fonts from 'Helvetica', 'Arial', 'Times', 'Times New Roman', 'Courier', 'Courier New', 'Verdana', 'Tahoma', 'Arial Black', 'Comic Sans MS', 'Impact', 'Avant Garde', 'Georgia', 'Palatino', 'Bookman', 'Garamond', 'Century Schoolbook', 'Andale Mono'.
