@@ -2,6 +2,8 @@
 
 ## Fetch Status
 
+Retrieve the status of a task by using its ID.
+
 ```shell
 curl --location --request GET 'https://api.polymersearch.com/v1/tasks/610805441afac351d4f2f2ad' \
 --header 'accept: application/json, text/plain, */*' \

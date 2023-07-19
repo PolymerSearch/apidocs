@@ -2,6 +2,8 @@
 
 ## Fetch existing & invited workspace users
 
+Retrieve a list of existing and invited workspace users with a single API call.
+
 ```shell
 curl --location --request GET 'https://api.polymersearch.com/v1/workspace/users' \
 --header 'accept: application/json, text/plain, */*' \
@@ -50,6 +52,8 @@ curl --location --request GET 'https://api.polymersearch.com/v1/workspace/users'
 
 ## Invite a new member to workspace
 
+Easily invite new members to join your workspace.
+
 ```shell
 curl --location --request POST 'https://api.polymersearch.com/v1/workspace/invite' \
 --header 'accept: application/json, text/plain, */*' \
@@ -91,6 +95,8 @@ skip_invite_email | false | Boolean
 
 
 ## Delete existing or invited workspace user
+
+Remove an existing or invited workspace user effortlessly.
 
 ```shell
 curl --location --request DELETE 'https://api.polymersearch.com/v1/workspace/user/638da37174ea61d5d9b9a6c7' \
