@@ -1,4 +1,4 @@
-# Workspace User
+# Workspace_User
 
 ## Fetch existing & invited workspace users
 
