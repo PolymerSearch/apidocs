@@ -1,11 +1,11 @@
 # App Embed
 
-Polymer generated app can be embed to view existing boards (views), created new board, edit existing boards. 
+Polymer generated app can be embed to create new boards (views), and browse/edit existing ones:
 
 
 ## Generate a auth token
 
-This endpoint provides token to embed private apps
+This endpoint provides token to embed private apps:
 
 ```shell
 curl --location 'https://api.polymersearch.com/v1/auth/token?access_level=workspace_edit' \

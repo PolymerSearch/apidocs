@@ -27,7 +27,7 @@ def toc_data(page_content)
       end
     end
   end
-  headers.select {|header| not(['workspace', 'dataset', 'task', 'view'].include? header[:id].to_s)}
+  headers.select {|header| not(['workspace', 'dataset', 'task', 'view', 'workspace_users', 'app_embed'].include? header[:id].to_s)}
 end
 
 def resources_data(page_content)
