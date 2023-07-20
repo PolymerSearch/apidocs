@@ -1,6 +1,6 @@
 # Dataset
 
-The Dataset API allows the creation of new Polymer sites from your CSV files.
+The Dataset API empowers you to create new Polymer sites from your CSV files effortlessly.
 
 
 ## Upload a Dataset
@@ -84,11 +84,11 @@ update | false | Boolean. Force update dataset in case a dataset already exists 
 styling.colors | false | List. List of color codes to be used in view preview mode.
 styling.font | false | String. One of the fonts from 'Helvetica', 'Arial', 'Times', 'Times New Roman', 'Courier', 'Courier New', 'Verdana', 'Tahoma', 'Arial Black', 'Comic Sans MS', 'Impact', 'Avant Garde', 'Georgia', 'Palatino', 'Bookman', 'Garamond', 'Century Schoolbook', 'Andale Mono'.
 
-Note: Either 'url' or 'file' parameter is required.
+Note: Either the 'url' or 'file' parameter is required.
 
 ## Update a Dataset
 
-This endpoint updates the content and metadata of an existing dataset.
+Update the content and metadata of an existing dataset with this endpoint.
 
 ```shell
 curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754dfad3627deeb8f84b' \
