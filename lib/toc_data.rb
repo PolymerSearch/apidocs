@@ -56,7 +56,7 @@ def resources_data(page_content)
       end
     end
   end
-  headers.select {|header| ['workspace', 'dataset', 'task', 'view'].include? header[:id].to_s}
+  headers.select {|header| ['workspace', 'dataset', 'task', 'view', 'workspace_users', 'app_embed'].include? header[:id].to_s}
 end
 
 HTTP_METHOD_PAIRS = Hash[
@@ -70,7 +70,8 @@ HTTP_METHOD_PAIRS = Hash[
   "Delete View" => "DELETE",
   "Fetch existing &amp; invited workspace users" => "GET",
   "Invite a new member to workspace" => "POST",
-  "Delete existing or invited workspace user" => "DELETE"
+  "Delete existing or invited workspace user" => "DELETE",
+  "Generate an auth token" => "POST",
 ]
 
 def get_http_method(heading)

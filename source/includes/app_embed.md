@@ -3,9 +3,12 @@
 Polymer generated app can be embed to create new boards (views), and browse/edit existing ones:
 
 
-## Generate a auth token
+## Generate an auth token
 
-This endpoint provides token to embed private apps:
+
+This endpoint generates token to give authenticated access to embeded apps:
+
+> Request
 
 ```shell
 curl --location 'https://api.polymersearch.com/v1/auth/token?access_level=workspace_edit' \
@@ -13,8 +16,10 @@ curl --location 'https://api.polymersearch.com/v1/auth/token?access_level=worksp
 --header 'workspace-id: 64XX73dd2221f86XXbc934XX'
 ```
 
-> workspace-id header is optional and only needed when you want to generate auth-token for any specific workspace which is different than default workspace defined with APIKEY
+> workspace-id header is optional and only needed when you want to generate auth-token for a specific workspace which is different than default workspace defined with APIKEY
 > The above command returns JSON structured like this:
+
+> Response
 
 ```json
 {
