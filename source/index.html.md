@@ -27,7 +27,8 @@ includes:
   - workspace_users
   - datasets
   - tasks
-  - views   
+  - views
+  - app_embed
 
 search: true
 code_clipboard: true
