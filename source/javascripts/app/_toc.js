@@ -87,6 +87,13 @@
           document.title = originalTitle;
         }
       }
+
+      // Temp fixes for ToC and Headings
+      if (document.querySelector('#workspace_user')) document.querySelector('#workspace_user').innerHTML = 'Workspace User';
+      if (document.querySelector('[data-title="Workspace_User"]')) document.querySelector('[data-title="Workspace_User"]').innerHTML = 'Workspace User';
+
+      if (document.querySelector('#app_embed')) document.querySelector('#app_embed').innerHTML = 'App Embed';
+      if (document.querySelector('[data-title="App_Embed"]')) document.querySelector('[data-title="App_Embed"]').innerHTML = 'App Embed';
     };
 
     var makeToc = function() {
