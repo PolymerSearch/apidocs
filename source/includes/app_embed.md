@@ -16,9 +16,6 @@ curl --location 'https://api.polymersearch.com/v1/auth/token?access_level=worksp
 --header 'workspace-id: 64XX73dd2221f86XXbc934XX'
 ```
 
-> workspace-id header is optional and only needed when you want to generate auth-token for a specific workspace which is different than default workspace defined with APIKEY
-> The above command returns JSON structured like this:
-
 > Response
 
 ```json
@@ -28,8 +25,12 @@ curl --location 'https://api.polymersearch.com/v1/auth/token?access_level=worksp
 }
 ```
 
-> As soon as you have the auth token, you can pass this token to embed URL/src. 
+workspace-id header is optional and only needed when you want to generate auth-token for a specific workspace which is different than default workspace defined with APIKEY
 
-```shell
-https://app.polymersearch.com/${file_id}?token={token}
-```
+The above command returns JSON structured like this:
+
+
+As soon as you have the auth token, you can pass this token to embed URL/src. 
+
+shell
+`https://app.polymersearch.com/${file_id}?token={token}`
