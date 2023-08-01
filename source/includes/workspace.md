@@ -13,7 +13,7 @@ curl --location --request POST 'https://api.polymersearch.com/v1/workspace' \
 }'
 ```
 
-## HTTP Request
+### HTTP Request
 
 `POST https://api.polymersearch.com/v1/workspace`
 
@@ -26,7 +26,7 @@ name | true | Name of the workspace.
 slug | true | slug to be used in custom URLs. Alphanumeric characters, underscores, and dashes are allowed. It cannot end with an underscore or a dash.
 
 
-## Fetch workspace
+## Get workspaces
 
 ```shell
 curl --location --request GET 'https://api.polymersearch.com/v1/workspaces' \
