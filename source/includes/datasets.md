@@ -79,7 +79,8 @@ file | false | Type: file. The file to upload.
 name | true | Name of the dataset/file.
 sharing | false | Desired sharing status for the dataset (public, password-protected, private). Defaults to private.
 password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
-starting_row | false | Desired row number where Polymer should start processing your file.
+header_row | false | Desired header row number (Min 1).
+starting_row | false | Desired row number where Polymer should start processing your file (Min 2).
 update | false | Boolean. Force update dataset in case a dataset already exists with the given name.
 styling.colors | false | List. List of color codes to be used in view preview mode.
 styling.font | false | String. One of the fonts from 'Helvetica', 'Arial', 'Times', 'Times New Roman', 'Courier', 'Courier New', 'Verdana', 'Tahoma', 'Arial Black', 'Comic Sans MS', 'Impact', 'Avant Garde', 'Georgia', 'Palatino', 'Bookman', 'Garamond', 'Century Schoolbook', 'Andale Mono'.
