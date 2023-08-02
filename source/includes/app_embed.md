@@ -30,7 +30,6 @@ curl --location 'https://api.polymersearch.com/v1/auth/token?access_level=worksp
 
 
 
-As soon as you have the auth token, you can pass this token to embed URL/src. 
+> As soon as you have the auth token, you can pass this token to embed URL/src. 
 
-shell
 `https://app.polymersearch.com/${file_id}?token={token}`
