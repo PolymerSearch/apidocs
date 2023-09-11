@@ -15,7 +15,14 @@ curl --location 'https://api.polymersearch.com/v1/auth/token?access_level=worksp
 --header 'x-api-key: XXd5c7f6-XXf9-4320-XX4d-5673d8XXd5bb' \
 --header 'workspace-id: 64XX73dd2221f86XXbc934XX'
 ```
-> Note: workspace-id header is optional and only needed when you want to generate auth-token for a specific workspace which is different than default workspace defined with APIKEY
+Note: workspace-id header is optional and only needed when you want to generate auth-token for a specific workspace which is different than default workspace defined with APIKEY
+
+### Query String (access_level: workspace_edit)
+
+Field | Mandatory | Description
+--------- | ------- | -----------
+enable_board_edit | false | Enable edit board option
+enable_column_settings | false | Enable edit column settings option
 
 > The above command returns JSON structured like this:
 
@@ -25,9 +32,6 @@ curl --location 'https://api.polymersearch.com/v1/auth/token?access_level=worksp
     "expires_at": "2023-07-20T12:15:40.741Z"
 }
 ```
-
-
-
 
 
 > As soon as you have the auth token, you can pass this token to embed URL/src. 
