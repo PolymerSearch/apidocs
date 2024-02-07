@@ -116,6 +116,7 @@ colors | false | Type: List<br />List of color codes to be used in view preview 
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |bar
+file_id |String |Yes |file ID to drive this block
 x_axis |List | one of the x_axis or x_axis_multiple is required | valid column name
 x_axis_multiple | List | one of the x_axis or x_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 y_axis | String| Yes| valid column name
@@ -155,6 +156,7 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String | Yes |column
+file_id |String |Yes |file ID to drive this block
 x_axis | String| Yes| valid column name
 y_axis | String | one of the y_axis or y_axis_multiple is required | valid column name
 y_axis_multiple | List | one of the y_axis or y_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
@@ -185,6 +187,7 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |scatter
+file_id |String |Yes |file ID to drive this block
 x_axis | String| Yes| valid number column name
 y_axis |String |Yes | valid number column name
 operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
@@ -213,6 +216,7 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |timeseries
+file_id |String |Yes |file ID to drive this block
 x_axis | String| Yes| valid date column name
 y_axis |String | No | valid number column name
 y_axis_multiple | List | No | Object, Min length: 2, Max length: 10. <br > **name**: valid number column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
@@ -240,6 +244,7 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |heatmap
+file_id |String |Yes |file ID to drive this block
 y_axis |String |Yes |valid column name
 x_axis | String| No| valid column name
 operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
@@ -264,6 +269,7 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |lineplot
+file_id |String |Yes |file ID to drive this block
 y_axis |String | one of the y_axis or y_axis_multiple is required |valid column name
 y_axis_multiple | List | one of the y_axis or y_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 x_axis | String| Yes| valid column name
@@ -292,6 +298,7 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |pie
+file_id |String |Yes |file ID to drive this block
 x_axis_multiple |List |Yes |Object, Min length: 1, Max length: 2. <br > **name**: valid column
 y_axis_multiple |List |No |Object, Min length: 1, Max length: 1. <br > **name**: valid number column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 show_annotations | Boolean| No | Annotate each segment by its value
@@ -317,6 +324,7 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |outlier
+file_id |String |Yes |file ID to drive this block
 metric |String |Yes | valid number column name
 operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 influencing_columns |List |Yes |Influencing Columns - list of valid column names. Min length: 1, Max length: 6
@@ -348,6 +356,7 @@ lower_better | Boolean| No | Lower Better
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |roi
+file_id |String |Yes |file ID to drive this block
 max_metric |String |Yes |Metric to Maximize (Return) - valid number column name
 max_operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 min_metric |String |Yes |Metric to Minimize (Investment) - valid number column name
@@ -381,6 +390,7 @@ lower_better | Boolean| No | Lower Better
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |pivot
+file_id |String |Yes |file ID to drive this block
 metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **metric**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 rows |List |Yes |Rows - list of valid column names. Min length: 1, Max length: 1
 columns |List |Yes |Columns - list of valid column names. Min length: 1, Max length: 1
@@ -411,6 +421,7 @@ pin_totals | Boolean| No | Pin Totals
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |kpi
+file_id |String |Yes |file ID to drive this block
 metric |List |Yes |valid date column name
 operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 date | String| No| valid date column name
@@ -445,6 +456,7 @@ filters | Object| No | Filter Object
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |data-table
+file_id |String |Yes |file ID to drive this block
 columns |List |Yes |valid column name
 values |List |Yes |Object, Min length: 1, Max length: 10. <br > **column**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 sort |Object |Yes |Object <br > **column**: valid column <br > **order**: Any value from ASC, DESC
