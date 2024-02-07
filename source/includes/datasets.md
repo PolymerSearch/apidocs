@@ -8,7 +8,7 @@ The Dataset API allows the creation of new Polymer sites from your CSV files.
 This endpoint starts processing provided CSV.
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-XXf9-4320-XX4d-5673d8XXd5bb' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -20,39 +20,40 @@ curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
 ```
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "url": "https://abcc.s3.amazonaws.com/myfile.csv",
-    "name": "Payment yearly2.csv",
-    "import_from": {
-        "id": "6107ab93fa0ec85cb863f0e1",
-        "data": [
-            "views"
-        ]
-    }
+    "name": "Payment yearly2.csv"
 }'
 ```
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "url": "https://abcc.s3.amazonaws.com/myfile.csv",
+    "ingestion_type": "json",
     "name": "Payment yearly3.csv",
-    "import_from": {
-        "id": "6107ab93fa0ec85cb863f0e1",
-        "data": [
-            "views","user_config"
-        ]
-    }
+    "records": [
+        {
+            "ticket_id": "ID2",
+            "created_at": "2022-10-21",
+            "language": "Spanish",
+            "number1": 14
+        },{
+            "ticket_id": "ID2",
+            "created_at": "2022-10-21",
+            "language": "Spanish",
+            "number1": 14
+        }
+    ]
 }'
 ```
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
 --form 'name="Payment yearly 2022 920.csv"' \
 --form 'file=@"/local_file_path/file_name.csv"'
@@ -62,15 +63,13 @@ curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
 
 ```json
 {
-    "message": "file processing done",
-    "success": true,
-    "file_id": "6409b295e0eb635a29d8c8f7"
+    "task_id": "65c3249d63a20b6727a11127"
 }
 ```
 
 ### HTTP Request
 
-`POST https://api.polymersearch.com/v1/dataset`
+`POST https://v3-api.polymersearch.com/v1/dataset`
 
 ### Body content
 
@@ -89,7 +88,7 @@ Note: Either 'url' or 'file' parameter is required.
 This endpoint updates the content and metadata of an existing dataset.
 
 ```shell
-curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754dfad3627deeb8f84b' \
+curl --location --request PUT 'https://v3-api.polymersearch.com/v1/dataset/6151754dfad3627deeb8f84b' \
 --header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -103,15 +102,26 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754d
 
 ```json
 {
-    "message": "file processing done",
-    "success": true,
-    "file_id": "6409b295e0eb635a29d8c8f7"
+    "task_id": "65c324f463a20b6727a1116b"
+}
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "success": false,
+    "errors": [
+        {
+            "message": "duplicate file name"
+        }
+    ]
 }
 ```
 
 ### HTTP Request
 
-`PUT https://api.polymersearch.com/v1/dataset/:id`
+`PUT https://v3-api.polymersearch.com/v1/dataset/:id`
 
 
 ### Params content

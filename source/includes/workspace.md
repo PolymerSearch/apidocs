@@ -3,14 +3,14 @@
 ## Fetch existing & invited workspace users
 
 ```shell
-curl --location --request GET 'https://api.polymersearch.com/v1/workspace/users' \
+curl --location --request GET 'https://v3-api.polymersearch.com/v1/workspace/users' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'x-api-key: {{apikey}}'
 ```
 
 ### HTTP Request
 
-`GET https://api.polymersearch.com/v1/workspace/users`
+`GET https://v3-api.polymersearch.com/v1/workspace/users`
 
 > The above command returns JSON structured like this:
 
@@ -51,7 +51,7 @@ curl --location --request GET 'https://api.polymersearch.com/v1/workspace/users'
 ## Invite a new member to workspace
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/workspace/invite' \
+curl --location --request POST 'https://v3-api.polymersearch.com/v1/workspace/invite' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
@@ -67,7 +67,7 @@ curl --location --request POST 'https://api.polymersearch.com/v1/workspace/invit
 
 ### HTTP Request
 
-`POST https://api.polymersearch.com/v1/workspace/invite`
+`POST https://v3-api.polymersearch.com/v1/workspace/invite`
 
 
 > The above command returns JSON structured like this:
@@ -92,14 +92,14 @@ members[].role | true | Valid values: Editor, Read-only
 ## Delete existing or invited workspace user
 
 ```shell
-curl --location --request DELETE 'https://api.polymersearch.com/v1/workspace/user/638da37174ea61d5d9b9a6c7' \
+curl --location --request DELETE 'https://v3-api.polymersearch.com/v1/workspace/user/638da37174ea61d5d9b9a6c7' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'x-api-key: {{apikey}}'
 ```
 
 ### HTTP Request
 
-`DELETE https://api.polymersearch.com/v1/workspace/user/:wuid`
+`DELETE https://v3-api.polymersearch.com/v1/workspace/user/:wuid`
 
 
 > The above command returns JSON structured like this:

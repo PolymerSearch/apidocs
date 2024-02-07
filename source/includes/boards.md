@@ -4,81 +4,55 @@ With boards API you can create blocks and data segments and share them with the 
 
 ## Create Board
 
-> Example 1: Create a basic board with all non-AI blocks
+> Example 1: Create a basic board with 2 blocks
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/board' \
+curl --location --request POST 'https://v3-api.polymersearch.com/v1/board' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "name": "My Board Name",
-    "file_id": "6409b295e0eb635a29d8c8f7", 
+    "name": "Sample Board 1",
+    "file_ids": [
+        "65b50541d83d1e4d42c7fbe0"
+    ],
+    "sharing": "public",
+    "advanced_sharing":
+    {
+        "allow_global_filters_for_viewers": false,
+        "allow_block_based_filters_for_viewers": true
+    },
+    "filters":
+    {},
     "blocks": [
     {
-        "type": "pie",
-        "x_axis_multiple": [
+        "type": "kpi",
+        "metric": "time_spent_in_days",
+        "operation": "SUM",
+        "date": "solved_at",
+        "date_range": "last 90 days",
+        "goal": 1000,
+        "file_id": "65b50541d83d1e4d42c7fbe0",
+        "comp_date_range": "previous month"
+    },
+    {
+        "type": "data-table",
+        "columns": [
+            "ticket_group"
+        ],
+        "values": [
         {
-            "name": "payment_mechanism"
-        }]
-        "slice": "Submission Date"
-    },
-    {
-        "type": "bar",
-        "x_axis": "Fee Month",
-        "y_axis": "amount",
-        "slice": "Submission Date",
-        "operation": "AVERAGE"
-    }]
-}'
-```
-
-> Example 2: Create a basic board with all AI blocks
-
-```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/board' \
---header 'x-api-key: {{apikey}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "file_id": "6409b295e0eb635a29d8c8f7",
-    "name": "AI board",
-    "blocks": [
-    {
-        "type": "ai"
-    },
-    {
-        "type": "ai"
-    },
-    {
-        "type": "ai"
-    }]
-}'
-```
-
-> Example 3: Create a basic board with all AI and non-AI blocks
-
-```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/board' \
---header 'x-api-key: {{apikey}}' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "name": "AI Board",
-    "file_id": "6409b295e0eb635a29d8c8f7",
-    "blocks": [
-    {
-        "type": "heatmap",
-        "x_axis": "Fee Month",
-        "y_axis": "amount",
-        "operation": "MAX"
-    },
-    {
-        "type": "ai"
-    },
-    {
-        "type": "ai"
-    },
-    {
-        "type": "ai"
-    }]
+            "column": "time_spent_in_minutes",
+            "operation": "SUM"
+        }],
+        "sort":
+        {
+            "column": "time_spent_in_minutes",
+            "order": "DESC"
+        },
+        "show_totals": false,
+        "file_id": "65b50541d83d1e4d42c7fbe0"
+    }
+    ]
 }'
 ```
 
@@ -87,42 +61,36 @@ curl --location --request POST 'https://api.polymersearch.com/v1/board' \
 
 ```json
 {
-    "launch_url": "https://app.polymersearch.com/b/6409bc2ae761d55b4630989b",
+    "launch_url": "https://v3.polymersearch.com/b/6409bc2ae761d55b4630989b",
     "id": "6409bc2ae761d55b4630989b"
 }
 ```
 
 ### HTTP Request
 
-`POST https://api.polymersearch.com/v1/board`
+`POST https://v3-api.polymersearch.com/v1/board`
 
 ### Body content
 
 Field | Mandatory | Description
 --------- | ------- | -----------
 name | true | Type: String<br />Name of the board
-file_id | true | Type: String<br />Dataset ID of the board
+file_ids | true | Type: List[String]<br />Dataset IDs of the board
 blocks | true | Type: List [Blocks Object] <br />
 sharing | false | Desired sharing status for the dataset (public, private). Default: private
 advanced_sharing | false | control sharing settings for board
 advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply global filters
 advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
+branding.logoUrl | false | Logo URL
+branding.logoLink | false | Link to redirect when clicked on logo URL
+colors | false | Type: List<br />List of color codes to be used in view preview mode.
+
+
+
+
 
 
 ## Blocks Object
-
-### AI Chart
-```json
-{
-    "type": "ai"
-}
-```
-Field | Datatype | Mandatory | Desc
------- | ------ | ------ | --------
-type |String |Yes |ai
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
-
-
 
 ### Bar Chart
 ```json
@@ -141,7 +109,8 @@ width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
     "operation": "SUM",
     "y_axis_log": true,
     "show_annotations": true,
-    "show_stacked": false
+    "show_stacked": false,
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
@@ -179,7 +148,8 @@ title | String| No | Custom heading
     }],
     "operation": "SUM",
     "show_annotations": true,
-    "show_stacked": false
+    "show_stacked": false,
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
@@ -208,14 +178,15 @@ title | String| No | Custom heading
     "x_axis": "spend",
     "y_axis": "cost_per_initiate_checkout",
     "operation": "SUM",
-    "x_axis_log": true
+    "x_axis_log": true,
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |scatter
-x_axis | String| Yes| valid column name
-y_axis |String |Yes |valid column name
+x_axis | String| Yes| valid number column name
+y_axis |String |Yes | valid number column name
 operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 slice | String| No| valid column name
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
@@ -235,16 +206,16 @@ title | String| No | Custom heading
     "y_axis_log": true,
     "exclude_empty_string": false,
     "group_by": "quarter",
-    "is_area": true
+    "is_area": true,
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |timeseries
-x_axis | String| Yes| valid column name
-y_axis |String | No |valid column name
-y_axis_multiple | List | No | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+x_axis | String| Yes| valid date column name
+y_axis |String | No | valid number column name
+y_axis_multiple | List | No | Object, Min length: 2, Max length: 10. <br > **name**: valid number column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 slice | String| No| valid column name
 is_area | Boolean| No | Use area chart
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
@@ -262,7 +233,8 @@ title | String| No | Custom heading
     "y_axis": "account_currency",
     "operation": "SUM",
     "exclude_empty_string": false,
-    "show_annotations": true
+    "show_annotations": true,
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
@@ -285,7 +257,8 @@ title | String| No | Custom heading
     "type": "lineplot",
     "x_axis": "spend",
     "y_axis": "link_click",
-    "operation": "SUM"
+    "operation": "SUM",
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
@@ -312,14 +285,15 @@ title | String| No | Custom heading
         "name": "status"
     }],
     "exclude_empty_string": false,
-    "show_annotations": true
+    "show_annotations": true,
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |pie
 x_axis_multiple |List |Yes |Object, Min length: 1, Max length: 2. <br > **name**: valid column
-y_axis_multiple |List |No |Object, Min length: 1, Max length: 1. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+y_axis_multiple |List |No |Object, Min length: 1, Max length: 1. <br > **name**: valid number column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
@@ -327,22 +301,23 @@ filters | Object| No | Filter Object
 title | String| No | Custom heading
 
 
-### OUTLIERS
+### OUTLIER
 ```json
 {
-    "type": "outliers",
+    "type": "outlier",
     "metric": "spend",
     "operation": "COUNT",
     "exclude_empty_string": false,
     "influencing_columns": [
         "ad_name"
-    ]
+    ],
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
-type |String |Yes |outliers
-metric |String |Yes |valid column name
+type |String |Yes |outlier
+metric |String |Yes | valid number column name
 operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 influencing_columns |List |Yes |Influencing Columns - list of valid column names. Min length: 1, Max length: 6
 results_type |String |No |Show results - Any value from count, below_average_only, above_average_only, top_and_bottom_outliers, above_and_below_average
@@ -351,6 +326,7 @@ exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+lower_better | Boolean| No | Lower Better
 
 
 ### ROI CALCULATOR
@@ -365,15 +341,16 @@ title | String| No | Custom heading
         "ad_name",
         "campaign_name"
     ],
-    "show_results_column": false
+    "show_results_column": false,
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |roi
-max_metric |String |Yes |Metric to Maximize (Return) - valid column name
+max_metric |String |Yes |Metric to Maximize (Return) - valid number column name
 max_operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-min_metric |String |Yes |Metric to Minimize (Investment) - valid column name
+min_metric |String |Yes |Metric to Minimize (Investment) - valid number column name
 min_metric | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 influencing_columns |List |Yes |Influencing Columns - list of valid column names. Min length: 1, Max length: 6
 show_results_column | Boolean| No | Show Results Column
@@ -382,6 +359,7 @@ exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+lower_better | Boolean| No | Lower Better
 
 
 ### PIVOT TABLE
@@ -396,7 +374,8 @@ title | String| No | Custom heading
     "rows": [
         "account_currency"
     ],
-    "columns": ["ad_name"]
+    "columns": ["ad_name"],
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
@@ -414,6 +393,7 @@ sort_by_counts |Object |No | **column_index**: index of the column given in colu
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+pin_totals | Boolean| No | Pin Totals
 
 
 ### KPI BLOCK
@@ -424,19 +404,18 @@ title | String| No | Custom heading
     "operation": "SUM",
     "date": "date",
     "date_range": "last 90 days",
-    "goal": 4000000
+    "goal": 4000000,
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |kpi
-metric |List |Yes |valid column name
+metric |List |Yes |valid date column name
 operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 date | String| No| valid date column name
 date_range | String| No| Any value from 'last day', 'last 7 days', 'last 14 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, 'this month', 'this week', 'last week', custom
-date_range_custom | List| No| If date_range is selected as custom. [START_DATE_EPOCH_SECONDS, END_DATE_EPOCH_SECONDS]
 comp_date_range | String| No| Any value from 'previous period', 'custom'
-comp_date_range_custom | List| No| If comp_date_range is selected as custom. [START_DATE_EPOCH_SECONDS, END_DATE_EPOCH_SECONDS]
 goal |Number |No |
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
@@ -459,7 +438,8 @@ filters | Object| No | Filter Object
     {
         "column": "time_spent_in_minutes",
         "order": "DESC"
-    }
+    },
+    "file_id": "65b50541d83d1e4d42c7fbe0"
 }
 ```
 Field | Datatype | Mandatory | Desc
@@ -469,7 +449,7 @@ columns |List |Yes |valid column name
 values |List |Yes |Object, Min length: 1, Max length: 10. <br > **column**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 sort |Object |Yes |Object <br > **column**: valid column <br > **order**: Any value from ASC, DESC
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-show_column_totals | Boolean| No | Show Column Totals
+show_totals | Boolean| No | Show Column Totals
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
@@ -502,22 +482,25 @@ The following filters can be applied
 Example payload
 `
 {
-    "Submission Date": [
+    "65b50541d83d1e4d42c7fbe0":
     {
-        "value": "last 30 days"
-    }],
-    "amount": [
-    {
-        "value": [
-            10,
-            20
-        ]
-    }],
-    "Payment Mechanism": [
-    {
-        "value": "cash",
-        "operation": "INCLUDING"
-    }]
+        "Submission Date": [
+        {
+            "value": "last 30 days"
+        }],
+        "amount": [
+        {
+            "value": [
+                10,
+                20
+            ]
+        }],
+        "Payment Mechanism": [
+        {
+            "value": "cash",
+            "operation": "INCLUDING"
+        }]
+    }
 }
 `
 
@@ -551,10 +534,10 @@ Possible operations:
 
 ## Edit Board
 
-> Example 1: Edit board with all non-AI blocks
+> Example 1: Edit board with blocks
 
 ```shell
-curl --location --request PUT 'https://api.polymersearch.com/v1/board/63f36125bfc81986e3cbd2c3' \
+curl --location --request PUT 'https://v3-api.polymersearch.com/v1/board/63f36125bfc81986e3cbd2c3' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -563,8 +546,7 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/board/63f36125bf
         "type": "timeseries",
         "x_axis": "payment_mechanism",
         "y_axis": "Submission Date",
-        "slice": "amount",
-        "operation": "SUM"
+        "slice": "amount"
     },
     {
         "type": "bar",
@@ -576,10 +558,10 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/board/63f36125bf
 }'
 ```
 
-> Example 2: Edit board with all non-AI blocks and name
+> Example 2: Edit board with blocks and name
 
 ```shell
-curl --location --request PUT 'https://api.polymersearch.com/v1/board/63f36125bfc81986e3cbd2c3' \
+curl --location --request PUT 'https://v3-api.polymersearch.com/v1/board/63f36125bfc81986e3cbd2c3' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -606,14 +588,14 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/board/63f36125bf
 
 ```json
 {
-    "launch_url": "https://app.polymersearch.com/b/6409bc2ae761d55b4630989b",
+    "launch_url": "https://v3.polymersearch.com/b/6409bc2ae761d55b4630989b",
     "id": "6409bc2ae761d55b4630989b"
 }
 ```
 
 ### HTTP Request
 
-`PUT https://api.polymersearch.com/v1/board/:board_id`
+`PUT https://v3-api.polymersearch.com/v1/board/:board_id`
 
 ### URL Params
 
@@ -632,6 +614,9 @@ sharing | false | Desired sharing status for the dataset (public, private). Defa
 advanced_sharing | false | control sharing settings for board
 advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply global filters
 advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
+branding.logoUrl | false | Logo URL
+branding.logoLink | false | Link to redirect when clicked on logo URL
+colors | false | Type: List<br />List of color codes to be used in view preview mode.
 
 ### Blocks Object
 Same as described on Create Board request
@@ -695,7 +680,7 @@ Note: Make sure you pass all the blocks inside `blocks` key
 
 ### HTTP Request
 
-`GET https://api.polymersearch.com/v1/boards`
+`GET https://v3-api.polymersearch.com/v1/boards`
 
 
 
@@ -711,7 +696,7 @@ Note: Make sure you pass all the blocks inside `blocks` key
 
 ### HTTP Request
 
-`DELETE https://api.polymersearch.com/v1/board/:board_id`
+`DELETE https://v3-api.polymersearch.com/v1/board/:board_id`
 
 ### URL Params
 
