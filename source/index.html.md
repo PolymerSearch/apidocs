@@ -27,7 +27,8 @@ includes:
   - workspace
   - datasets
   - tasks
-  - boards   
+  - boards
+  - app_embed
 
 search: true
 code_clipboard: true
