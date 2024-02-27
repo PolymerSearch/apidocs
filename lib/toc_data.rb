@@ -56,21 +56,24 @@ def resources_data(page_content)
       end
     end
   end
-  headers.select {|header| ['workspace', 'dataset', 'task', 'board', 'workspace_user','app_embed'].include? header[:id].to_s}
+  headers.select {|header| ['workspace', 'dataset', 'task', 'board', 'workspace_user', 'app_embed'].include? header[:id].to_s}
 end
 
 HTTP_METHOD_PAIRS = Hash[
+  "Fetch existing &amp; invited workspace users" => "GET",
   "Upload a Dataset" => "POST",
   "Update a Dataset" => "PUT",
+  "Fetch Datasets" => "GET",
   "Fetch Status" => "GET",
   "Create Board" => "POST",
   "Chart Object" => "",
   "Edit Board" => "PUT",
   "Fetch Boards" => "GET",
   "Delete Board" => "DELETE",
-  "Fetch existing &amp; invited workspace users" => "GET",
-  "Invite a new member to workspace" => "POST",
-  "Delete existing or invited workspace user" => "DELETE"
+  "Invite member to workspace" => "POST",
+  "Delete existing or invited workspace user" => "DELETE",
+  "Generate an auth token" => "POST",
+  "Invite a new member to workspace" => "POST"
 ]
 
 def get_http_method(heading)
