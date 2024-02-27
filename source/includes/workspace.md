@@ -1,16 +1,42 @@
 # Workspace
 
-## Fetch existing & invited workspace users
+## Create a new workspace
 
 ```shell
-curl --location --request GET 'https://v3-api.polymersearch.com/v1/workspace/users' \
+curl --location --request POST 'https://v3-api.polymersearch.com/v1/workspace' \
+--header 'accept: application/json, text/plain, */*' \
+--header 'x-api-key: {{apikey}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "My Workspace Name",
+    "slug": "workspace-slug"
+}'
+```
+
+### HTTP Request
+
+`POST https://v3-api.polymersearch.com/v1/workspace`
+
+
+### Body content
+
+Field | Mandatory | Description
+--------- | ------- | -----------
+name | true | Name of the workspace.
+slug | true | slug to be used in custom URLs. Alphanumeric characters, underscores, and dashes are allowed. It cannot end with an underscore or a dash.
+
+
+## Get workspaces
+
+```shell
+curl --location --request GET 'https://v3-api.polymersearch.com/v1/workspaces' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'x-api-key: {{apikey}}'
 ```
 
 ### HTTP Request
 
-`GET https://v3-api.polymersearch.com/v1/workspace/users`
+`GET https://v3-api.polymersearch.com/v1/workspaces`
 
 > The above command returns JSON structured like this:
 
@@ -18,29 +44,43 @@ curl --location --request GET 'https://v3-api.polymersearch.com/v1/workspace/use
 {
     "data": [
         {
-            "_id": "636e0856759be7e1f00cfa0f",
-            "name": "Polymer Search",
-            "email": "api-demo@polymersearch.com",
-            "role": "Creator"
+            "_id": "636e0856759be73b280cfa11",
+            "slug": "api-demo",
+            "name": "Polymer's Workspace",
+            "default_name_unedited": true,
+            "user_role": "Creator",
+            "default": true,
+            "members": [
+                {
+                    "_id": "636e0856759be7e1f00cfa0f",
+                    "name": "Polymer Search",
+                    "email": "member1@polymersearch.com"
+                }
+            ]
         },
         {
-            "_id": "6389db43daeaa35b76482b14",
-            "name": "Name User",
-            "email": "user1@polymersearch.com",
-            "role": "Editor"
-        },
-        {
-            "_id": "638da37174ea61d5d9b9a6c7",
-            "name": "Sam Title",
-            "email": "user2@polymersearch.com",
-            "role": "Read-only"
-        },
-        {
-            "role": "Read-only",
-            "_id": "63ec8c9a41f84c7d02ee344e",
-            "email": "user3@polymersearch.com",
-            "pending": true,
-            "invitation_id": "63ec8c9a41f84c7d02ee344e"
+            "_id": "638850663e5ca0629efc34ed",
+            "name": "Marketing",
+            "slug": "polymer-marketing",
+            "user_role": "Creator",
+            "default": false,
+            "members": [
+                {
+                    "_id": "636e0856759be7e1f00cfa0f",
+                    "name": "Polymer Search",
+                    "email": "member1@polymersearch.com"
+                },
+                {
+                    "_id": "638b60eb3dc9fa2645946403",
+                    "name": "Remo",
+                    "email": "member2@polymersearch.com"
+                },
+                {
+                    "_id": "6390cdea9a51cd0743387a6e",
+                    "name": "Ras",
+                    "email": "member2@polymersearch.com"
+                }
+            ]
         }
     ]
 }
@@ -48,65 +88,49 @@ curl --location --request GET 'https://v3-api.polymersearch.com/v1/workspace/use
 
 
 
-## Invite a new member to workspace
+## Edit workspace
 
 ```shell
-curl --location --request POST 'https://v3-api.polymersearch.com/v1/workspace/invite' \
---header 'accept: application/json, text/plain, */*' \
+curl --location --request PATCH 'https://v3-api.polymersearch.com/v1/workspace/64c25eae9797258e69dff54d' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
---data-raw '{
-    "members": [
-        {
-            "email": "user4@polymersearch.com",
-            "role": "Read-only"
-        }
-    ]
+--data '{
+    "name": "My Workspace Edited name"
 }'
 ```
 
 ### HTTP Request
 
-`POST https://v3-api.polymersearch.com/v1/workspace/invite`
+`PATCH https://v3-api.polymersearch.com/v1/workspace/:id`
 
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "success": true,
-    "invited": true
-}
-```
 
 ### Body content
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-members | true | List of members to invite
-members[].email | true | valid email ID
-members[].role | true | Valid values: Editor, Read-only
+name | false | Name of the workspace.
+slug | false | slug to be used in custom URLs. Alphanumeric characters, underscores, and dashes are allowed. It cannot end with an underscore or a dash.
 
 
 
-## Delete existing or invited workspace user
+## Delete workspace
 
 ```shell
-curl --location --request DELETE 'https://v3-api.polymersearch.com/v1/workspace/user/638da37174ea61d5d9b9a6c7' \
+curl --location --request DELETE 'https://v3-api.polymersearch.com/v1/workspace/638da37174ea61d5d9b9a6c7' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'x-api-key: {{apikey}}'
 ```
 
 ### HTTP Request
 
-`DELETE https://v3-api.polymersearch.com/v1/workspace/user/:wuid`
+`DELETE https://v3-api.polymersearch.com/v1/workspace/:id`
 
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-    "message": "user deleted successfully"
+    "success": true
 }
 ```
 
@@ -114,4 +138,4 @@ curl --location --request DELETE 'https://v3-api.polymersearch.com/v1/workspace/
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-wuid | true | Type: String<br /> _id field from '/v1/workspace/users' response
+id | true | Type: String<br /> _id field from '/v1/workspaces' response
