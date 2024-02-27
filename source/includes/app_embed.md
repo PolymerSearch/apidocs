@@ -32,4 +32,4 @@ curl --location 'https://v3.polymersearch.com/v1/auth/token?access_level=workspa
 
 > As soon as you have the auth token, you can pass this token to embed URL/src. 
 
-`https://app.polymersearch.com/b/${board_id}?ptoken={token}`
+`https://v3.polymersearch.com/b/${board_id}?ptoken={token}`

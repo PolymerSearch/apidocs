@@ -16,7 +16,7 @@ meta:
 
 
 toc_footers:
-  - <a href='https://app.polymersearch.com'>Sign Up for a Developer Key</a>
+  - <a href='https://v3.polymersearch.com'>Sign Up for a Developer Key</a>
   - <a href='https://polymersearch.com'>Polymer Website</a>
 
 includes:

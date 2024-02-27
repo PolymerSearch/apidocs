@@ -139,3 +139,86 @@ file | false | Type: file. The file to upload.
 name | false | Name of the dataset/file.
 incremental_update | In case you are passing incremental updates only
 primary_key | Yes if incremental_update = true | name of the column
+
+
+
+## Fetch Datasets
+
+This endpoint returns list of datasets
+
+```shell
+curl --location --request PUT 'https://v3-api.polymersearch.com/v1/dataset' \
+--header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "FB Ad List Q2 C-uploaded.csv",
+    "url": "https://test-csv-datasets.s3.us-east-2.amazonaws.com/Test+-+Bank+Loans.csv"
+}'
+```
+
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+    {
+        "_id": "65d775c6428356ae03b21b1f",
+        "user": "65d775a24283563f98b21a75",
+        "user_email": "v3-api-demo@polymersearch.com",
+        "name": "11_payment 624 CSV copy 1114.csv",
+        "source_type": "upload",
+        "workspace_id": "65d775a24283564ab4b21a81",
+        "created_at": "2024-02-22T16:26:46.352Z",
+        "extension": "csv",
+        "num_rows": 59626,
+        "status": "success",
+        "id": "65d775c6428356ae03b21b1f"
+    },
+    {
+        "_id": "65d778bc4283568b69b221ef",
+        "user": "65d775a24283563f98b21a75",
+        "user_email": "v3-api-demo@polymersearch.com",
+        "name": "DS1",
+        "source_type": "api",
+        "workspace_id": "65d775a24283564ab4b21a81",
+        "extension": "csv",
+        "created_at": "2024-02-22T16:39:24.358Z",
+        "num_rows": 5,
+        "status": "success",
+        "id": "65d778bc4283568b69b221ef"
+    },
+    {
+        "_id": "65ddabc9428356050bb89426",
+        "user": "65d775a24283563f98b21a75",
+        "user_email": "v3-api-demo@polymersearch.com",
+        "name": "File upload demo dataset",
+        "source_type": "api",
+        "workspace_id": "65d775a24283564ab4b21a81",
+        "extension": "csv",
+        "created_at": "2024-02-27T09:30:49.830Z",
+        "num_rows": 5,
+        "status": "success",
+        "id": "65ddabc9428356050bb89426"
+    }],
+    "limit": 100,
+    "page": 1,
+    "sort_key": "name",
+    "sort_order": "asc"
+}
+```
+
+
+### HTTP Request
+
+`GET https://v3-api.polymersearch.com/v1/dataset`
+
+
+### Query string
+
+Field | Mandatory | Description
+--------- | ------- | -----------
+limit | false | Page limit.
+page | false | Page number.
+sort_key | false | name, created_at, num_rows
+sort_order | false | desc,asc
