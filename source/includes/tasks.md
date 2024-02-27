@@ -3,7 +3,7 @@
 ## Fetch Status
 
 ```shell
-curl --location --request GET 'https://v3-api.polymersearch.com/v1/task/65c324f463a20b6727a1116b' \
+curl --location --request GET 'https://v3.polymersearch.com/api/v1/task/65c324f463a20b6727a1116b' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'x-api-key: {{apikey}}'
 ```
@@ -34,7 +34,7 @@ curl --location --request GET 'https://v3-api.polymersearch.com/v1/task/65c324f4
 
 ### HTTP Request
 
-`GET https://v3-api.polymersearch.com/v1/task/:id`
+`GET https://v3.polymersearch.com/api/v1/task/:id`
 
 ### Body content
 

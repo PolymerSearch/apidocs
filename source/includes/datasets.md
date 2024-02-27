@@ -8,7 +8,7 @@ The Dataset API allows the creation of new Polymer sites from your CSV files.
 This endpoint starts processing provided CSV.
 
 ```shell
-curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-XXf9-4320-XX4d-5673d8XXd5bb' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -20,7 +20,7 @@ curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
 ```
 
 ```shell
-curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -30,7 +30,7 @@ curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
 ```
 
 ```shell
-curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -53,7 +53,7 @@ curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
 ```
 
 ```shell
-curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
 --form 'name="Payment yearly 2022 920.csv"' \
 --form 'file=@"/local_file_path/file_name.csv"'
@@ -69,7 +69,7 @@ curl --location --request POST 'https://v3-api.polymersearch.com/v1/dataset' \
 
 ### HTTP Request
 
-`POST https://v3-api.polymersearch.com/v1/dataset`
+`POST https://v3.polymersearch.com/api/v1/dataset`
 
 ### Body content
 
@@ -88,7 +88,7 @@ Note: Either 'url' or 'file' parameter is required.
 This endpoint updates the content and metadata of an existing dataset.
 
 ```shell
-curl --location --request PUT 'https://v3-api.polymersearch.com/v1/dataset/6151754dfad3627deeb8f84b' \
+curl --location --request PUT 'https://v3.polymersearch.com/api/v1/dataset/6151754dfad3627deeb8f84b' \
 --header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -121,7 +121,7 @@ curl --location --request PUT 'https://v3-api.polymersearch.com/v1/dataset/61517
 
 ### HTTP Request
 
-`PUT https://v3-api.polymersearch.com/v1/dataset/:id`
+`PUT https://v3.polymersearch.com/api/v1/dataset/:id`
 
 
 ### Params content
@@ -147,7 +147,7 @@ primary_key | Yes if incremental_update = true | name of the column
 This endpoint returns list of datasets
 
 ```shell
-curl --location --request PUT 'https://v3-api.polymersearch.com/v1/dataset' \
+curl --location --request PUT 'https://v3.polymersearch.com/api/v1/dataset' \
 --header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -211,7 +211,7 @@ curl --location --request PUT 'https://v3-api.polymersearch.com/v1/dataset' \
 
 ### HTTP Request
 
-`GET https://v3-api.polymersearch.com/v1/dataset`
+`GET https://v3.polymersearch.com/api/v1/dataset`
 
 
 ### Query string

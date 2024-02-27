@@ -7,7 +7,7 @@ With boards API you can create blocks and data segments and share them with the 
 > Example 1: Create a basic board with 2 blocks
 
 ```shell
-curl --location --request POST 'https://v3-api.polymersearch.com/v1/board' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/board' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -68,7 +68,7 @@ curl --location --request POST 'https://v3-api.polymersearch.com/v1/board' \
 
 ### HTTP Request
 
-`POST https://v3-api.polymersearch.com/v1/board`
+`POST https://v3.polymersearch.com/api/v1/board`
 
 ### Body content
 
@@ -549,7 +549,7 @@ Possible operations:
 > Example 1: Edit board with blocks
 
 ```shell
-curl --location --request PUT 'https://v3-api.polymersearch.com/v1/board/63f36125bfc81986e3cbd2c3' \
+curl --location --request PUT 'https://v3.polymersearch.com/api/v1/board/63f36125bfc81986e3cbd2c3' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -573,7 +573,7 @@ curl --location --request PUT 'https://v3-api.polymersearch.com/v1/board/63f3612
 > Example 2: Edit board with blocks and name
 
 ```shell
-curl --location --request PUT 'https://v3-api.polymersearch.com/v1/board/63f36125bfc81986e3cbd2c3' \
+curl --location --request PUT 'https://v3.polymersearch.com/api/v1/board/63f36125bfc81986e3cbd2c3' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -607,7 +607,7 @@ curl --location --request PUT 'https://v3-api.polymersearch.com/v1/board/63f3612
 
 ### HTTP Request
 
-`PUT https://v3-api.polymersearch.com/v1/board/:board_id`
+`PUT https://v3.polymersearch.com/api/v1/board/:board_id`
 
 ### URL Params
 
@@ -692,7 +692,7 @@ Note: Make sure you pass all the blocks inside `blocks` key
 
 ### HTTP Request
 
-`GET https://v3-api.polymersearch.com/v1/boards`
+`GET https://v3.polymersearch.com/api/v1/boards`
 
 
 
@@ -708,7 +708,7 @@ Note: Make sure you pass all the blocks inside `blocks` key
 
 ### HTTP Request
 
-`DELETE https://v3-api.polymersearch.com/v1/board/:board_id`
+`DELETE https://v3.polymersearch.com/api/v1/board/:board_id`
 
 ### URL Params
 

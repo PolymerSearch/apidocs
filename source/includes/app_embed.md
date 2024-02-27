@@ -11,7 +11,7 @@ This endpoint generates token to give authenticated access to embeded apps:
 > Request
 
 ```shell
-curl --location 'https://v3.polymersearch.com/v1/auth/token?access_level=workspace_edit' \
+curl --location 'https://v3.polymersearch.com/api/v1/auth/token?access_level=workspace_edit' \
 --header 'x-api-key: XXd5c7f6-XXf9-4320-XX4d-5673d8XXd5bb' \
 --header 'workspace-id: 64XX73dd2221f86XXbc934XX'
 ```
