@@ -25,6 +25,7 @@ includes:
   - ratelimiting
   - errors
   - workspace
+  - users
   - datasets
   - tasks
   - boards
