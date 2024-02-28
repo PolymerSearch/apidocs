@@ -60,6 +60,10 @@ def resources_data(page_content)
 end
 
 HTTP_METHOD_PAIRS = Hash[
+  "Create a new workspace" => "POST",
+  "Get workspaces" => "GET",
+  "Edit workspace" => "PUT",
+  "Delete workspace" => "DELETE",
   "Fetch existing &amp; invited workspace users" => "GET",
   "Upload a Dataset" => "POST",
   "Update a Dataset" => "PUT",
