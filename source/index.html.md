@@ -29,7 +29,7 @@ includes:
   - datasets
   - tasks
   - boards
-  - app_embed
+  - embed
 
 search: true
 code_clipboard: true

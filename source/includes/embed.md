@@ -1,4 +1,4 @@
-# App Embed
+# Embed
 
 Polymer generated app can be embed to create new boards (views), and browse/edit existing ones:
 
