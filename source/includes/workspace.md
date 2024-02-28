@@ -3,7 +3,7 @@
 ## Create a new workspace
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/workspace' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/workspace' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
@@ -15,7 +15,7 @@ curl --location --request POST 'https://api.polymersearch.com/v1/workspace' \
 
 ### HTTP Request
 
-`POST https://api.polymersearch.com/v1/workspace`
+`POST https://v3.polymersearch.com/api/v1/workspace`
 
 
 ### Body content
@@ -29,14 +29,14 @@ slug | true | slug to be used in custom URLs. Alphanumeric characters, underscor
 ## Get workspaces
 
 ```shell
-curl --location --request GET 'https://api.polymersearch.com/v1/workspaces' \
+curl --location --request GET 'https://v3.polymersearch.com/api/v1/workspaces' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'x-api-key: {{apikey}}'
 ```
 
 ### HTTP Request
 
-`GET https://api.polymersearch.com/v1/workspaces`
+`GET https://v3.polymersearch.com/api/v1/workspaces`
 
 > The above command returns JSON structured like this:
 
@@ -91,7 +91,7 @@ curl --location --request GET 'https://api.polymersearch.com/v1/workspaces' \
 ## Edit workspace
 
 ```shell
-curl --location --request PATCH 'https://api.polymersearch.com/v1/workspace/64c25eae9797258e69dff54d' \
+curl --location --request PATCH 'https://v3.polymersearch.com/api/v1/workspace/64c25eae9797258e69dff54d' \
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -101,7 +101,7 @@ curl --location --request PATCH 'https://api.polymersearch.com/v1/workspace/64c2
 
 ### HTTP Request
 
-`PATCH https://api.polymersearch.com/v1/workspace/:id`
+`PATCH https://v3.polymersearch.com/api/v1/workspace/:id`
 
 
 ### Body content
@@ -116,14 +116,14 @@ slug | false | slug to be used in custom URLs. Alphanumeric characters, undersco
 ## Delete workspace
 
 ```shell
-curl --location --request DELETE 'https://api.polymersearch.com/v1/workspace/638da37174ea61d5d9b9a6c7' \
+curl --location --request DELETE 'https://v3.polymersearch.com/api/v1/workspace/638da37174ea61d5d9b9a6c7' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'x-api-key: {{apikey}}'
 ```
 
 ### HTTP Request
 
-`DELETE https://api.polymersearch.com/v1/workspace/:id`
+`DELETE https://v3.polymersearch.com/api/v1/workspace/:id`
 
 
 > The above command returns JSON structured like this:

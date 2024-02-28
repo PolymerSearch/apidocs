@@ -16,7 +16,7 @@ meta:
 
 
 toc_footers:
-  - <a href='https://app.polymersearch.com'>Sign Up for a Developer Key</a>
+  - <a href='https://v3.polymersearch.com'>Sign Up for a Developer Key</a>
   - <a href='https://polymersearch.com'>Polymer Website</a>
 
 includes:
@@ -25,11 +25,11 @@ includes:
   - ratelimiting
   - errors
   - workspace
-  - workspace_users
+  - users
   - datasets
   - tasks
-  - views
-  - app_embed
+  - boards
+  - embed
 
 search: true
 code_clipboard: true

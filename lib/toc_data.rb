@@ -27,8 +27,7 @@ def toc_data(page_content)
       end
     end
   end
-  puts headers.to_s
-  headers.select {|header| not(['workspace', 'dataset', 'task', 'view', 'workspace_user', 'app_embed'].include? header[:id].to_s.downcase)}
+  headers.select {|header| not(['workspace', 'users', 'dataset', 'task', 'board', 'embed'].include? header[:id].to_s)}
 end
 
 def resources_data(page_content)
@@ -57,23 +56,28 @@ def resources_data(page_content)
       end
     end
   end
-  headers.select {|header| ['workspace', 'dataset', 'task', 'view', 'workspace_user', 'app_embed'].include? header[:id].to_s.downcase}
+  headers.select {|header| ['workspace', 'users', 'dataset', 'task', 'board', 'embed'].include? header[:id].to_s}
 end
 
 HTTP_METHOD_PAIRS = Hash[
+  "Create a new workspace" => "POST",
+  "Get workspaces" => "GET",
+  "Edit workspace" => "PUT",
+  "Delete workspace" => "DELETE",
+  "Fetch existing &amp; invited workspace users" => "GET",
   "Upload a Dataset" => "POST",
   "Update a Dataset" => "PUT",
+  "Fetch Datasets" => "GET",
   "Fetch Status" => "GET",
-  "Create View" => "POST",
+  "Create Board" => "POST",
   "Chart Object" => "",
-  "Edit View" => "PUT",
-  "Fetch Views" => "GET",
-  "Delete View" => "DELETE",
-  "Fetch existing &amp; invited workspace users" => "GET",
+  "Edit Board" => "PUT",
+  "Fetch Boards" => "GET",
+  "Delete Board" => "DELETE",
   "Invite member to workspace" => "POST",
   "Delete existing or invited workspace user" => "DELETE",
   "Generate an auth token" => "POST",
-  "Invite a new member to workspace" => "POST",
+  "Invite a new member to workspace" => "POST"
 ]
 
 def get_http_method(heading)

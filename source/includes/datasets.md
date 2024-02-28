@@ -1,6 +1,6 @@
 # Dataset
 
-The Dataset API empowers you to create new Polymer sites from your CSV files effortlessly.
+The Dataset API allows the creation of new Polymer sites from your CSV files.
 
 
 ## Upload a Dataset
@@ -8,7 +8,7 @@ The Dataset API empowers you to create new Polymer sites from your CSV files eff
 This endpoint starts processing provided CSV.
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-XXf9-4320-XX4d-5673d8XXd5bb' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -20,39 +20,40 @@ curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
 ```
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "url": "https://abcc.s3.amazonaws.com/myfile.csv",
-    "name": "Payment yearly2.csv",
-    "import_from": {
-        "id": "6107ab93fa0ec85cb863f0e1",
-        "data": [
-            "views"
-        ]
-    }
+    "name": "Payment yearly2.csv"
 }'
 ```
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "url": "https://abcc.s3.amazonaws.com/myfile.csv",
+    "ingestion_type": "json",
     "name": "Payment yearly3.csv",
-    "import_from": {
-        "id": "6107ab93fa0ec85cb863f0e1",
-        "data": [
-            "views","user_config"
-        ]
-    }
+    "records": [
+        {
+            "ticket_id": "ID2",
+            "created_at": "2022-10-21",
+            "language": "Spanish",
+            "number1": 14
+        },{
+            "ticket_id": "ID2",
+            "created_at": "2022-10-21",
+            "language": "Spanish",
+            "number1": 14
+        }
+    ]
 }'
 ```
 
 ```shell
-curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
+curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
 --header 'x-api-key: XXd5c7f6-feXX-43XX-XX4d-5673d8f0d5XX' \
 --form 'name="Payment yearly 2022 920.csv"' \
 --form 'file=@"/local_file_path/file_name.csv"'
@@ -62,13 +63,13 @@ curl --location --request POST 'https://api.polymersearch.com/v1/dataset' \
 
 ```json
 {
-    "task_id": "60f7bdd7c07d897637ac60f5"
+    "task_id": "65c3249d63a20b6727a11127"
 }
 ```
 
 ### HTTP Request
 
-`POST https://api.polymersearch.com/v1/dataset`
+`POST https://v3.polymersearch.com/api/v1/dataset`
 
 ### Body content
 
@@ -77,22 +78,17 @@ Field | Mandatory | Description
 url | false | URL to a valid public downloadable CSV.
 file | false | Type: file. The file to upload.
 name | true | Name of the dataset/file.
-sharing | false | Desired sharing status for the dataset (public, password-protected, private). Defaults to private.
-password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
-header_row | false | Desired header row number (Min 1).
-starting_row | false | Desired row number where Polymer should start processing your file (Min 2).
+starting_row | false | Desired row number where Polymer should start processing your file.
 update | false | Boolean. Force update dataset in case a dataset already exists with the given name.
-styling.colors | false | List. List of color codes to be used in view preview mode.
-styling.font | false | String. One of the fonts from 'Helvetica', 'Arial', 'Times', 'Times New Roman', 'Courier', 'Courier New', 'Verdana', 'Tahoma', 'Arial Black', 'Comic Sans MS', 'Impact', 'Avant Garde', 'Georgia', 'Palatino', 'Bookman', 'Garamond', 'Century Schoolbook', 'Andale Mono'.
 
-Note: Either the 'url' or 'file' parameter is required.
+Note: Either 'url' or 'file' parameter is required.
 
 ## Update a Dataset
 
-Update the content and metadata of an existing dataset with this endpoint.
+This endpoint updates the content and metadata of an existing dataset.
 
 ```shell
-curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754dfad3627deeb8f84b' \
+curl --location --request PUT 'https://v3.polymersearch.com/api/v1/dataset/6151754dfad3627deeb8f84b' \
 --header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -106,13 +102,26 @@ curl --location --request PUT 'https://api.polymersearch.com/v1/dataset/6151754d
 
 ```json
 {
-    "task_id": "60f7bdd7c07d897637ac60f5"
+    "task_id": "65c324f463a20b6727a1116b"
+}
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "success": false,
+    "errors": [
+        {
+            "message": "duplicate file name"
+        }
+    ]
 }
 ```
 
 ### HTTP Request
 
-`PUT https://api.polymersearch.com/v1/dataset/:id`
+`PUT https://v3.polymersearch.com/api/v1/dataset/:id`
 
 
 ### Params content
@@ -128,9 +137,88 @@ Field | Mandatory | Description
 url | false | URL to a valid public downloadable CSV.
 file | false | Type: file. The file to upload.
 name | false | Name of the dataset/file.
-sharing | false | Desired sharing status for the dataset (public, private, password-protected).
-password | false | Required only in case of sharing: password-protected, Validation: min 6 characters.
 incremental_update | In case you are passing incremental updates only
 primary_key | Yes if incremental_update = true | name of the column
-styling.colors | false | List. List of color codes to be used in view preview mode.
-styling.font | false | String. One of the fonts from 'Helvetica', 'Arial', 'Times', 'Times New Roman', 'Courier', 'Courier New', 'Verdana', 'Tahoma', 'Arial Black', 'Comic Sans MS', 'Impact', 'Avant Garde', 'Georgia', 'Palatino', 'Bookman', 'Garamond', 'Century Schoolbook', 'Andale Mono'.
+
+
+
+## Fetch Datasets
+
+This endpoint returns list of datasets
+
+```shell
+curl --location --request PUT 'https://v3.polymersearch.com/api/v1/dataset' \
+--header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "FB Ad List Q2 C-uploaded.csv",
+    "url": "https://test-csv-datasets.s3.us-east-2.amazonaws.com/Test+-+Bank+Loans.csv"
+}'
+```
+
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+    {
+        "_id": "65d775c6428356ae03b21b1f",
+        "user": "65d775a24283563f98b21a75",
+        "user_email": "v3-api-demo@polymersearch.com",
+        "name": "11_payment 624 CSV copy 1114.csv",
+        "source_type": "upload",
+        "workspace_id": "65d775a24283564ab4b21a81",
+        "created_at": "2024-02-22T16:26:46.352Z",
+        "extension": "csv",
+        "num_rows": 59626,
+        "status": "success",
+        "id": "65d775c6428356ae03b21b1f"
+    },
+    {
+        "_id": "65d778bc4283568b69b221ef",
+        "user": "65d775a24283563f98b21a75",
+        "user_email": "v3-api-demo@polymersearch.com",
+        "name": "DS1",
+        "source_type": "api",
+        "workspace_id": "65d775a24283564ab4b21a81",
+        "extension": "csv",
+        "created_at": "2024-02-22T16:39:24.358Z",
+        "num_rows": 5,
+        "status": "success",
+        "id": "65d778bc4283568b69b221ef"
+    },
+    {
+        "_id": "65ddabc9428356050bb89426",
+        "user": "65d775a24283563f98b21a75",
+        "user_email": "v3-api-demo@polymersearch.com",
+        "name": "File upload demo dataset",
+        "source_type": "api",
+        "workspace_id": "65d775a24283564ab4b21a81",
+        "extension": "csv",
+        "created_at": "2024-02-27T09:30:49.830Z",
+        "num_rows": 5,
+        "status": "success",
+        "id": "65ddabc9428356050bb89426"
+    }],
+    "limit": 100,
+    "page": 1,
+    "sort_key": "name",
+    "sort_order": "asc"
+}
+```
+
+
+### HTTP Request
+
+`GET https://v3.polymersearch.com/api/v1/dataset`
+
+
+### Query string
+
+Field | Mandatory | Description
+--------- | ------- | -----------
+limit | false | Page limit.
+page | false | Page number.
+sort_key | false | name, created_at, num_rows
+sort_order | false | desc,asc
