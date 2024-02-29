@@ -10,4 +10,6 @@ As a query parameter: `?api_key=&your_api_key`
 
 As a header: `X-API-KEY: &your_api_key`
 
+## Please note that the "workspace-id" header is optional. It is only necessary when you intend to execute an operation within a workspace other than the default one defined by the APIKEY.
+
 <aside class="success">You must replace `&your_api_key with` your personal API key.</aside>
