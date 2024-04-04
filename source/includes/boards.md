@@ -84,9 +84,7 @@ advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<b
 branding.logoUrl | false | Logo URL
 branding.logoLink | false | Link to redirect when clicked on logo URL
 colors | false | Type: List<br />List of color codes to be used in view preview mode.
-
-
-
+auto_generated | false | Type: Boolean<br /> Auto generted board
 
 
 
