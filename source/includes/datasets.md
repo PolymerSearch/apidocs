@@ -80,7 +80,7 @@ file | false | Type: file. The file to upload.
 name | true | Name of the dataset/file.
 starting_row | false | Desired row number where Polymer should start processing your file.
 update | false | Boolean. Force update dataset in case a dataset already exists with the given name.
-auto_generated_board | false | Boolean. Generate auto board
+auto_generate_board | false | Boolean. Generate auto board
 
 Note: Either 'url' or 'file' parameter is required.
 
