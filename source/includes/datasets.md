@@ -78,6 +78,7 @@ Field | Mandatory | Description
 url | false | URL to a valid public downloadable CSV.
 file | false | Type: file. The file to upload.
 name | true | Name of the dataset/file.
+description | false | Description of the dataset/file.
 starting_row | false | Desired row number where Polymer should start processing your file.
 update | false | Boolean. Force update dataset in case a dataset already exists with the given name.
 
@@ -137,6 +138,7 @@ Field | Mandatory | Description
 url | false | URL to a valid public downloadable CSV.
 file | false | Type: file. The file to upload.
 name | false | Name of the dataset/file.
+description | false | Description of the dataset/file.
 incremental_update | In case you are passing incremental updates only
 primary_key | Yes if incremental_update = true | name of the column
 
@@ -167,6 +169,7 @@ curl --location --request PUT 'https://v3.polymersearch.com/api/v1/dataset' \
         "user": "65d775a24283563f98b21a75",
         "user_email": "v3-api-demo@polymersearch.com",
         "name": "11_payment 624 CSV copy 1114.csv",
+        "description": "For Report 1",
         "source_type": "upload",
         "workspace_id": "65d775a24283564ab4b21a81",
         "created_at": "2024-02-22T16:26:46.352Z",
