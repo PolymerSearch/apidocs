@@ -75,6 +75,7 @@ curl --location --request POST 'https://v3.polymersearch.com/api/v1/board' \
 Field | Mandatory | Description
 --------- | ------- | -----------
 name | true | Type: String<br />Name of the board
+description | false | Type: String<br />Description of the board
 file_ids | true | Type: List[String]<br />Dataset IDs of the board
 blocks | true | Type: List [Blocks Object] <br />
 sharing | false | Desired sharing status for the dataset (public, private). Default: private
@@ -619,6 +620,7 @@ board_id | true | Type: String<br />Board ID
 Field | Mandatory | Description
 --------- | ------- | -----------
 name | false | Type: String<br />Name of the board
+description | false | Type: String<br />Description of the board
 blocks | false | Type: List [Blocks Object] <br />
 sharing | false | Desired sharing status for the dataset (public, private). Default: private
 advanced_sharing | false | control sharing settings for board
@@ -649,6 +651,7 @@ Note: Make sure you pass all the blocks inside `blocks` key
             "user_id": "636e0856759be7e1f00cfa0f",
             "file_id": "63d8248de061fa0d2023f20a",
             "name": "board - 1",
+            "description": "For Daily reporting on Ads",
             "sharing": "public",
             "is_template": "false"
         },
