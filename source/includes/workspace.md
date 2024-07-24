@@ -9,7 +9,10 @@ curl --location --request POST 'https://v3.polymersearch.com/api/v1/workspace' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "My Workspace Name",
-    "slug": "workspace-slug"
+    "slug": "workspace-slug",
+    "settings": {
+        "disable_share_button": true
+    }
 }'
 ```
 
@@ -24,6 +27,8 @@ Field | Mandatory | Description
 --------- | ------- | -----------
 name | true | Name of the workspace.
 slug | true | slug to be used in custom URLs. Alphanumeric characters, underscores, and dashes are allowed. It cannot end with an underscore or a dash.
+settings.disable_share_button | false | set this flag to disable share button on board
+
 
 
 ## Get workspaces
@@ -64,6 +69,9 @@ curl --location --request GET 'https://v3.polymersearch.com/api/v1/workspaces' \
             "slug": "polymer-marketing",
             "user_role": "Creator",
             "default": false,
+            "settings": {
+                "disable_share_button": false
+            },
             "members": [
                 {
                     "_id": "636e0856759be7e1f00cfa0f",
@@ -95,7 +103,10 @@ curl --location --request PATCH 'https://v3.polymersearch.com/api/v1/workspace/6
 --header 'x-api-key: {{apikey}}' \
 --header 'Content-Type: application/json' \
 --data '{
-    "name": "My Workspace Edited name"
+    "name": "My Workspace Edited name",
+    "settings": {
+        "disable_share_button": true
+    }
 }'
 ```
 
@@ -110,6 +121,7 @@ Field | Mandatory | Description
 --------- | ------- | -----------
 name | false | Name of the workspace.
 slug | false | slug to be used in custom URLs. Alphanumeric characters, underscores, and dashes are allowed. It cannot end with an underscore or a dash.
+settings.disable_share_button | false | set this flag to disable share button on board
 
 
 
