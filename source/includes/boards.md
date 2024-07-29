@@ -298,7 +298,7 @@ Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |pie
 file_id |String |Yes |file ID to drive this block
-x_axis_multiple |List |Yes |Object, Min length: 1, Max length: 2. <br > **name**: valid column
+x_axis_multiple |List |Yes |Object, Min length: 1, Max length: 1. <br > **name**: valid column
 y_axis_multiple |List |No |Object, Min length: 1, Max length: 1. <br > **name**: valid number column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
