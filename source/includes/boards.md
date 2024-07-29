@@ -247,7 +247,7 @@ file_id |String |Yes |file ID to drive this block
 y_axis |String |Yes |valid column name
 x_axis | String| No| valid column name
 operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-slice | String| No| valid column name
+metric | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
