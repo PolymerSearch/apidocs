@@ -105,7 +105,6 @@ auto_generated | false | Type: Boolean<br /> Auto generted board
         "operation": "COUNT"
     }],
     "y_axis": "campaign_status",
-    "operation": "SUM",
     "y_axis_log": true,
     "show_annotations": true,
     "show_stacked": false,
@@ -146,7 +145,6 @@ title | String| No | Custom heading
         "name": "Clicks (all)",
         "operation": "COUNT"
     }],
-    "operation": "SUM",
     "show_annotations": true,
     "show_stacked": false,
     "file_id": "65b50541d83d1e4d42c7fbe0"
