@@ -126,7 +126,7 @@ show_stacked | Boolean| No | Show as stack. Default: true
 is_percentage | Boolean| No | Show as percentage
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -165,7 +165,7 @@ show_stacked | Boolean| No | Show as stack. Default: true
 is_percentage | Boolean| No | Show as percentage
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -192,7 +192,7 @@ slice | String| No| valid column name
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -222,7 +222,7 @@ is_area | Boolean| No | Use area chart
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 group_by | String| No | Any value from day, week, month, quarter, year
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -248,7 +248,7 @@ operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, M
 slice | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -274,7 +274,7 @@ operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, M
 slice | String| No| valid column name
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -300,7 +300,7 @@ x_axis_multiple |List |Yes |Object, Min length: 1, Max length: 2. <br > **name**
 y_axis_multiple |List |No |Object, Min length: 1, Max length: 1. <br > **name**: valid number column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -328,7 +328,7 @@ influencing_columns |List |Yes |Influencing Columns - list of valid column names
 results_type |String |No |Show results - Any value from count, below_average_only, above_average_only, top_and_bottom_outliers, above_and_below_average
 show_results_column | Boolean| No | Show Results Column
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 lower_better | Boolean| No | Lower Better
@@ -362,7 +362,7 @@ influencing_columns |List |Yes |Influencing Columns - list of valid column names
 show_results_column | Boolean| No | Show Results Column
 show_percentage | Boolean| No | Show ROI as Percentage
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 lower_better | Boolean| No | Lower Better
@@ -397,7 +397,7 @@ show_percentage | Boolean| No | Show Percentage, Default: True
 sort_by_row_tags | String| No | Sort rows by tag value. Any  value from ASC, DESC
 column_manual_order | List| No | Sort columns by column tags. List of tag values
 sort_by_counts |Object |No | **column_index**: index of the column given in columns <br > **metric_index**: index of the column given in metrics <br > **order**: Any  value from ASC, DESC
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 pin_totals | Boolean| No | Pin Totals
@@ -426,7 +426,7 @@ date_range | String| No| Any value from 'last day', 'last 7 days', 'last 14 days
 comp_date_range | String| No| Any value from 'previous period', 'custom'
 goal |Number |No |
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 
 
@@ -459,7 +459,7 @@ values |List |Yes |Object, Min length: 1, Max length: 10. <br > **column**: vali
 sort |Object |Yes |Object <br > **column**: valid column <br > **order**: Any value from ASC, DESC
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 show_totals | Boolean| No | Show Column Totals
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -475,7 +475,23 @@ Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |rich-text-insight
 html |String |Yes |HTML text
-width | Boolean| No | Any value from one-third , two-thirds, full. Default: full
+width | String| No | Any value from one-third , two-thirds, full. Default: full
+
+
+### IMAGE BLOCK
+```json
+{
+    "type": "image",
+    "appearance": "fit",
+    "url": "https://cdn-v3-dev.polymerdev.com/assets/logo-4743e3c9.svg"
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |image
+appearance |String |Yes |Any value from fit,fill
+url |String |Yes |Any valid public image URL
+width | String| No | Any value from one-third , two-thirds, full. Default: full
 
 
 ### Field: filters
