@@ -86,6 +86,7 @@ branding.logoUrl | false | Logo URL
 branding.logoLink | false | Link to redirect when clicked on logo URL
 colors | false | Type: List<br />List of color codes to be used in view preview mode.
 auto_generated | false | Type: Boolean<br /> Auto generted board
+slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 
 
 
 
@@ -245,7 +246,7 @@ file_id |String |Yes |file ID to drive this block
 y_axis |String |Yes |valid column name
 x_axis | String| No| valid column name
 operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-slice | String| No| valid column name
+metric | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width | String| No | Any value from one-third , two-thirds, full. Default: full
@@ -643,6 +644,7 @@ advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<b
 branding.logoUrl | false | Logo URL
 branding.logoLink | false | Link to redirect when clicked on logo URL
 colors | false | Type: List<br />List of color codes to be used in view preview mode.
+slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 
 ### Blocks Object
 Same as described on Create Board request
