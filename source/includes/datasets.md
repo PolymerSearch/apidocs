@@ -99,6 +99,35 @@ curl --location --request PUT 'https://v3.polymersearch.com/api/v1/dataset/61517
 ```
 
 
+```shell
+curl --location --request PUT 'https://v3.polymersearch.com/api/v1/dataset/6151754dfad3627deeb8f84b' \
+--header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "url": "https://test-csv-datasets.s3.us-east-2.amazonaws.com/Test+-+Bank+Loans.csv",
+    "incremental_update": true,
+    "primary_key": "column1"
+}'
+```
+
+
+```shell
+curl --location --request PUT 'https://v3.polymersearch.com/api/v1/dataset/6151754dfad3627deeb8f84b' \
+--header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "ingestion_type": "json",
+    "delete": true,
+    "primary_key": "column1",
+    "records": [
+        {
+            "column1": "ID100"
+        }
+    ]
+}'
+```
+
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -139,8 +168,9 @@ url | false | URL to a valid public downloadable CSV.
 file | false | Type: file. The file to upload.
 name | false | Name of the dataset/file.
 description | false | Description of the dataset/file.
-incremental_update | In case you are passing incremental updates only
-primary_key | Yes if incremental_update = true | name of the column
+incremental_update | false | In case you are passing incremental updates only
+delete | false | In case you are passing row IDs to delete
+primary_key | false | if incremental_update = true or delete = true | name of the primary key column
 
 
 
