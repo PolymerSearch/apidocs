@@ -493,6 +493,30 @@ type |String |Yes |image
 appearance |String |Yes |Any value from fit,fill
 url |String |Yes |Any valid public image URL
 width | String| No | Any value from one-third , two-thirds, full. Default: full
+title | String| No | Custom heading
+
+
+### MAP BLOCK
+```json
+{
+    "type": "map",
+    "base_column": "country",
+    "metrics": [
+        {
+            "name": "annual_revenue",
+            "operation": "AVERAGE"
+        }
+    ],
+    "file_id": "66b9d4ece653ad0008f8ce90"
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |data-table
+file_id |String |Yes |file ID to drive this block
+base_column |List |Yes |valid column name
+metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+title | String| No | Custom heading
 
 
 ### Field: filters
