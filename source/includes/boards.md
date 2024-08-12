@@ -512,7 +512,7 @@ title | String| No | Custom heading
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
-type |String |Yes |data-table
+type |String |Yes |map
 file_id |String |Yes |file ID to drive this block
 base_column |String |Yes |valid column name that can be used for plotting on map
 metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
