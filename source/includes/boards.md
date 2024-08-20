@@ -1,6 +1,6 @@
 # Board
 
-With boards API you can create blocks and data segments and share them with the world instead of exposing the complete Polymer site. Embed in your site a manually selected block for your data, or let our powerful AI determine what are the best blocks for your data.
+The Boards API allows you to create and share specific blocks and data segments without exposing your entire Polymer site. You can embed a manually selected block on your site, or leverage our powerful AI to automatically identify and present the most relevant blocks for your data.
 
 ## Create Board
 
@@ -76,18 +76,17 @@ Field | Mandatory | Description
 --------- | ------- | -----------
 name | true | Type: String<br />Name of the board
 description | false | Type: String<br />Description of the board
-file_ids | true | Type: List[String]<br />Dataset IDs of the board
+file_ids | true | Type: List[String]<br />Dataset IDs associated with the board.
 blocks | true | Type: List [Blocks Object] <br />
 sharing | false | Desired sharing status for the dataset (public, private). Default: private
-advanced_sharing | false | control sharing settings for board
-advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply global filters
-advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
-branding.logoUrl | false | Logo URL
-branding.logoLink | false | Link to redirect when clicked on logo URL
-colors | false | Type: List<br />List of color codes to be used in view preview mode.
-auto_generated | false | Type: Boolean<br /> Auto generted board
-slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 
-
+advanced_sharing | false | Controls advanced sharing settings for the board.
+advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Allows viewers to apply global filters.
+advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Allows viewers to apply block-based filters
+branding.logoUrl | false | URL of the logo to be displayed.
+branding.logoLink | false | URL to redirect when the logo is clicked.
+colors | false | Type: List<br /> List of color codes to be used in view preview mode.
+auto_generated | false | Type: Boolean<br /> Indicates whether the board is auto-generated.
+slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 
 
 ## Blocks Object
@@ -114,23 +113,22 @@ slug | false | Used for constructing a custom board URL. Length must be between 
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
-type |String |Yes |bar
-file_id |String |Yes |file ID to drive this block
-x_axis |List | one of the x_axis or x_axis_multiple is required | valid column name
-x_axis_multiple | List | one of the x_axis or x_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-y_axis | String| Yes| valid column name
-operation | String| No | Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-sort | Object | No | **type**: total (Total), raw (Raw Order), count (Count), value (x-axis tags) <br > **operation**: Any  value from asc, desc
-slice | String| No| valid column name
-show_annotations | Boolean| No | Annotate each segment by its value
-show_stacked | Boolean| No | Show as stack. Default: true
-is_percentage | Boolean| No | Show as percentage
-y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
-exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+type |String |Yes | bar
+file_id |String |Yes | File ID associated with this block.
+x_axis |List | One of x_axis or x_axis_multiple is required	 | Valid column name for the x-axis.
+x_axis_multiple | List | One of x_axis or x_axis_multiple is required | List of objects, with a minimum of 2 and a maximum of 10 items. <br > **name**: valid column <br > **operation**: One of COUNT, COUNT_UNIQUE, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+y_axis | String| Yes| Valid column name for the y-axis.
+operation | String| No | Aggregation operation. Possible values: COUNT, COUNT_UNIQUE, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN.
+sort | Object | No | Sort configuration. **type**: total (Total), raw (Raw Order), count (Count), value (x-axis tags) <br > **operation**: Sorting order (asc, desc)
+slice | String| No| Valid column name to slice data by.
+show_annotations | Boolean| No | Annotate each segment with its value.
+show_stacked | Boolean| No | Display as a stacked chart. Default: true.
+is_percentage | Boolean| No | Display values as percentages.
+y_axis_log | Boolean| No | Use a logarithmic scale for the Y-axis.
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings from the data. Default: true
 width | String| No | Any value from one-third , two-thirds, full. Default: full
-filters | Object| No | Filter Object
-title | String| No | Custom heading
-
+filters | Object| No | Filter configuration object.
+title | String| No | Custom heading for the block.
 
 ### Column Chart
 ```json
@@ -667,7 +665,7 @@ advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> 
 advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
 branding.logoUrl | false | Logo URL
 branding.logoLink | false | Link to redirect when clicked on logo URL
-colors | false | Type: List<br />List of color codes to be used in view preview mode.
+colors | false | Type: List<br />List of color codes to be used in board preview mode.
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 
 ### Blocks Object

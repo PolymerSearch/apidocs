@@ -1,9 +1,9 @@
 # Introduction
 
-Welcome to the Polymer public API documentation! You can use our API to access Polymer API endpoints, that provide various functionality present on our website.
+Welcome to the Polymer Public API documentation! Our API allows you to interact with Polymer's endpoints, providing access to various functionalities available on our platform.
 
-Endpoints description, method, URL, request/response schema, and their description are presented on the left. The right side contains example requests (via curl) and responses (in JSON). In the future, more endpoints will be added to provide complete access to Polymer database.
+On the left, you'll find detailed information about each endpoint, including descriptions, methods, URLs, and request/response schemas. The right side features example requests (via cURL) and corresponding JSON responses. We plan to expand this documentation with additional endpoints to offer comprehensive access to the Polymer database.
 
-If this is your first time reading the docs, check out the Authentication section for obtaining and using API keys.
+If this is your first time using our API, start by reviewing the Authentication section to learn how to obtain and use API keys.
 
-The Changelog section contains all updates related to this API.
+For updates and changes, refer to the Changelog section.

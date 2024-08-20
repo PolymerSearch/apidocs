@@ -1,11 +1,12 @@
 # Embed
 
-Polymer generated app can be embed to create new boards (views), and browse/edit existing ones:
+A Polymer-generated app can be embedded to create new boards and to browse or edit existing ones.
+
 
 
 ## Generate an auth token
 
-This endpoint generates token to give authenticated access to embeded apps:
+This endpoint generates a token to provide authenticated access to embedded apps:
 
 ### HTTP Request
 

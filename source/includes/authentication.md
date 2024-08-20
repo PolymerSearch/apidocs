@@ -1,15 +1,15 @@
 # Authentication
 
-Polymer API uses API keys to allow access to our endpoints. You can register a new API key as a user, inside user settings, on the API Keys section.
+Polymer API uses API keys to authenticate access to its endpoints. You can generate a new API key within your user settings under the "API Keys" section.
 
-Currently you can create as many API Keys as you want and give them a name. Once you don't want to use it you can disable it from the dashboard.
+You can create multiple API keys, each with a custom name. If you no longer need an API key, you can disable it via the dashboard.
 
-Polymer API expects the API key to be included in all API requests to the server. There are two ways to include it in requests:
+Include your API key in all requests to the Polymer API. There are two supported methods for passing the API key:
 
 As a query parameter: `?api_key=&your_api_key`
 
 As a header: `X-API-KEY: &your_api_key`
 
-## Please note that the "workspace-id" header is optional. It is only necessary when you intend to execute an operation within a workspace other than the default one defined by the APIKEY.
+## The "workspace-id" header is optional. It is required only when you need to perform operations in a workspace other than the default one associated with your API key.
 
-<aside class="success">You must replace `&your_api_key with` your personal API key.</aside>
+<aside class="success">Replace `&your_api_key` with your actual API key.</aside>
