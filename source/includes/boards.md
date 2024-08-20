@@ -128,7 +128,7 @@ is_percentage | Boolean| No | Show as percentage
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
-height | Integer| No | Any value from 1 to 3. Default: 2
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -168,7 +168,7 @@ is_percentage | Boolean| No | Show as percentage
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
-height | Integer| No | Any value from 1 to 3. Default: 2
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -196,7 +196,7 @@ x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
-height | Integer| No | Any value from 1 to 3. Default: 2
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -227,7 +227,7 @@ y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 group_by | String| No | Any value from day, week, month, quarter, year
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
-height | Integer| No | Any value from 1 to 3. Default: 2
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -254,7 +254,7 @@ metric | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
-height | Integer| No | Any value from 1 to 3. Default: 2
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -281,7 +281,7 @@ slice | String| No| valid column name
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
-height | Integer| No | Any value from 1 to 3. Default: 2
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -530,6 +530,8 @@ type |String |Yes |map
 file_id |String |Yes |file ID to drive this block
 base_column |String |Yes |valid column name that can be used for plotting on map
 metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 2 to 3. Default: 2
 title | String| No | Custom heading
 
 
