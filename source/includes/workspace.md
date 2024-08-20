@@ -28,7 +28,7 @@ Field | Mandatory | Description
 name | true | Name of the workspace.
 slug | true | slug to be used in custom URLs. Alphanumeric characters, underscores, and dashes are allowed. It cannot end with an underscore or a dash.
 settings.disable_share_button | false | set this flag to disable share button on board
-
+settings.enable_polyai_in_read_only_permission | false | set this flag to enable PolyAI on read only permissions
 
 
 ## Get workspaces
@@ -105,7 +105,8 @@ curl --location --request PATCH 'https://v3.polymersearch.com/api/v1/workspace/6
 --data '{
     "name": "My Workspace Edited name",
     "settings": {
-        "disable_share_button": true
+        "disable_share_button": true,
+        "enable_polyai_in_read_only_permission": true
     }
 }'
 ```
@@ -122,6 +123,7 @@ Field | Mandatory | Description
 name | false | Name of the workspace.
 slug | false | slug to be used in custom URLs. Alphanumeric characters, underscores, and dashes are allowed. It cannot end with an underscore or a dash.
 settings.disable_share_button | false | set this flag to disable share button on board
+settings.enable_polyai_in_read_only_permission | false | set this flag to enable PolyAI on read only permissions
 
 
 
