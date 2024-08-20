@@ -87,7 +87,7 @@ branding.logoLink | false | Link to redirect when clicked on logo URL
 colors | false | Type: List<br />List of color codes to be used in view preview mode.
 auto_generated | false | Type: Boolean<br /> Auto generted board
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 
-background_color | false | valid color name. Set background color of board
+background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733 )
 
 
 ## Blocks Object
@@ -683,7 +683,7 @@ branding.logoUrl | false | Logo URL
 branding.logoLink | false | Link to redirect when clicked on logo URL
 colors | false | Type: List<br />List of color codes to be used in view preview mode.
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
-background_color | false | valid color name. Set background color of board
+background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733 )
 
 ### Blocks Object
 Same as described on Create Board request
