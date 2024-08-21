@@ -30,6 +30,7 @@ includes:
   - tasks
   - boards
   - embed
+  - changelog
 
 search: true
 code_clipboard: true
