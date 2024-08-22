@@ -139,6 +139,7 @@ allowed_columns_in_filters | false | Type: allowed_columns_in_filters Object<br 
 ```
 
 ### Notes
+
 - `65b50541d83d1e4d42c7fbe0` is the `file_id`.
 - `65b50541d83d1e4d42c7fbe0.columns` refers to the list of columns that can be included in global filters.
 - `65b50541d83d1e4d42c7fbe0.columns.spend.allow_all_values` indicates that all values from the spend column are permitted in the global filters.
