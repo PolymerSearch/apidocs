@@ -16,8 +16,8 @@ This endpoint generates a token to provide authenticated access to embedded apps
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-permission_level | true | board_read_only : Grant permission for reading data from the specified board ID.<br /><br /> board_edit : Grant permission for reading/editing data from the specified board ID.<br /><br /> workspace_read_only: Authorize access for reading (read-only) all board data within the workspace.<br /><br /> workspace_edit : Grant permission for reading, adding, and editing all board data within the workspace.<br /><br />block_level_read_only : Grant permission for reading data from the specified block from board ID.
-board_id | false | Required when granting board_read_only, block_level_read_only or board_edit permissions.
+permission_level | true | board_read_only: Grants permission to read data from the specified board ID.<br /><br /> board_edit: Grants permission to read and edit data from the specified board ID.<br /><br /> workspace_read_only: Authorizes read-only access to all board data within the workspace.<br /><br /> workspace_edit: Grant permission for reading, adding, and editing all board data within the workspace.<br /><br />block_level_read_only: Grants permission to read, add, and edit all board data within the workspace.
+board_id | false | Grants permission to read data from the specified block on the board.
 
 
 > Request
@@ -38,7 +38,6 @@ curl --location 'https://v3.polymersearch.com/api/v1/auth/token?access_level=wor
     "expires_at": "2023-07-20T12:15:40.741Z"
 }
 ```
-
 
 ## Generating an embed URL using an authentication token
 

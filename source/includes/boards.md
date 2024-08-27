@@ -1,6 +1,7 @@
 # Board
 
-With boards API you can create blocks and data segments and share them with the world instead of exposing the complete Polymer site. Embed in your site a manually selected block for your data, or let our powerful AI determine what are the best blocks for your data.
+The Boards API enables the creation of boards and blocks, each containing charts and visualizations that can be shared independently. You can embed specific visualizations into your site. Boards can be composed of multiple blocks, with each block representing a distinct visualization. Blocks can be created manually, or you can utilize the auto-generated blocks feature to assemble a board with a single click.
+
 
 ## Create Board
 
@@ -76,18 +77,18 @@ Field | Mandatory | Description
 --------- | ------- | -----------
 name | true | Type: String<br />Name of the board
 description | false | Type: String<br />Description of the board
-file_ids | true | Type: List[String]<br />Dataset IDs of the board
+file_ids | true | Type: List[String]<br />Dataset IDs to be associated with the board.
 blocks | true | Type: List [Blocks Object] <br />
-sharing | false | Desired sharing status for the dataset (public, private). Default: private
-advanced_sharing | false | control sharing settings for board
-advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply global filters
-advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
-branding.logoUrl | false | Logo URL
-branding.logoLink | false | Link to redirect when clicked on logo URL
+sharing | false | Desired sharing status for the board (public, private). Default: private
+advanced_sharing | false | Controls sharing settings for the board.
+advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Allows viewers to apply global filters.
+advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Allows viewers to apply block-based filters.
+branding.logoUrl | false | URL of the logo.
+branding.logoLink | false | URL to redirect when the logo is clicked.
 colors | false | Type: List<br />List of color codes to be used in view preview mode.
-auto_generated | false | Type: Boolean<br /> Auto generted board
-slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 
-background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733 )
+auto_generated | false | Type: Boolean<br /> Auto generate the board (populate with blocks based on our AI engine)
+slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
+background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733)
 
 
 ## Blocks Object
@@ -115,18 +116,18 @@ background_color | false | Valid CSS color name (eg. white, blue), or valid hexa
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |bar
-file_id |String |Yes |file ID to drive this block
-x_axis |List | one of the x_axis or x_axis_multiple is required | valid column name
-x_axis_multiple | List | one of the x_axis or x_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-y_axis | String| Yes| valid column name
-operation | String| No | Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-sort | Object | No | **type**: total (Total), raw (Raw Order), count (Count), value (x-axis tags) <br > **operation**: Any  value from asc, desc
-slice | String| No| valid column name
+file_id |String |Yes | Dataset ID to drive this block
+x_axis |List | One of the `x_axis` or `x_axis_multiple` is required | Valid column name
+x_axis_multiple | List | One of the `x_axis` or `x_axis_multiple` is required | Object, Min length: 2, Max length: 10. <br > **name**: Valid column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+y_axis | String| Yes| Valid column name
+operation | String| No | Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+sort | Object | No | **type**: `total` (Total), `raw` (Raw Order), `count` (Count), `value` (x-axis tags) <br > **operation**: Any  value from `asc`, `desc`
+slice | String| No| Valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
-show_stacked | Boolean| No | Show as stack. Default: true
+show_stacked | Boolean| No | Show as stack. Default: `true`
 is_percentage | Boolean| No | Show as percentage
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
-exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: `true`
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
@@ -155,18 +156,18 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String | Yes |column
-file_id |String |Yes |file ID to drive this block
-x_axis | String| Yes| valid column name
-y_axis | String | one of the y_axis or y_axis_multiple is required | valid column name
-y_axis_multiple | List | one of the y_axis or y_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-operation | String| No | Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-sort | Object | No | **type**: total (Total), raw (Raw Order), count (Count), value (x-axis tags) <br > **operation**: Any  value from asc, desc
-slice | String| No| valid column name
+file_id |String |Yes | Dataset ID to drive this block
+x_axis | String| Yes| Valid column name
+y_axis | String | One of the `y_axis` or `y_axis_multiple` is required | Valid column name
+y_axis_multiple | List | One of the `y_axis` or `y_axis_multiple` is required | Object, Min length: 2, Max length: 10. <br > **name**: Valid column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+operation | String| No | Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+sort | Object | No | **type**: total (Total), raw (Raw Order), count (Count), value (x-axis tags) <br > **operation**: Any value from `asc`, `desc`
+slice | String| No| Valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
-show_stacked | Boolean| No | Show as stack. Default: true
+show_stacked | Boolean| No | Show as stack. Default: `true`
 is_percentage | Boolean| No | Show as percentage
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
-exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: `true`
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
@@ -187,14 +188,14 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |scatter
-file_id |String |Yes |file ID to drive this block
-x_axis | String| Yes| valid number column name
-y_axis |String |Yes | valid number column name
-operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-slice | String| No| valid column name
+file_id |String |Yes | Dataset ID to drive this block
+x_axis | String| Yes| Valid number column name
+y_axis |String |Yes | Valid number column name
+operation | String| Yes| Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+slice | String| No| Valid column name
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
-exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: `true`
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
@@ -217,14 +218,14 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |timeseries
-file_id |String |Yes |file ID to drive this block
+file_id |String |Yes | Dataset ID to drive this block
 x_axis | String| Yes| valid date column name
-y_axis |String | No | valid number column name
-y_axis_multiple | List | No | Object, Min length: 2, Max length: 10. <br > **name**: valid number column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-slice | String| No| valid column name
+y_axis |String | No | Valid number column name
+y_axis_multiple | List | No | Object, Min length: 2, Max length: 10. <br > **name**: Valid number column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+slice | String| No| Valid column name
 is_area | Boolean| No | Use area chart
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
-exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: `true`
 group_by | String| No | Any value from day, week, month, quarter, year
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
@@ -246,13 +247,13 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |heatmap
-file_id |String |Yes |file ID to drive this block
-y_axis |String |Yes |valid column name
-x_axis | String| No| valid column name
-operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-metric | String| No| valid column name
+file_id |String |Yes | Dataset ID to drive this block
+y_axis |String |Yes | Valid column name
+x_axis | String| No| Valid column name
+operation | String| Yes| Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+metric | String| No| Valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
-exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: `true`
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
@@ -272,14 +273,14 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |lineplot
-file_id |String |Yes |file ID to drive this block
-y_axis |String | one of the y_axis or y_axis_multiple is required |valid column name
-y_axis_multiple | List | one of the y_axis or y_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-x_axis | String| Yes| valid column name
-operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-slice | String| No| valid column name
+file_id |String |Yes | Dataset ID to drive this block
+y_axis |String | One of the `y_axis` or `y_axis_multiple` is required | Valid column name
+y_axis_multiple | List | One of the `y_axis` or `y_axis_multiple` is required | Object, Min length: 2, Max length: 10. <br > **name**: Valid column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+x_axis | String| Yes| Valid column name
+operation | String| Yes| Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+slice | String| No| Valid column name
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
-exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: `true`
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
@@ -302,11 +303,11 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |pie
-file_id |String |Yes |file ID to drive this block
-x_axis_multiple |List |Yes |Object, Min length: 1, Max length: 2. <br > **name**: valid column
-y_axis_multiple |List |No |Object, Min length: 1, Max length: 1. <br > **name**: valid number column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+file_id |String |Yes | Dataset ID to drive this block
+x_axis_multiple |List |Yes |Object, Min length: 1, Max length: 2. <br > **name**: Valid column
+y_axis_multiple |List |No |Object, Min length: 1, Max length: 1. <br > **name**: Valid number column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
 show_annotations | Boolean| No | Annotate each segment by its value
-exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: `true`
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
@@ -329,18 +330,18 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |outlier
-file_id |String |Yes |file ID to drive this block
-metric |String |Yes | valid number column name
-operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-influencing_columns |List |Yes |Influencing Columns - list of valid column names. Min length: 1, Max length: 6
-results_type |String |No |Show results - Any value from count, below_average_only, above_average_only, top_and_bottom_outliers, above_and_below_average
+file_id |String |Yes | Dataset ID to drive this block
+metric |String |Yes | Valid number column name
+operation | String| Yes| Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+influencing_columns |List |Yes |Influencing Columns - list of Valid column names. Min length: 1, Max length: 6
+results_type |String |No |Show results - Any value from `count`, `below_average_only`, `above_average_only`, `top_and_bottom_outliers`, `above_and_below_average`
 show_results_column | Boolean| No | Show Results Column
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
-lower_better | Boolean| No | Lower Better
+lower_better | Boolean| No |  Indicates if a lower value is better.
 
 
 ### ROI CALCULATOR
@@ -362,12 +363,12 @@ lower_better | Boolean| No | Lower Better
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |roi
-file_id |String |Yes |file ID to drive this block
-max_metric |String |Yes |Metric to Maximize (Return) - valid number column name
-max_operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-min_metric |String |Yes |Metric to Minimize (Investment) - valid number column name
-min_metric | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-influencing_columns |List |Yes |Influencing Columns - list of valid column names. Min length: 1, Max length: 6
+file_id |String |Yes | Dataset ID to drive this block
+max_metric |String |Yes | Metric to Maximize (Return) - valid number column name
+max_operation | String| Yes| Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+min_metric |String |Yes | Metric to Minimize (Investment) - valid number column name
+min_metric | String| Yes| Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+influencing_columns |List |Yes | Influencing Columns - list of valid column names. Min length: 1, Max length: 6
 show_results_column | Boolean| No | Show Results Column
 show_percentage | Boolean| No | Show ROI as Percentage
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
@@ -375,7 +376,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
-lower_better | Boolean| No | Lower Better
+lower_better | Boolean| No | Indicates if a lower value is better.
 
 
 ### PIVOT TABLE
@@ -397,16 +398,16 @@ lower_better | Boolean| No | Lower Better
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |pivot
-file_id |String |Yes |file ID to drive this block
-metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **metric**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-rows |List |Yes |Rows - list of valid column names. Min length: 1, Max length: 1
-columns |List |Yes |Columns - list of valid column names. Min length: 1, Max length: 1
+file_id |String |Yes | Dataset ID to drive this block
+metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **metric**: Valid column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+rows |List |Yes |Rows - list of Valid column names. Min length: 1, Max length: 1
+columns |List |Yes |Columns - list of Valid column names. Min length: 1, Max length: 1
 show_row_totals | Boolean| No | Show Row Totals
 show_column_totals | Boolean| No | Show Column Totals
-show_percentage | Boolean| No | Show Percentage, Default: True
-sort_by_row_tags | String| No | Sort rows by tag value. Any  value from ASC, DESC
+show_percentage | Boolean| No | Show Percentage, Default: `True`
+sort_by_row_tags | String| No | Sort rows by tag value. Any  value from `ASC`, `DESC`
 column_manual_order | List| No | Sort columns by column tags. List of tag values
-sort_by_counts |Object |No | **column_index**: index of the column given in columns <br > **metric_index**: index of the column given in metrics <br > **order**: Any  value from ASC, DESC
+sort_by_counts |Object |No | **column_index**: index of the column given in columns <br > **metric_index**: index of the column given in metrics <br > **order**: Any  value from `ASC`, `DESC`
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
@@ -429,10 +430,10 @@ pin_totals | Boolean| No | Pin Totals
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |kpi
-file_id |String |Yes |file ID to drive this block
-metric |List |Yes |valid date column name
-operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-date | String| No| valid date column name
+file_id |String |Yes | Dataset ID to drive this block
+metric |List |Yes | Valid date column name
+operation | String| Yes| Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+date | String| No| Valid date column name
 date_range | String| No| Any value from 'last day', 'last 7 days', 'last 14 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, 'this month', 'this week', 'last week', custom
 comp_date_range | String| No| Any value from 'previous period', 'custom'
 goal |Number |No |
@@ -464,11 +465,11 @@ filters | Object| No | Filter Object
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
-type |String |Yes |data-table
-file_id |String |Yes |file ID to drive this block
-columns |List |Yes |valid column name
-values |List |Yes |Object, Min length: 1, Max length: 10. <br > **column**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-sort |Object |Yes |Object <br > **column**: valid column <br > **order**: Any value from ASC, DESC
+type |String |Yes | data-table
+file_id |String |Yes | Dataset ID to drive this block
+columns |List |Yes | Valid column name
+values |List |Yes |Object, Min length: 1, Max length: 10. <br > **column**: Valid column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
+sort |Object |Yes |Object <br > **column**: Valid column <br > **order**: Any value from `ASC`, `DESC`
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 show_totals | Boolean| No | Show Column Totals
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
@@ -486,8 +487,8 @@ title | String| No | Custom heading
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
-type |String |Yes |rich-text-insight
-html |String |Yes |HTML text
+type |String |Yes | rich-text-insight
+html |String |Yes | HTML text
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 1
 
@@ -503,7 +504,7 @@ height | Integer| No | Any value from 1 to 3. Default: 1
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |image
-appearance |String |Yes |Any value from fit,fill
+appearance |String |Yes |Any value from `fit`,`fill`
 url |String |Yes |Any valid public image URL
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
@@ -527,9 +528,9 @@ title | String| No | Custom heading
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |map
-file_id |String |Yes |file ID to drive this block
-base_column |String |Yes |valid column name that can be used for plotting on map
-metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+file_id |String |Yes | Dataset ID to drive this block
+base_column |String |Yes | Valid column name that can be used for plotting on map
+metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **name**: Valid column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 title | String| No | Custom heading
@@ -540,10 +541,11 @@ Allowed values: object
 
 The following filters can be applied
 
-- Filter date columns with dynamic date range like last 30 days, last year, etc.
-- Filter numerical columns with ranges like amount between 25 to 45.
-- Text search in categorical columns like payment mechanism including cash and demand draft.
-- Text search in categorical columns like payment mechanism excluding cash
+- Date Columns: Filter using dynamic date ranges, such as "last 30 days," "last year," etc.
+- Numerical Columns: Filter using ranges, such as "amount between 25 to 45."
+- Categorical Columns (Text Search):
+    - Include specific values, e.g., "payment mechanism including cash and demand draft."
+    - Exclude specific values, e.g., "payment mechanism excluding cash."
 
 Example payload
 `
@@ -679,19 +681,17 @@ description | false | Type: String<br />Description of the board
 blocks | false | Type: List [Blocks Object] <br />
 sharing | false | Desired sharing status for the dataset (public, private). Default: private
 advanced_sharing | false | control sharing settings for board
-advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply global filters
-advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
-branding.logoUrl | false | Logo URL
-branding.logoLink | false | Link to redirect when clicked on logo URL
-colors | false | Type: List<br />List of color codes to be used in view preview mode.
+advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Allows viewers to apply global filters.
+advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Allows viewers to apply block-based filters.
+branding.logoUrl | false | URL of the logo.
+branding.logoLink | false | URL to redirect when the logo is clicked.
+colors | false | Type: List<br /> List of color codes to be used in view preview mode.
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733 )
 
 ### Blocks Object
 Same as described on Create Board request
 Note: Make sure you pass all the blocks inside `blocks` key
-
-
 
 ## Fetch Boards
 

@@ -5,7 +5,7 @@ The Dataset API allows the creation of new Polymer sites from your CSV files.
 
 ## Upload a Dataset
 
-This endpoint starts processing provided CSV.
+This endpoint initiates the processing of the provided CSV file.
 
 ```shell
 curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
@@ -75,7 +75,7 @@ curl --location --request POST 'https://v3.polymersearch.com/api/v1/dataset' \
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-url | false | URL to a valid public downloadable CSV.
+url | false | URL to a valid publicly downloadable CSV.
 file | false | Type: file. The file to upload.
 name | true | Name of the dataset/file.
 description | false | Description of the dataset/file.
@@ -164,14 +164,13 @@ id | true | Dataset ID.
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-url | false | URL to a valid public downloadable CSV.
+url | false | URL to a valid publicly downloadable CSV.
 file | false | Type: file. The file to upload.
 name | false | Name of the dataset/file.
 description | false | Description of the dataset/file.
-incremental_update | false | In case you are passing incremental updates only
-delete | false | In case you are passing row IDs to delete
+incremental_update | false | Indicates if the data being passed is for incremental updates only.
+delete | false | Indicates if the data being passed contains row IDs to delete.
 primary_key | false | if incremental_update = true or delete = true | name of the primary key column
-
 
 
 ## Fetch Datasets
@@ -251,7 +250,7 @@ curl --location --request PUT 'https://v3.polymersearch.com/api/v1/dataset' \
 
 Field | Mandatory | Description
 --------- | ------- | -----------
-limit | false | Page limit.
-page | false | Page number.
+limit | false | Maximum number of records per page.
+page | false | Page number to retrieve.
 sort_key | false | name, created_at, num_rows
-sort_order | false | desc,asc
+sort_order | false | Allowed values: `desc`, `asc`.

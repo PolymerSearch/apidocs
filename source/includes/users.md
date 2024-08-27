@@ -81,12 +81,13 @@ curl --location --request POST 'https://v3.polymersearch.com/api/v1/workspace/in
 
 ### Body content
 
-Field | Mandatory | Description
---------- | ------- | -----------
-members | true | List of members to invite
-members[].email | true | valid email ID
-members[].role | true | Valid values: Editor, Read-only
-skip_invite_email | false | Boolean
+| Field                | Mandatory | Data Type | Description                                               |
+|----------------------|-----------|-----------|-----------------------------------------------------------|
+| members              | true      | List      | List of members to invite.                                 |
+| members[].email      | true      | String    | A valid email ID.                                          |
+| members[].role       | true      | String    | Valid values: `Editor`, `Read-only`.                       |
+| skip_invite_email    | false     | Boolean   | If true, the invitation email will not be sent.            |
+
 
 
 
