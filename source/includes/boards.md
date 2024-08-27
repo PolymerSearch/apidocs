@@ -1,6 +1,6 @@
 # Board
 
-The Boards API allows you to create and share specific blocks and data segments without exposing your entire Polymer site. You can embed a manually selected block on your site, or leverage our powerful AI to automatically identify and present the most relevant blocks for your data.
+With boards API you can create blocks and data segments and share them with the world instead of exposing the complete Polymer site. Embed in your site a manually selected block for your data, or let our powerful AI determine what are the best blocks for your data.
 
 ## Create Board
 
@@ -76,17 +76,18 @@ Field | Mandatory | Description
 --------- | ------- | -----------
 name | true | Type: String<br />Name of the board
 description | false | Type: String<br />Description of the board
-file_ids | true | Type: List[String]<br />Dataset IDs associated with the board.
+file_ids | true | Type: List[String]<br />Dataset IDs of the board
 blocks | true | Type: List [Blocks Object] <br />
 sharing | false | Desired sharing status for the dataset (public, private). Default: private
-advanced_sharing | false | Controls advanced sharing settings for the board.
-advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Allows viewers to apply global filters.
-advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Allows viewers to apply block-based filters
-branding.logoUrl | false | URL of the logo to be displayed.
-branding.logoLink | false | URL to redirect when the logo is clicked.
-colors | false | Type: List<br /> List of color codes to be used in view preview mode.
-auto_generated | false | Type: Boolean<br /> Indicates whether the board is auto-generated.
-slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
+advanced_sharing | false | control sharing settings for board
+advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply global filters
+advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
+branding.logoUrl | false | Logo URL
+branding.logoLink | false | Link to redirect when clicked on logo URL
+colors | false | Type: List<br />List of color codes to be used in view preview mode.
+auto_generated | false | Type: Boolean<br /> Auto generted board
+slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 
+background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733 )
 
 
 ## Blocks Object
@@ -113,22 +114,24 @@ slug | false | Used for constructing a custom board URL. Length must be between 
 ```
 Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
-type |String |Yes | bar
-file_id |String |Yes | File ID associated with this block.
-x_axis |List | One of x_axis or x_axis_multiple is required	 | Valid column name for the x-axis.
-x_axis_multiple | List | One of x_axis or x_axis_multiple is required | List of objects, with a minimum of 2 and a maximum of 10 items. <br > **name**: valid column <br > **operation**: One of COUNT, COUNT_UNIQUE, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
-y_axis | String| Yes| Valid column name for the y-axis.
-operation | String| No | Aggregation operation. Possible values: COUNT, COUNT_UNIQUE, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN.
-sort | Object | No | Sort configuration. **type**: total (Total), raw (Raw Order), count (Count), value (x-axis tags) <br > **operation**: Sorting order (asc, desc)
-slice | String| No| Valid column name to slice data by.
-show_annotations | Boolean| No | Annotate each segment with its value.
-show_stacked | Boolean| No | Display as a stacked chart. Default: true.
-is_percentage | Boolean| No | Display values as percentages.
-y_axis_log | Boolean| No | Use a logarithmic scale for the Y-axis.
-exclude_empty_string | Boolean| No | Exclude [EMPTY] strings from the data. Default: true
-width | String| No | Any value from one-third , two-thirds, full. Default: full
-filters | Object| No | Filter configuration object.
-title | String| No | Custom heading for the block.
+type |String |Yes |bar
+file_id |String |Yes |file ID to drive this block
+x_axis |List | one of the x_axis or x_axis_multiple is required | valid column name
+x_axis_multiple | List | one of the x_axis or x_axis_multiple is required | Object, Min length: 2, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+y_axis | String| Yes| valid column name
+operation | String| No | Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+sort | Object | No | **type**: total (Total), raw (Raw Order), count (Count), value (x-axis tags) <br > **operation**: Any  value from asc, desc
+slice | String| No| valid column name
+show_annotations | Boolean| No | Annotate each segment by its value
+show_stacked | Boolean| No | Show as stack. Default: true
+is_percentage | Boolean| No | Show as percentage
+y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
+exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 2 to 3. Default: 2
+filters | Object| No | Filter Object
+title | String| No | Custom heading
+
 
 ### Column Chart
 ```json
@@ -164,7 +167,8 @@ show_stacked | Boolean| No | Show as stack. Default: true
 is_percentage | Boolean| No | Show as percentage
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -191,7 +195,8 @@ slice | String| No| valid column name
 x_axis_log | Boolean| No | Use logarithmic scale for X-Axis
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -221,7 +226,8 @@ is_area | Boolean| No | Use area chart
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
 group_by | String| No | Any value from day, week, month, quarter, year
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -247,7 +253,8 @@ operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, M
 metric | String| No| valid column name
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -273,7 +280,8 @@ operation | String| Yes| Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, M
 slice | String| No| valid column name
 y_axis_log | Boolean| No | Use logarithmic scale for Y-Axis
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -299,7 +307,8 @@ x_axis_multiple |List |Yes |Object, Min length: 1, Max length: 2. <br > **name**
 y_axis_multiple |List |No |Object, Min length: 1, Max length: 1. <br > **name**: valid number column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
 show_annotations | Boolean| No | Annotate each segment by its value
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings. Default: true
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -327,7 +336,8 @@ influencing_columns |List |Yes |Influencing Columns - list of valid column names
 results_type |String |No |Show results - Any value from count, below_average_only, above_average_only, top_and_bottom_outliers, above_and_below_average
 show_results_column | Boolean| No | Show Results Column
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 lower_better | Boolean| No | Lower Better
@@ -361,7 +371,8 @@ influencing_columns |List |Yes |Influencing Columns - list of valid column names
 show_results_column | Boolean| No | Show Results Column
 show_percentage | Boolean| No | Show ROI as Percentage
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 lower_better | Boolean| No | Lower Better
@@ -396,7 +407,8 @@ show_percentage | Boolean| No | Show Percentage, Default: True
 sort_by_row_tags | String| No | Sort rows by tag value. Any  value from ASC, DESC
 column_manual_order | List| No | Sort columns by column tags. List of tag values
 sort_by_counts |Object |No | **column_index**: index of the column given in columns <br > **metric_index**: index of the column given in metrics <br > **order**: Any  value from ASC, DESC
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 pin_totals | Boolean| No | Pin Totals
@@ -425,7 +437,8 @@ date_range | String| No| Any value from 'last day', 'last 7 days', 'last 14 days
 comp_date_range | String| No| Any value from 'previous period', 'custom'
 goal |Number |No |
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 1
+height | Integer| No | Any value from 1 to 3. Default: 1
 filters | Object| No | Filter Object
 
 
@@ -458,7 +471,8 @@ values |List |Yes |Object, Min length: 1, Max length: 10. <br > **column**: vali
 sort |Object |Yes |Object <br > **column**: valid column <br > **order**: Any value from ASC, DESC
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 show_totals | Boolean| No | Show Column Totals
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 
@@ -474,7 +488,8 @@ Field | Datatype | Mandatory | Desc
 ------ | ------ | ------ | --------
 type |String |Yes |rich-text-insight
 html |String |Yes |HTML text
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 1 to 3. Default: 1
 
 
 ### IMAGE BLOCK
@@ -490,7 +505,8 @@ Field | Datatype | Mandatory | Desc
 type |String |Yes |image
 appearance |String |Yes |Any value from fit,fill
 url |String |Yes |Any valid public image URL
-width | String| No | Any value from one-third , two-thirds, full. Default: full
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 1 to 3. Default: 2
 title | String| No | Custom heading
 
 
@@ -514,6 +530,8 @@ type |String |Yes |map
 file_id |String |Yes |file ID to drive this block
 base_column |String |Yes |valid column name that can be used for plotting on map
 metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **name**: valid column <br > **operation**: Any value from COUNT, SUM, AVERAGE, STDDEV, VARIANCE, MAX, MIN
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 2 to 3. Default: 2
 title | String| No | Custom heading
 
 
@@ -665,8 +683,9 @@ advanced_sharing.allow_global_filters_for_viewers | false | Type: Boolean<br /> 
 advanced_sharing.allow_block_based_filters_for_viewers | false | Type: Boolean<br /> Viewers would be able to apply block based filters
 branding.logoUrl | false | Logo URL
 branding.logoLink | false | Link to redirect when clicked on logo URL
-colors | false | Type: List<br />List of color codes to be used in board preview mode.
+colors | false | Type: List<br />List of color codes to be used in view preview mode.
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
+background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733 )
 
 ### Blocks Object
 Same as described on Create Board request
