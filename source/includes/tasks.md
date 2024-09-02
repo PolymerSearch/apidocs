@@ -40,5 +40,5 @@ curl --location --request GET 'https://v3.polymersearch.com/api/v1/task/65c324f4
 
 Field | Datatype | Description
 --------- | ------- | -----------
-status | String | If set to 'done' then task is executed and you can find file_id. If set to 'inprogress' please poll again in 5 seconds
-error | String | if we encounter any processing error
+- **status** | String | Indicates the current status of the task. If set to `'done'`, the task is completed and you can find the `file_id`. If set to `'inprogress'`, please poll again in 5 seconds.
+- **error** | String | Provides details if any processing error is encountered.
