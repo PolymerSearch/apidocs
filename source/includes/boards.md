@@ -93,7 +93,7 @@ filter_settings | false | Type: filter_settings Object<br />Columns to be shown 
 
 ## filter_settings Object
 
-> Exemple 1
+> Example 1
 
 ```json
 {
