@@ -93,7 +93,8 @@ notifications | false | Type: notifications Object<br />Settings for board diges
 
 
 ## notifications Object
-> Exemple 1
+
+> Example 1
 ```json
 {
     "schedule":
@@ -106,6 +107,8 @@ notifications | false | Type: notifications Object<br />Settings for board diges
     "disabled": false
 }
 ```
+
+
 ### Notes
 
 - `schedule.cadence`: Defines the frequency of the schedule, which can be `daily`, `weekly`, or `monthly`.
