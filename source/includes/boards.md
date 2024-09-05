@@ -95,6 +95,7 @@ notifications | false | Type: notifications Object<br />Settings for board diges
 ## notifications Object
 
 > Example 1
+
 ```json
 {
     "schedule":
