@@ -89,6 +89,61 @@ colors | false | Type: List<br />List of color codes to be used in view preview 
 auto_generated | false | Type: Boolean<br /> Auto generate the board (populate with blocks based on our AI engine)
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733)
+filter_settings | false | Type: filter_settings Object<br />Columns to be shown on global filters per dataset
+
+
+## filter_settings Object
+
+> Example 1
+
+```json
+{
+    "65b50541d83d1e4d42c7fbe0":
+    {
+        "columns":
+        {
+            "spend":
+            {},
+            "campaign_status":
+            {
+                "allowed_values": [
+                    "active",
+                    "pending"
+                ]
+            }
+        }
+    }
+}
+```
+
+> Exemple 2
+
+```json
+{
+    "65b50541d83d1e4d42c7fbe0":
+    {
+        "allow_all_columns": true,
+        "columns":
+        {
+            "campaign_status":
+            {
+                "allowed_values": [
+                    "active",
+                    "pending"
+                ]
+            }
+        }
+    }
+}
+```
+
+### Notes
+
+- `65b50541d83d1e4d42c7fbe0` is the `file_id`.
+- `65b50541d83d1e4d42c7fbe0.columns` refers to the list of columns that can be included in global filters.
+- `65b50541d83d1e4d42c7fbe0.columns.spend` indicates that all values from the spend column are permitted in the global filters.
+- `65b50541d83d1e4d42c7fbe0.columns.campaign_status.allowed_values` specifies that only the `active` and `pending` values from the `campaign_status` column are allowed in global filters.
+- `65b50541d83d1e4d42c7fbe0.allow_all_columns` means all columns from the dataset will be available in global filters, except for the `campaign_status` column, which will only display `active` and `pending` values.
 
 
 ## Blocks Object
@@ -688,6 +743,7 @@ branding.logoLink | false | URL to redirect when the logo is clicked.
 colors | false | Type: List<br /> List of color codes to be used in view preview mode.
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733 )
+filter_settings | false | Type: filter_settings Object<br />Columns to be shown on global filters per dataset
 
 ### Blocks Object
 Same as described on Create Board request
