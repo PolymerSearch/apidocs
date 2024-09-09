@@ -187,6 +187,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### Column Chart
@@ -227,6 +228,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### SCATTER PLOT Chart
@@ -255,6 +257,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### TIMESERIES Chart
@@ -286,6 +289,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### HEATMAP Chart
@@ -313,6 +317,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### LINEPLOT Chart
@@ -340,6 +345,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### PIE Chart
@@ -367,6 +373,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### OUTLIER
@@ -397,6 +404,7 @@ height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 lower_better | Boolean| No |  Indicates if a lower value is better.
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### ROI CALCULATOR
@@ -432,6 +440,7 @@ height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 lower_better | Boolean| No | Indicates if a lower value is better.
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### PIVOT TABLE
@@ -468,6 +477,7 @@ height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 pin_totals | Boolean| No | Pin Totals
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### KPI BLOCK
@@ -496,6 +506,7 @@ exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 1
 height | Integer| No | Any value from 1 to 3. Default: 1
 filters | Object| No | Filter Object
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### DATA TABLE
@@ -531,6 +542,8 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
+hide_title | Boolean| No | Hide title
 
 
 ### RICH TEXT
@@ -564,6 +577,7 @@ url |String |Yes |Any valid public image URL
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
 title | String| No | Custom heading
+hide_title | Boolean| No | Hide title
 
 
 ### MAP BLOCK
@@ -589,7 +603,7 @@ metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **name**: Valid
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 title | String| No | Custom heading
-
+hide_title | Boolean| No | Hide title
 
 ### Field: filters
 Allowed values: object
