@@ -89,6 +89,36 @@ colors | false | Type: List<br />List of color codes to be used in view preview 
 auto_generated | false | Type: Boolean<br /> Auto generate the board (populate with blocks based on our AI engine)
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733)
+notifications | false | Type: notifications Object<br />Settings for board digest email
+
+
+## notifications Object
+
+> Example 1
+
+```json
+{
+    "schedule":
+    {
+        "cadence": "daily",
+        "hours": 9,
+        "day": 1
+    },
+    "recipients": ["myemail@gmail.com"],
+    "disabled": false
+}
+```
+
+
+### Notes
+
+- `schedule.cadence`: Defines the frequency of the schedule, which can be `daily`, `weekly`, or `monthly`.
+- `schedule.hours`: Specifies the hour of the day for the schedule, ranging from `0` to `23`.
+- `schedule.day`: Defines the day of the week, with values from `0` (Sunday) to `6` (Saturday).
+- `schedule.monthly_schedule`: Required only for a `monthly` cadence. Accepts `last_day_of_month` or `first_day_of_month`.
+- `recipients`: A list of email addresses to which notifications will be sent.
+- `disabled`: A flag that, when set, disables the email notifications.
+
 
 
 ## Blocks Object
@@ -688,10 +718,16 @@ branding.logoLink | false | URL to redirect when the logo is clicked.
 colors | false | Type: List<br /> List of color codes to be used in view preview mode.
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733 )
+notifications | false | Type: notifications Object<br />Settings for board digest email
 
 ### Blocks Object
 Same as described on Create Board request
 Note: Make sure you pass all the blocks inside `blocks` key
+
+### notifications Object
+Same as described on Create Board request
+Note: Make sure you pass all the blocks inside `notifications` key
+
 
 ## Fetch Boards
 
