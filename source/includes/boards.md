@@ -529,8 +529,8 @@ file_id |String |Yes | Dataset ID to drive this block
 metric |List |Yes | Valid date column name
 operation | String| Yes| Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
 date | String| No| Valid date column name
-date_range | String| No| Any value from 'last day', 'last 7 days', 'last 14 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, 'this month', 'this week', 'last week', custom
-comp_date_range | String| No| Any value from 'previous period', 'custom'
+date_range | String| No| Any value from 'last day', 'last 7 days', 'last 14 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, 'this month', 'this week', 'last week', 'week from monday', 'this quarter', 'this year', 'week to date', 'month to date', 'quarter to date', 'year to date', 'previous week', 'previous month', 'previous quarter', 'previous year', custom
+comp_date_range | String| No| Any value from 'previous period', 'previous week', 'previous month', 'previous querter', 'previous year', 'custom'
 goal |Number |No |
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 1
