@@ -90,6 +90,7 @@ auto_generated | false | Type: Boolean<br /> Auto generate the board (populate w
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733)
 notifications | false | Type: notifications Object<br />Settings for board digest email
+filter_settings | false | Type: filter_settings Object<br />Columns to be shown on global filters per dataset
 
 
 ## notifications Object
@@ -119,6 +120,60 @@ notifications | false | Type: notifications Object<br />Settings for board diges
 - `recipients`: A list of email addresses to which notifications will be sent.
 - `disabled`: A flag that, when set, disables the email notifications.
 
+
+
+## filter_settings Object
+
+> Example 1
+
+```json
+{
+    "65b50541d83d1e4d42c7fbe0":
+    {
+        "columns":
+        {
+            "spend":
+            {},
+            "campaign_status":
+            {
+                "allowed_values": [
+                    "active",
+                    "pending"
+                ]
+            }
+        }
+    }
+}
+```
+
+> Exemple 2
+
+```json
+{
+    "65b50541d83d1e4d42c7fbe0":
+    {
+        "allow_all_columns": true,
+        "columns":
+        {
+            "campaign_status":
+            {
+                "allowed_values": [
+                    "active",
+                    "pending"
+                ]
+            }
+        }
+    }
+}
+```
+
+### Notes
+
+- `65b50541d83d1e4d42c7fbe0` is the `file_id`.
+- `65b50541d83d1e4d42c7fbe0.columns` refers to the list of columns that can be included in global filters.
+- `65b50541d83d1e4d42c7fbe0.columns.spend` indicates that all values from the spend column are permitted in the global filters.
+- `65b50541d83d1e4d42c7fbe0.columns.campaign_status.allowed_values` specifies that only the `active` and `pending` values from the `campaign_status` column are allowed in global filters.
+- `65b50541d83d1e4d42c7fbe0.allow_all_columns` means all columns from the dataset will be available in global filters, except for the `campaign_status` column, which will only display `active` and `pending` values.
 
 
 ## Blocks Object
@@ -162,6 +217,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### Column Chart
@@ -202,6 +258,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### SCATTER PLOT Chart
@@ -230,6 +287,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### TIMESERIES Chart
@@ -261,6 +319,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### HEATMAP Chart
@@ -288,6 +347,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### LINEPLOT Chart
@@ -315,6 +375,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### PIE Chart
@@ -342,6 +403,7 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### OUTLIER
@@ -372,6 +434,7 @@ height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 lower_better | Boolean| No |  Indicates if a lower value is better.
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### ROI CALCULATOR
@@ -407,6 +470,7 @@ height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 lower_better | Boolean| No | Indicates if a lower value is better.
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### PIVOT TABLE
@@ -443,6 +507,7 @@ height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 pin_totals | Boolean| No | Pin Totals
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### KPI BLOCK
@@ -464,13 +529,14 @@ file_id |String |Yes | Dataset ID to drive this block
 metric |List |Yes | Valid date column name
 operation | String| Yes| Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`
 date | String| No| Valid date column name
-date_range | String| No| Any value from 'last day', 'last 7 days', 'last 14 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, 'this month', 'this week', 'last week', custom
-comp_date_range | String| No| Any value from 'previous period', 'custom'
+date_range | String| No| Any value from 'last day', 'last 7 days', 'last 14 days', 'last 30 days', 'last 90 days', 'last 6 months', 'last 12 months, 'this month', 'this week', 'last week', 'week from monday', 'this quarter', 'this year', 'week to date', 'month to date', 'quarter to date', 'year to date', 'previous week', 'previous month', 'previous quarter', 'previous year', custom
+comp_date_range | String| No| Any value from 'previous period', 'previous week', 'previous month', 'previous querter', 'previous year', 'custom'
 goal |Number |No |
 exclude_empty_string | Boolean| No | Exclude [EMPTY] strings
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 1
 height | Integer| No | Any value from 1 to 3. Default: 1
 filters | Object| No | Filter Object
+show_explanation | Boolean| No | Show explanation under title
 
 
 ### DATA TABLE
@@ -506,6 +572,8 @@ width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
+show_explanation | Boolean| No | Show explanation under title
+hide_title | Boolean| No | Hide title
 
 
 ### RICH TEXT
@@ -521,6 +589,7 @@ type |String |Yes | rich-text-insight
 html |String |Yes | HTML text
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 1
+hide_title | Boolean| No | Hide title
 
 
 ### IMAGE BLOCK
@@ -564,6 +633,7 @@ metrics |List |Yes |Object, Min length: 1, Max length: 10. <br > **name**: Valid
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 2 to 3. Default: 2
 title | String| No | Custom heading
+hide_title | Boolean| No | Hide title
 
 
 ### Field: filters
@@ -719,6 +789,7 @@ colors | false | Type: List<br /> List of color codes to be used in view preview
 slug | false | Used for constructing a custom board URL. Length must be between 3 and 32 characters.
 background_color | false | Valid CSS color name (eg. white, blue), or valid hexadecimal color code (eg. #ff5733 )
 notifications | false | Type: notifications Object<br />Settings for board digest email
+filter_settings | false | Type: filter_settings Object<br />Columns to be shown on global filters per dataset
 
 ### Blocks Object
 Same as described on Create Board request
