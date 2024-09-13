@@ -178,6 +178,28 @@ filter_settings | false | Type: filter_settings Object<br />Columns to be shown 
 
 ## Blocks Object
 
+
+### Header Block
+```json
+{
+    "type": "header",
+    "heading": "heading1",
+    "subheading": "sadsfsdfdsfd sub",
+    "alignment": "left",
+    "size": "large",
+    "background": "gradient-f"
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type | String | Yes |header
+heading | String | Yes | Mainheading on the block
+subheading | String | Yes | Subheading on the block
+alignment | String | No | Any value from `left`, `center`, `right`
+size | String | No | Any value from `small`, `medium`, `large`
+background | String | No | Any value from `transparent`, `white`, `grey`, `black`, `gradient-a`, `gradient-b`, `gradient-c`, `gradient-d`, `gradient-e`, `gradient-f`
+
+
 ### Bar Chart
 ```json
 {
@@ -573,6 +595,77 @@ height | Integer| No | Any value from 1 to 3. Default: 2
 filters | Object| No | Filter Object
 title | String| No | Custom heading
 show_explanation | Boolean| No | Show explanation under title
+hide_title | Boolean| No | Hide title
+
+
+### Gallery Block
+```json
+{
+    "type": "gallery",
+    "is_aggregate": true,
+    "aggregate":
+    {
+        "metrics": [
+        {
+            "name": "Checkouts initiated",
+            "operation": "VARIANCE"
+        }],
+        "base_column": "Ad name"
+    },
+    "image_column": "Media url",
+    "layout": "expanded",
+    "appearance": "fit",
+    "enable_card_modal": true,
+    "sections": [
+    {
+        "columns": [
+            "Impressions"
+        ],
+        "title": "Section 1"
+    }],
+    "file_id": "66e3f70cb399ce00086ba8b9"
+}
+```
+
+```json
+{
+    "type": "gallery",
+    "is_aggregate": false,
+    "card_columns": [
+        "Reach",
+        "Thruplays"
+    ],
+    "image_column": "Media url",
+    "layout": "expanded",
+    "appearance": "fit",
+    "enable_card_modal": true,
+    "link_label": "Click here to visit",
+    "file_id": "66e3f70cb399ce00086ba8b9"
+}
+```
+
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes | gallery
+file_id |String |Yes | Dataset ID to drive this block
+is_aggregate |Boolean |Yes | true for `Summarized`, false for `Raw`
+aggregate.metrics |Yes |Object, Min length: 1, Max length: 10. <br > **name**: Valid column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`, `MEDIAN`, `MODE`
+aggregate.base_column |Boolean |Yes for  `Summarized` | Valid column
+card_columns |Yes |List <br > Valid column
+image_column |String |Yes | Valid image/video column
+layout | String | No | Any value from `expanded`, `normal`, `condensed`
+appearance | String | No | Any value from `expanded`, `normal`, `condensed`
+headline_column |String |No | Valid column
+description_column |String |No | Valid column
+link_column |String |No | Valid column
+link_label |String |No | Link label
+enable_card_modal | Boolean |No| Enable modal on click
+sections |Yes |Object, Min length: 1, Max length: 10. <br > **columns**: Valid column name <br > **title**: Section title
+title | String| No | Custom heading
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 1 to 3. Default: 2
+filters | Object| No | Filter Object
+enable_search_sort | Boolean |No| Enable searching and sorting
 hide_title | Boolean| No | Hide title
 
 
