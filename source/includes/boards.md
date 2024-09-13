@@ -649,9 +649,9 @@ Field | Datatype | Mandatory | Desc
 type |String |Yes | gallery
 file_id |String |Yes | Dataset ID to drive this block
 is_aggregate |Boolean |Yes | true for `Summarized`, false for `Raw`
-aggregate.metrics |Yes |Object, Min length: 1, Max length: 10. <br > **name**: Valid column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`, `MEDIAN`, `MODE`
+aggregate.metrics |List |No |Object, Min length: 1, Max length: 10. <br > **name**: Valid column <br > **operation**: Any value from `COUNT`, `COUNT_UNIQUE`, `SUM`, `AVERAGE`, `STDDEV`, `VARIANCE`, `MAX`, `MIN`, `MEDIAN`, `MODE`
 aggregate.base_column |Boolean |Yes for  `Summarized` | Valid column
-card_columns |Yes |List <br > Valid column
+card_columns |List |No | Valid column
 image_column |String |Yes | Valid image/video column
 layout | String | No | Any value from `expanded`, `normal`, `condensed`
 appearance | String | No | Any value from `expanded`, `normal`, `condensed`
@@ -660,7 +660,7 @@ description_column |String |No | Valid column
 link_column |String |No | Valid column
 link_label |String |No | Link label
 enable_card_modal | Boolean |No| Enable modal on click
-sections |Yes |Object, Min length: 1, Max length: 10. <br > **columns**: Valid column name <br > **title**: Section title
+sections |Yes |No |Object, Min length: 1, Max length: 10. <br > **columns**: Valid column name <br > **title**: Section title
 title | String| No | Custom heading
 width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
 height | Integer| No | Any value from 1 to 3. Default: 2
