@@ -654,7 +654,7 @@ aggregate.base_column |Boolean |Yes for  `Summarized` | Valid column
 card_columns |List |No | Valid column
 image_column |String |Yes | Valid image/video column
 layout | String | No | Any value from `expanded`, `normal`, `condensed`
-appearance | String | No | Any value from `expanded`, `normal`, `condensed`
+appearance | String | No | Any value from `fit`, `fill`
 headline_column |String |No | Valid column
 description_column |String |No | Valid column
 link_column |String |No | Valid column
