@@ -729,6 +729,24 @@ title | String| No | Custom heading
 hide_title | Boolean| No | Hide title
 
 
+### LOOM BLOCK
+```json
+{
+    "type": "loom",
+    "title": "Product Tour",
+    "url": "https://www.loom.com/share/XX31ba9b6fdf4ebXX3cafbc63ef10654?sid=XX1ea111-f614-XXXX-a3XX-fce1b8b0XXXX"
+}
+```
+Field | Datatype | Mandatory | Desc
+------ | ------ | ------ | --------
+type |String |Yes |loom
+width_in_columns | Integer| No | Any value from 1 to 6. Default: 3
+height | Integer| No | Any value from 2 to 3. Default: 2
+url | String| Yes | loom URL. Note: URL should start with `https://www.loom.com`
+title | String| No | Custom heading
+hide_title | Boolean| No | Hide title
+
+
 ### Field: filters
 Allowed values: object
 
