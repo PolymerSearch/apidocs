@@ -183,8 +183,8 @@ filter_settings | false | Type: filter_settings Object<br />Columns to be shown 
 ```json
 {
     "type": "header",
-    "heading": "heading1",
-    "subheading": "sadsfsdfdsfd sub",
+    "heading": "Block Main Heading",
+    "subheading": "Block description",
     "alignment": "left",
     "size": "large",
     "background": "gradient-f"
