@@ -321,8 +321,7 @@ curl --location 'https://v3.polymersearch.com/api/v1/datasets/merged' \
 
 ```json
 {
-    "success": true,
-    "sync_id": "66ea9f2e79720f5d2255bf68"
+    "task_id": "66eac9e101888863e554ae86"
 }
 ```
 
