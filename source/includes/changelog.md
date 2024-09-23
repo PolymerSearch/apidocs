@@ -1,5 +1,7 @@
 # Changelog
 
+## Sep 23, 2024 - V3 APIs
+- Add support for `CONTAINS`, `BEGINS_WITH`, `ENDS_WITH` in global filters
 
 ## Sep 15, 2024 - V3 APIs
 - Added support for header block, loom block and gallery block

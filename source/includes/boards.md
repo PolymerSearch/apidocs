@@ -176,6 +176,85 @@ filter_settings | false | Type: filter_settings Object<br />Columns to be shown 
 - `65b50541d83d1e4d42c7fbe0.allow_all_columns` means all columns from the dataset will be available in global filters, except for the `campaign_status` column, which will only display `active` and `pending` values.
 
 
+## Filters Object
+
+Allowed values: object
+
+The following filters can be applied
+
+- Date Columns: Filter using dynamic date ranges, such as "last 30 days," "last year," etc.
+- Numerical Columns: Filter using ranges, such as "amount between 25 to 45."
+- Categorical Columns (Text Search):
+    - Include specific values, e.g., "payment mechanism including cash and demand draft."
+    - Exclude specific values, e.g., "payment mechanism excluding cash."
+
+Example payload
+`
+{
+    "65b50541d83d1e4d42c7fbe0":
+    {
+        "Submission Date": [
+        {
+            "value": "last 30 days"
+        }],
+        "amount": [
+        {
+            "value": [
+                10,
+                20
+            ]
+        }],
+        "Payment Mechanism": [
+        {
+            "value": "cash",
+            "operation": "BEGINS_WITH"
+        }]
+    }
+}
+`
+
+The following filter will be read as 
+
+`Submission Date within last 30 days 
+AND 
+amount between range 10 to 20 
+AND
+Payment Mechanism begins with cash`
+
+### Possible dynamic date ranges:
+
+- last day
+- last 7 days
+- last 14 days
+- last 30 days
+- last 90 days
+- last 6 months
+- last 12 months
+- last week
+- this week
+- this month
+- week from monday
+- this quarter
+- this year
+- week to date
+- month to date
+- quarter to date
+- year to date
+- previous week
+- previous month
+- previous quarter
+- previous year
+
+### Possible operations:
+
+- INCLUDING
+- EXCLUDING
+- CONTAINS
+- BEGINS_WITH
+- ENDS_WITH
+
+
+
 ## Blocks Object
 
 
@@ -746,69 +825,6 @@ url | String| Yes | loom URL. Note: URL should start with `https://www.loom.com`
 title | String| No | Custom heading
 hide_title | Boolean| No | Hide title
 
-
-### Field: filters
-Allowed values: object
-
-The following filters can be applied
-
-- Date Columns: Filter using dynamic date ranges, such as "last 30 days," "last year," etc.
-- Numerical Columns: Filter using ranges, such as "amount between 25 to 45."
-- Categorical Columns (Text Search):
-    - Include specific values, e.g., "payment mechanism including cash and demand draft."
-    - Exclude specific values, e.g., "payment mechanism excluding cash."
-
-Example payload
-`
-{
-    "65b50541d83d1e4d42c7fbe0":
-    {
-        "Submission Date": [
-        {
-            "value": "last 30 days"
-        }],
-        "amount": [
-        {
-            "value": [
-                10,
-                20
-            ]
-        }],
-        "Payment Mechanism": [
-        {
-            "value": "cash",
-            "operation": "INCLUDING"
-        }]
-    }
-}
-`
-
-The following filter will be read as 
-
-`Submission Date within last 30 days 
-AND 
-amount between range 10 to 20 
-AND
-Payment Mechanism INCLUDING cash`
-
-Possible dynamic date ranges:
-
-- last day
-- last 7 days
-- last 14 days
-- last 30 days
-- last 90 days
-- last 6 months
-- last 12 months
-- last week
-- this week
-- this month
-
-
-Possible operations:
-
-- INCLUDING
-- EXCLUDING
 
 
 ## Edit Board
