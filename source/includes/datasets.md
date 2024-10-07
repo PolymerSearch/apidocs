@@ -254,3 +254,94 @@ limit | false | Maximum number of records per page.
 page | false | Page number to retrieve.
 sort_key | false | name, created_at, num_rows
 sort_order | false | Allowed values: `desc`, `asc`.
+
+
+## Create a merged dataset
+
+This endpoint creates a merged dataset with given definition
+
+```shell
+curl --location 'https://v3.polymersearch.com/api/v1/datasets/merged' \
+--header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Merged dataset name here",
+    "original_file_id": "66bcaafdde015d4d43494a45",
+    "relations": [
+        {
+            "left_file_column": "r__opportunitystage",
+            "file_id": "66bcaafdde015d4d43494a41",
+            "right_file_column": "cp__oppstageid",
+            "columns": [
+                "cp__oppstageid"
+            ],
+            "prefix": "opportunitystage"
+        },
+        {
+            "left_file_column": "r__company",
+            "file_id": "66bcaafdde015d4d43494a68",
+            "right_file_column": "cp__companyid",
+            "columns": [
+                "a__companyname",
+                "a__companyowner",
+                "a__companystate"
+            ]
+        },
+        {
+            "left_file_column": "cp__oppid",
+            "file_id": "66bcaafdde015d4d43494a49",
+            "right_file_column": "r__opportunity",
+            "columns": '*'
+        },
+        {
+            "left_file_id": "66bcaafdde015d4d43494a49",
+            "left_file_column": "r__person",
+            "file_id": "66bcaafdde015d4d43494a44",
+            "right_file_column": "cp__personid",
+            "columns": [
+                "a__personcountry",
+                "a__personname"
+            ]
+        }
+    ],
+    "columns": [
+        "l__opppipelineid__opppipelinename",
+        "a__oppsource",
+        "d__oppcreatedat",
+        "f__oppusdvalue",
+        "f__oppvalue",
+        "r__lead"
+    ],
+    "cadence_in_minutes": 5
+}'
+```
+
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "task_id": "66eac9e101888863e554ae86"
+}
+```
+
+### HTTP Request
+
+`POST https://v3.polymersearch.com/api/v1/datasets/merged`
+
+### Body content
+
+Field | Mandatory | Description
+--------- | ------- | -----------
+name | true | Must be a string with a minimum length of 3 characters and a maximum of 80 characters. Represents the name of the dataset.
+description | false | A string providing a description of the dataset.
+original_file_id | true | Dataset ID of the main file
+relations | true | An array of relation objects. Each object must contain `left_file_column`, `file_id`, `right_file_column`, and either a string or an array of `columns`.
+relations.left_file_id | false | The ID of the left file in the relation
+relations.left_file_column | true | The column from the left file that will be used in the relation.
+relations.file_id | true | The ID of the left file in the relation
+relations.right_file_column | true | The column from the right file that will be used in the relation.
+relations.columns | true | Either a string ('*') to represent all columns, or an array of strings representing the specific columns to be used. Columns must be unique.
+relations.prefix | true | A string that only contains alphabetic characters. It acts as a prefix for related columns.
+columns | true | Either a string * representing all columns, or an array of unique strings specifying the columns to be included in the result.
+cadence_in_minutes | true | An integer value representing the cadence in minutes, which must be at least 1.

@@ -183,8 +183,8 @@ filter_settings | false | Type: filter_settings Object<br />Columns to be shown 
 ```json
 {
     "type": "header",
-    "heading": "Block Main Heading",
-    "subheading": "Block description",
+    "heading": "Ads Dashboard",
+    "subheading": "Facebook ads for last 30 days vs Google ads for last 30 days",
     "alignment": "left",
     "size": "large",
     "background": "gradient-f"

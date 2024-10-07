@@ -1,5 +1,10 @@
 # Changelog
 
+
+## Sep 15, 2024 - V3 APIs
+- Added support for header block, loom block and gallery block
+- Added support for merged datasets
+
 ## August 21, 2024 - V3 APIs
 - Added support for background color on boards.
 - Introduced control for board digest emails at the workspace level.
