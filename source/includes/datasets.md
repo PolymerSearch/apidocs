@@ -345,3 +345,61 @@ relations.columns | true | Either a string ('*') to represent all columns, or an
 relations.prefix | true | A string that only contains alphabetic characters. It acts as a prefix for related columns.
 columns | true | Either a string * representing all columns, or an array of unique strings specifying the columns to be included in the result.
 cadence_in_minutes | true | An integer value representing the cadence in minutes, which must be at least 1.
+
+
+## Update column settings
+
+This endpoint updates the column settings of a specified dataset
+
+```shell
+curl --location --request PUT 'https://v3.polymersearch.com/api/v1/datasets/6703d9aa853d23000845bfed/column_settings' \
+--header 'x-api-key: XXeca66c-21f3-XX39-b407-64e00c62XXXX' \
+--header 'Content-Type: application/json' \
+--data '{
+    "STAGE_NAME": {
+        "caption": "Pipeline Stage Name",
+        "type": "string",
+        "original_type": "string",
+        "tag_details": {
+            "num_decimal_places": null,
+            "date_bucket_size": "",
+            "buckets_manual": null,
+            "bucket_size": 0
+        },
+        "pipeline_settings": {
+            "PIPELINES_NAME": {
+                "values": {
+                    "Projects": {
+                        "stages": [
+                            "Requirements Gathering",
+                            "Kickoff Scheduled",
+                            "Post-Kickoff",
+                            "In Production",
+                            "Stakeholder Feedback",
+                            "Stakeholder Signoff"
+                        ],
+                        "default_value": 0
+                    },
+                    "Sales": {
+                        "stages": [
+                            "New Lead",
+                            "Demo",
+                            "Post-demo Follow Up",
+                            "Contract Negotiation",
+                            "Closing"
+                        ],
+                        "default_value": 0
+                    }
+                }
+            }
+        }
+    }
+}'
+```
+
+
+### HTTP Request
+
+`PUT https://v3.polymersearch.com/api/v1/datasets/:id/column_settings`
+
+Note: `STAGE_NAME` and `PIPELINES_NAME` refer to the names of the columns. `Projects` and `Sales` represent pipeline values. `Requirements Gathering`, `Kickoff Scheduled`, `Post-Kickoff`, `New Lead`, `Closing`, and others are examples of stage names.
