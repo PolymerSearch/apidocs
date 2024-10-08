@@ -262,8 +262,8 @@ Payment Mechanism begins with cash`
 ```json
 {
     "type": "header",
-    "heading": "heading1",
-    "subheading": "sadsfsdfdsfd sub",
+    "heading": "Ads Dashboard",
+    "subheading": "Facebook ads for last 30 days vs Google ads for last 30 days",
     "alignment": "left",
     "size": "large",
     "background": "gradient-f"
