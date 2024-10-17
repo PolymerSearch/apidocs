@@ -27,7 +27,8 @@ curl --location --request POST 'https://v3.polymersearch.com/api/v1/workspace' \
 |----------------------------------------------------|-----------|-----------|------------------------------------------------------------------------------------------------------|
 | name                                               | true      | String    | Name of the workspace.                                                                               |
 | slug                                               | true      | String    | Slug to be used in custom URLs. Alphanumeric characters, underscores, and dashes are allowed. It cannot end with an underscore or a dash. |
-| settings.disable_share_button                      | false     | Boolean   | Set this flag to disable the share button on the board.                                               |
+| settings.disable_share_button                      | false     | Boolean   | Set this flag to disable the share button on the board.    
+| settings.disable_email_report                      | false     | Boolean   | Set this flag to disable the `Email Report` section in share section.                                               |
 | settings.enable_polyai_in_read_only_permission     | false     | Boolean   | Set this flag to enable PolyAI on read-only permissions.                                              |
 | notifications.board_digest_emails.disabled         | false     | Boolean   | Set this flag to disable all board digest emails.                                                     |
 | notifications.board_digest_emails.enabled_by_default | false   | Boolean   | Set this flag to enable weekly digest emails on boards created.                                       |
@@ -74,7 +75,8 @@ curl --location --request GET 'https://v3.polymersearch.com/api/v1/workspaces' \
             "user_role": "Creator",
             "default": false,
             "settings": {
-                "disable_share_button": false
+                "disable_share_button": false,
+                "disable_email_report": true
             },
             "members": [
                 {
@@ -126,7 +128,8 @@ curl --location --request PATCH 'https://v3.polymersearch.com/api/v1/workspace/6
 |----------------------------------------------------|-----------|-----------|------------------------------------------------------------------------------------------------------|
 | name                                               | false     | String    | Name of the workspace.                                                                               |
 | slug                                               | false     | String    | Slug to be used in custom URLs. Alphanumeric characters, underscores, and dashes are allowed. It cannot end with an underscore or a dash. |
-| settings.disable_share_button                      | false     | Boolean   | Set this flag to disable the share button on the board.                                               |
+| settings.disable_share_button                      | false     | Boolean   | Set this flag to disable the share button on the board.    
+| settings.disable_email_report                      | false     | Boolean   | Set this flag to disable the `Email Report` section in share section.                                             |
 | settings.enable_polyai_in_read_only_permission     | false     | Boolean   | Set this flag to enable PolyAI on read-only permissions.                                              |
 | notifications.board_digest_emails.disabled         | false     | Boolean   | Set this flag to disable all board digest emails.                                                     |
 | notifications.board_digest_emails.enabled_by_default | false   | Boolean   | Set this flag to enable weekly digest emails on boards created.                                       |
