@@ -70,6 +70,7 @@ HTTP_METHOD_PAIRS = Hash[
   "Edit an Existing Snowflake connector" => "PATCH",
   "Delete an existing source" => "DELETE",
   "Import data using newly connected Snowflake" => "POST",
+  "Sync Data (Manually)" => "POST",
   "Upload a Dataset" => "POST",
   "Update a Dataset" => "PUT",
   "Fetch Datasets" => "GET",

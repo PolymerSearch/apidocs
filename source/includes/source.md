@@ -171,3 +171,35 @@ curl --location 'https://v3.polymersearch.com/api/snowflake/671a1e74a8de3b2575aa
 }
 ```
 
+## Sync Data (Manually)
+
+```shell
+curl --location 'https://v3.polymersearch.com/api/snowflake/sync' \
+--header 'x-api-key: {{apikey}}' \
+--header 'Content-Type: application/json' \
+--data '{
+    "source_id": "671a1e74a8de3b2575aa9053",
+    "file_id": "671b644ebdcabe4bdd1282b6",
+    "full_sync": true
+}'
+```
+
+### HTTP Request
+
+`POST https://v3.polymersearch.com/api/snowflake/sync`
+
+### Body content
+
+| Field                                              | Mandatory | Data Type | Description                                                                                          |
+|----------------------------------------------------|-----------|-----------|------------------------------------------------------------------------------------------------------|
+| source_id                                               | true      | String    | Source ID of the dataset to sync.     
+| file_id                                               | true      | String    | File ID of the dataset to sync
+| full_sync                                               | false      | String    | This will override the update_settings provided with dataset and will fully refresh the data
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "sync_id": "672b2e74a8de3b2585aa9154"
+}
+```
