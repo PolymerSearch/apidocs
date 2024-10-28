@@ -26,6 +26,7 @@ includes:
   - errors
   - workspace
   - users
+  - source
   - datasets
   - tasks
   - boards

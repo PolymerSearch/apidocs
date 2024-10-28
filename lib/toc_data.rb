@@ -27,7 +27,7 @@ def toc_data(page_content)
       end
     end
   end
-  headers.select {|header| not(['workspace', 'users', 'dataset', 'task', 'board', 'embed'].include? header[:id].to_s)}
+  headers.select {|header| not(['workspace', 'users', 'source' ,'dataset', 'task', 'board', 'embed'].include? header[:id].to_s)}
 end
 
 def resources_data(page_content)
@@ -56,7 +56,7 @@ def resources_data(page_content)
       end
     end
   end
-  headers.select {|header| ['workspace', 'users', 'dataset', 'task', 'board', 'embed'].include? header[:id].to_s}
+  headers.select {|header| ['workspace', 'users', 'source', 'dataset', 'task', 'board', 'embed'].include? header[:id].to_s}
 end
 
 HTTP_METHOD_PAIRS = Hash[
@@ -65,6 +65,11 @@ HTTP_METHOD_PAIRS = Hash[
   "Edit workspace" => "PUT",
   "Delete workspace" => "DELETE",
   "Fetch existing &amp; invited workspace users" => "GET",
+  "Connect a new Snowflake connector" => "POST",
+  "Get all connected sources" => "GET",
+  "Edit an Existing Snowflake connector" => "PATCH",
+  "Delete an existing source" => "DELETE",
+  "Import data using newly connected Snowflake" => "POST",
   "Upload a Dataset" => "POST",
   "Update a Dataset" => "PUT",
   "Fetch Datasets" => "GET",
