@@ -50,14 +50,14 @@ curl --location --request GET 'https://v3.polymersearch.com/api/v1/sources' \
         {
             "_id": "671a1e74a8de3b2575aa9053",
             "type": "snowflake",
-            "name": "conn2",
+            "name": "Staging",
             "updated_at": "2024-10-28T07:25:42.693Z",
             "created_at": "2024-10-24T10:16:20.765Z"
         },
         {
             "_id": "671f403c3a1b4f32cd64d421",
             "type": "snowflake",
-            "name": "S1 Connection",
+            "name": "Prod",
             "updated_at": "2024-10-28T07:41:48.090Z",
             "created_at": "2024-10-28T07:41:48.090Z"
         }
@@ -75,8 +75,8 @@ curl --location --request PATCH 'https://v3.polymersearch.com/api/auth/snowflake
 --data '{
     "name": "Staging Instance",
     "account": "pjiigbt-tl76209",
-    "username": "dineshagrawal85",
-    "password": "Snowflk112@@"
+    "username": "snowflake-username",
+    "password": "snowflake-password"
 }'
 ```
 
